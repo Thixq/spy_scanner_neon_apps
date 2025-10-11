@@ -5,6 +5,7 @@ analyzer:
       lines_longer_than_80_chars: ignore
       avoid_catches_without_on_clauses: ignore
       inference_failure_on_untyped_parameter: ignore
+      prefer_if_elements_to_conditional_expressions: ignore
    exclude: 
       - "**/*.g.dart"
       - "pubspec.yaml"
