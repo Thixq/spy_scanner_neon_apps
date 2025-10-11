@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spy_scanner/feature/components/lan_info_card.dart';
 
 class DevComponentView extends StatelessWidget {
   const DevComponentView({super.key});
@@ -7,7 +8,7 @@ class DevComponentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Dev Components')),
-      body: const Center(child: Text('Development Components Here')),
+      body: const Center(child: LanInfoCard()),
     );
   }
 }
