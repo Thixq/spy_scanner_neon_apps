@@ -113,11 +113,11 @@ class _BleScannerScreenState extends State<BleScannerScreen> {
         builder: (context, snapshot) {
           final isScanning = snapshot.data ?? false;
           return FloatingActionButton(
-            onPressed: () {
+            onPressed: () async {
               if (isScanning) {
-                _bleManager.stopScan();
+                await _bleManager.stopScan();
               } else {
-                _bleManager.startScan();
+                await _bleManager.startScan();
               }
             },
             child: Icon(isScanning ? Icons.stop : Icons.search),

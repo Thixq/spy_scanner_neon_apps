@@ -3,9 +3,9 @@ import 'package:spy_scanner/core/logging/logging_manager.dart';
 import 'package:spy_scanner/core/logging/zone_manager.dart';
 import 'package:spy_scanner/dev/ble_scanner.dart';
 
-void main() {
-  ZoneManager.runAppInZone(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ZoneManager.runAppInZone(() async {
     LoggingManager.init();
     runApp(const MyApp());
   });

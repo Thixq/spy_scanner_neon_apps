@@ -9,9 +9,9 @@ class ZoneManager {
 
   /// Executes the provided [appMain] function inside a guarded zone.
   /// Any uncaught errors are intercepted and logged via the error callback.
-  static void runAppInZone(Future<void> Function() appMain) {
+  static Future<void> runAppInZone(Future<void> Function() appMain) async {
     // runZonedGuarded runs the [appMain] function inside a new error-handling zone.
-    runZonedGuarded<Future<void>>(
+    await runZonedGuarded<Future<void>>(
       appMain, // The main application function to execute.
       // Error callback that gets invoked when an uncaught error occurs in the zone.
       (error, stackTrace) {
