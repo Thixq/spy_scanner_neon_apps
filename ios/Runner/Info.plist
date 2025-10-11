@@ -41,7 +41,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -50,18 +49,15 @@
 	<string>The app uses bluetooth to find, connect and transfer data between different devices</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>The app uses bluetooth to find, connect and transfer data between different devices</string>
-
-	<!-- 📡 Yerel ağ keşfi açıklaması (zorunlu) -->
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Uygulama yerel ağdaki cihazları bulmak için ağ keşfi yapar.</string>
-
-	<!-- 🔍 Bonjour servis tipleri (tam liste) -->
+	<string>The app causes network disruption to find devices on the local network.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs location access to show the name of the Wi-Fi network you are connected to.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs location access to detect the Wi-Fi network you are connected to.</string>
 	<key>NSBonjourServices</key>
 	<array>
-		<!-- Meta keşif tipi -->
 		<string>_services._dns-sd._udp.</string>
-
-		<!-- Yaygın servis tipleri -->
 		<string>_http._tcp.</string>
 		<string>_https._tcp.</string>
 		<string>_workstation._tcp.</string>
