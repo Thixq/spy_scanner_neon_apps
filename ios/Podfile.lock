@@ -1,7 +1,4 @@
 PODS:
-  - bonsoir_darwin (0.0.1):
-    - Flutter
-    - FlutterMacOS
   - Flutter (1.0.0)
   - flutter_icmp_ping (0.0.1):
     - Flutter
@@ -14,8 +11,12 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - permission_handler_apple (9.3.0):
+  - Protobuf (3.29.5)
+  - reactive_ble_mobile (0.0.1):
     - Flutter
+    - FlutterMacOS
+    - Protobuf (~> 3.5)
+    - SwiftProtobuf (~> 1.0)
   - sqlite3 (3.50.4):
     - sqlite3/common (= 3.50.4)
   - sqlite3/common (3.50.4)
@@ -41,25 +42,25 @@ PODS:
     - sqlite3/perf-threadsafe
     - sqlite3/rtree
     - sqlite3/session
+  - SwiftProtobuf (1.32.0)
 
 DEPENDENCIES:
-  - bonsoir_darwin (from `.symlinks/plugins/bonsoir_darwin/darwin`)
   - Flutter (from `Flutter`)
   - flutter_icmp_ping (from `.symlinks/plugins/flutter_icmp_ping/ios`)
   - flutter_nsd (from `.symlinks/plugins/flutter_nsd/ios`)
   - network_info_plus (from `.symlinks/plugins/network_info_plus/ios`)
   - nsd_ios (from `.symlinks/plugins/nsd_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
-  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - reactive_ble_mobile (from `.symlinks/plugins/reactive_ble_mobile/darwin`)
   - sqlite3_flutter_libs (from `.symlinks/plugins/sqlite3_flutter_libs/darwin`)
 
 SPEC REPOS:
   trunk:
+    - Protobuf
     - sqlite3
+    - SwiftProtobuf
 
 EXTERNAL SOURCES:
-  bonsoir_darwin:
-    :path: ".symlinks/plugins/bonsoir_darwin/darwin"
   Flutter:
     :path: Flutter
   flutter_icmp_ping:
@@ -72,22 +73,23 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/nsd_ios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
-  permission_handler_apple:
-    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  reactive_ble_mobile:
+    :path: ".symlinks/plugins/reactive_ble_mobile/darwin"
   sqlite3_flutter_libs:
     :path: ".symlinks/plugins/sqlite3_flutter_libs/darwin"
 
 SPEC CHECKSUMS:
-  bonsoir_darwin: 29c7ccf356646118844721f36e1de4b61f6cbd0e
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_icmp_ping: 47c1df3440c18ddd39fc457e607bb3b42d4a339f
   flutter_nsd: e3c600b12e58b93ce1457bdf3ea5d5b900126d42
   network_info_plus: cf61925ab5205dce05a4f0895989afdb6aade5fc
   nsd_ios: 596ad79109ddd3e52d665f650f36428049e3653e
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
-  permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
+  Protobuf: 164aea2ae380c3951abdc3e195220c01d17400e0
+  reactive_ble_mobile: ea97709e18fa6f0b0592909725d7ae7e1c595b64
   sqlite3: 73513155ec6979715d3904ef53a8d68892d4032b
   sqlite3_flutter_libs: 83f8e9f5b6554077f1d93119fe20ebaa5f3a9ef1
+  SwiftProtobuf: 81e341191afbddd64aa031bd12862dccfab2f639
 
 PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
 
