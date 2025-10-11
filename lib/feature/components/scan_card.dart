@@ -44,7 +44,6 @@ class _ScanCardState extends State<ScanCard> {
 
   @override
   Widget build(BuildContext context) {
-    // Çocukları koşullu oluşturuyoruz; buton yoksa listeye eklemiyoruz -> spacing otomatik
     final children = <Widget>[
       _buildContentIcon(context, widget.icon),
       _buildTitleAndSubTitle(
@@ -54,7 +53,6 @@ class _ScanCardState extends State<ScanCard> {
       ),
     ];
 
-    // Eğer onPressed varsa butonu ve ondan önceki boşluğu ekle
     if (widget.onPressed != null) {
       children.add(_buildContentButton());
     }
@@ -70,7 +68,7 @@ class _ScanCardState extends State<ScanCard> {
         child: Column(
           spacing: widget.onPressed != null
               ? AppSizes.extraLarge
-              : AppSizes.medium,
+              : AppSizes.small,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
@@ -110,7 +108,12 @@ class _ScanCardState extends State<ScanCard> {
           style: context.textTheme.titleLarge,
         ),
         if (subTitle != null) ...[
-          Text(subTitle, style: context.textTheme.bodySmall),
+          Text(
+            subTitle,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: context.textTheme.bodySmall,
+          ),
         ],
       ],
     );

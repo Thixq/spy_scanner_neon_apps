@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
+import 'package:spy_scanner/feature/components/lan_info_card.dart';
 
 import 'package:spy_scanner/feature/components/scan_card.dart';
 
@@ -13,35 +14,50 @@ class DevComponentView extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Row(
+          child: Column(
             spacing: 16,
             children: [
-              Expanded(
-                child: ScanCard(
-                  icon: Icons.wifi_find,
-                  contentTitle: 'Pingable Devices',
-                  contentSubTitle:
-                      'Scan for devices that respond to ping requests.',
-                  buttonText: 'Scan Pingable',
-                  onPressed: () {},
-                ),
+              const LanInfoCard(
+                ipAddress: '89.0.142.86',
+                connection: 'Connected',
               ),
-              const Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ScanCard(
-                      icon: Icons.bluetooth,
-                      contentTitle: 'Bluetooth Devices',
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 16,
+                children: [
+                  Flexible(
+                    child: ScanCard(
+                      icon: Icons.wifi_find,
+                      contentTitle: 'Pingable Devices',
+                      contentSubTitle:
+                          'Scan for devices that respond to ping requests.',
+                      buttonText: 'Scan Pingable',
+                      onPressed: () {},
                     ),
-                    SizedBox(height: 16),
-                    ScanCard(
-                      isDisabled: true,
-                      icon: CupertinoIcons.camera_viewfinder,
-                      contentTitle: 'Camera Decator',
+                  ),
+                  const Flexible(
+                    child: Column(
+                      spacing: 16,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Flexible(
+                          child: ScanCard(
+                            icon: Icons.bluetooth,
+                            contentTitle: 'Bluetooth Devices',
+                          ),
+                        ),
+
+                        Flexible(
+                          child: ScanCard(
+                            isDisabled: true,
+                            icon: CupertinoIcons.camera_viewfinder,
+                            contentTitle: 'Camera Decator',
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
