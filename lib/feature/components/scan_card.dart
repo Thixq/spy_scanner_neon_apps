@@ -46,7 +46,7 @@ class _ScanCardState extends State<ScanCard> {
   Widget build(BuildContext context) {
     // Çocukları koşullu oluşturuyoruz; buton yoksa listeye eklemiyoruz -> spacing otomatik
     final children = <Widget>[
-      _buildContentIcon(widget.icon),
+      _buildContentIcon(context, widget.icon),
       _buildTitleAndSubTitle(
         context,
         title: widget.contentTitle,
@@ -79,10 +79,12 @@ class _ScanCardState extends State<ScanCard> {
     );
   }
 
-  CircleAvatar _buildContentIcon(IconData iconData) {
+  CircleAvatar _buildContentIcon(BuildContext context, IconData iconData) {
     return CircleAvatar(
       radius: AppSizes.large,
-      child: Icon(iconData),
+      child: Icon(
+        iconData,
+      ),
     );
   }
 
@@ -105,7 +107,7 @@ class _ScanCardState extends State<ScanCard> {
       children: [
         Text(
           title,
-          style: context.textTheme.headlineSmall,
+          style: context.textTheme.titleLarge,
         ),
         if (subTitle != null) ...[
           Text(subTitle, style: context.textTheme.bodySmall),
