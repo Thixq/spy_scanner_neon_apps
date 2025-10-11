@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Spy Scanner</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>spy_scanner</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>The app uses bluetooth to find, connect and transfer data between different devices</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>The app uses bluetooth to find, connect and transfer data between different devices</string>
+
+	<!-- 📡 Yerel ağ keşfi açıklaması (zorunlu) -->
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Uygulama yerel ağdaki cihazları bulmak için ağ keşfi yapar.</string>
+
+	<!-- 🔍 Bonjour servis tipleri (tam liste) -->
+	<key>NSBonjourServices</key>
+	<array>
+		<!-- Meta keşif tipi -->
+		<string>_services._dns-sd._udp.</string>
+
+		<!-- Yaygın servis tipleri -->
+		<string>_http._tcp.</string>
+		<string>_https._tcp.</string>
+		<string>_workstation._tcp.</string>
+		<string>_printer._tcp.</string>
+		<string>_ftp._tcp.</string>
+		<string>_smb._tcp.</string>
+		<string>_nfs._tcp.</string>
+		<string>_airplay._tcp.</string>
+		<string>_raop._tcp.</string>
+		<string>_rfb._tcp.</string>
+		<string>_vnc._tcp.</string>
+		<string>_ipp._tcp.</string>
+		<string>_afpovertcp._tcp.</string>
+		<string>_ssh._tcp.</string>
+		<string>_mqtt._tcp.</string>
+		<string>_device-info._tcp.</string>
+		<string>_rtsp._tcp.</string>
+	</array>
+</dict>
+</plist>
