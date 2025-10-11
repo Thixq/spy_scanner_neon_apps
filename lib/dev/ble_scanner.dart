@@ -1,144 +1,128 @@
-import 'dart:async';
+// lib/ble_scanner_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'package:spy_scanner/feature/managers/ble_manager.dart'; // BleStatus enum'ı için
 
 class BleScannerScreen extends StatefulWidget {
   const BleScannerScreen({super.key});
 
   @override
-  _BleScannerScreenState createState() => _BleScannerScreenState();
+  State<BleScannerScreen> createState() => _BleScannerScreenState();
 }
 
 class _BleScannerScreenState extends State<BleScannerScreen> {
-  // BLE kütüphanesinin ana nesnesi
-  final _ble = FlutterReactiveBle();
-
-  // Cihazın BLE durumunu tutacak değişken
-  late BleStatus _bleStatus = BleStatus.unknown;
-
-  // Tarama sonucunda bulunan cihazların listesi
-  final List<DiscoveredDevice> _foundDevices = [];
-
-  // Aktif tarama işlemini yönetmek için stream aboneliği
-  StreamSubscription<DiscoveredDevice>? _scanSubscription;
+  // BleManager'ın bir örneğini oluşturuyoruz.
+  // 'late final' kullanarak initState'de atanacağını belirtiyoruz.
+  late final BleManager _bleManager;
 
   @override
   void initState() {
     super.initState();
-    // Widget başlarken BLE durumunu dinlemeye başla
-    _listenToBleStatus();
+    // Widget oluşturulduğunda manager'ı başlat.
+    _bleManager = BleManager();
   }
 
   @override
   void dispose() {
-    // Widget sonlandığında taramayı durdur ve kaynakları serbest bırak
-    _scanSubscription?.cancel();
+    // Widget yok edildiğinde manager'daki kaynakları (stream'leri) temizle.
+    // Bu adım, memory leak'leri önlemek için ÇOK ÖNEMLİDİR.
+    _bleManager.dispose();
     super.dispose();
-  }
-
-  // 1. Özellik: Cihazın BLE Durumunu Gözlemleme
-  void _listenToBleStatus() {
-    _ble.statusStream.listen((status) {
-      setState(() {
-        _bleStatus = status;
-      });
-      // Eğer Bluetooth hazırsa taramayı başlatabiliriz
-      if (status == BleStatus.ready) {
-        _startScan();
-      }
-    });
-  }
-
-  // 2. Özellik: Cihaz Keşfi (Tarama)
-  void _startScan() {
-    // Eski tarama sonuçlarını temizle
-    setState(_foundDevices.clear);
-
-    // Zaten aktif bir tarama varsa durdur
-    _scanSubscription?.cancel();
-
-    // Yeni taramayı başlat
-    _scanSubscription = _ble
-        .scanForDevices(
-          withServices:
-              [], // Belirli bir servis filtresi yok, tüm cihazları bul
-          scanMode:
-              ScanMode.lowLatency, // Enerji verimliliği ve hız arasında denge
-        )
-        .listen(
-          (device) {
-            // Bulunan her bir cihaz için bu kod çalışır
-            setState(() {
-              // Cihaz listede zaten var mı diye kontrol et
-              final knownDeviceIndex = _foundDevices.indexWhere(
-                (d) => d.id == device.id,
-              );
-              if (knownDeviceIndex >= 0) {
-                // Varsa, bilgilerini güncelle (RSSI gibi)
-                _foundDevices[knownDeviceIndex] = device;
-              } else {
-                // Yoksa, listeye ekle
-                _foundDevices.add(device);
-              }
-            });
-          },
-          onError: (error) {
-            // Hata durumunda konsola yazdır
-            print('Tarama sırasında hata oluştu: $error');
-          },
-        );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BLE Cihaz Tarayıcı'),
+        title: const Text('BLE Scanner'),
+        actions: [
+          // Tarama durumunu dinleyerek bir yüklenme göstergesi (indicator) ekle
+          StreamBuilder<bool>(
+            stream: _bleManager.isScanningStream,
+            initialData: false,
+            builder: (context, snapshot) {
+              if (snapshot.data ?? false) {
+                return const Padding(
+                  padding: EdgeInsets.only(right: 16),
+                  child: Center(
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(color: Colors.white),
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox.shrink(); // Tarama yoksa boş
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
-          // Mevcut BLE Durumunu gösteren alan
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              'Bluetooth Durumu: ${_bleStatus.name.toUpperCase()}',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
+          // Bluetooth durumunu gösteren alan
+          StreamBuilder<BleStatus>(
+            stream: _bleManager.statusStream,
+            builder: (context, snapshot) {
+              final status = snapshot.data ?? BleStatus.unknown;
+              return Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  'Bluetooth Status: ${status.name.toUpperCase()}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              );
+            },
           ),
           const Divider(),
-          // Bulunan cihazların listesi
+          // Bulunan cihazları listeleyen alan
           Expanded(
-            child: ListView.builder(
-              itemCount: _foundDevices.length,
-              itemBuilder: (context, index) {
-                final device = _foundDevices[index];
-
-                return ListTile(
-                  title: Text(
-                    device.name.isNotEmpty ? device.name : 'İsimsiz Cihaz',
-                  ),
-                  subtitle: Text('ID: ${device.id}\nRSSI: ${device.rssi} dBm'),
-                  leading: const Icon(Icons.bluetooth),
+            child: StreamBuilder<List<DiscoveredDevice>>(
+              stream: _bleManager.scannedDevicesStream,
+              initialData: const [],
+              builder: (context, snapshot) {
+                final devices = snapshot.data ?? [];
+                if (devices.isEmpty) {
+                  return const Center(
+                    child: Text('No devices found. Start scanning.'),
+                  );
+                }
+                return ListView.builder(
+                  itemCount: devices.length,
+                  itemBuilder: (context, index) {
+                    final device = devices[index];
+                    return ListTile(
+                      title: Text(
+                        device.name.isNotEmpty ? device.name : 'Unknown Device',
+                      ),
+                      subtitle: Text('${device.id}\nRSSI: ${device.rssi} dBm'),
+                      leading: const Icon(Icons.bluetooth),
+                    );
+                  },
                 );
               },
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Sadece Bluetooth hazırsa taramayı yeniden başlat
-          if (_bleStatus == BleStatus.ready) {
-            _startScan();
-          } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Bluetooth kapalı veya yetki verilmemiş.'),
-              ),
-            );
-          }
+      // Taramayı başlatıp/durduran Floating Action Button
+      floatingActionButton: StreamBuilder<bool>(
+        stream: _bleManager.isScanningStream,
+        initialData: false,
+        builder: (context, snapshot) {
+          final isScanning = snapshot.data ?? false;
+          return FloatingActionButton(
+            onPressed: () {
+              if (isScanning) {
+                _bleManager.stopScan();
+              } else {
+                _bleManager.startScan();
+              }
+            },
+            child: Icon(isScanning ? Icons.stop : Icons.search),
+          );
         },
-        child: const Icon(Icons.search),
       ),
     );
   }

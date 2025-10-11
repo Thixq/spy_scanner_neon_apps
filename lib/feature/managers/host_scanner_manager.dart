@@ -18,7 +18,7 @@ class HostView {
 
 /// Manager: listens to getAllPingableDevices(), resolves the Future fields
 /// inside ActiveHost and publishes a list of HostView objects.
-class HostScanManager {
+final class HostScanManager {
   final List<HostView> _hosts = [];
   final StreamController<List<HostView>> _hostsController =
       StreamController<List<HostView>>.broadcast();
@@ -85,7 +85,7 @@ class HostScanManager {
             onDone: () {
               _isScanning = false;
               _hostsController.add(List.unmodifiable(_hosts));
-              // ignore: avoid_print
+
               print('Scan completed. Found ${_hosts.length} hosts.');
             },
             cancelOnError: false,
@@ -93,7 +93,7 @@ class HostScanManager {
     } catch (e, st) {
       _isScanning = false;
       _hostsController.add(List.unmodifiable(_hosts));
-      // ignore: avoid_print
+
       print('Failed to start scan: $e\n$st');
     }
   }

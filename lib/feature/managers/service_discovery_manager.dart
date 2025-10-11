@@ -1,7 +1,7 @@
 import 'package:nsd/nsd.dart';
 
 /// Manages mDNS/DNS-SD service discovery for multiple service types.
-class ServiceDiscoveryManager {
+final class ServiceDiscoveryManager {
   ServiceDiscoveryManager({
     required this.serviceTypes,
     this.onServiceFound,
