@@ -23,15 +23,10 @@ class ErrorHandler {
       // The operation is executed and its result is awaited.
       return await operation();
     } catch (e, s) {
-      // If an error occurs, log it using the CustomLogger.
       _logger.error(errorMessage, error: e, stackTrace: s);
-
-      // If a custom onError callback is provided, execute it.
       if (onError != null) {
         await onError(e, s);
       }
-
-      // Return null to signal that the operation failed.
       return null;
     }
   }
