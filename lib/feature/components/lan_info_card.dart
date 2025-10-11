@@ -1,34 +1,89 @@
 import 'package:flutter/material.dart';
+import 'package:spy_scanner/core/app_sizes.dart';
+import 'package:spy_scanner/core/extension/context_theme.dart';
 
-class LanInfoCard extends StatelessWidget {
-  const LanInfoCard({super.key});
+const ipAddressTitle = 'IP Address';
+const connectionTitle = 'Connection';
+const notConnection = 'Not connected';
+
+class LanInfoCard extends StatefulWidget {
+  const LanInfoCard({
+    this.ipAddress,
+    this.connection,
+    super.key,
+  });
+  final String? ipAddress;
+  final String? connection;
+
+  @override
+  State<LanInfoCard> createState() => _LanInfoCardState();
+}
+
+class _LanInfoCardState extends State<LanInfoCard> {
+  @override
+  void didUpdateWidget(covariant LanInfoCard oldWidget) {
+    if (oldWidget.ipAddress != widget.ipAddress ||
+        oldWidget.connection != widget.connection) {
+      setState(() {});
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
+      margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.red),
-        borderRadius: BorderRadius.all(
-          Radius.circular(12),
-        ),
+        side: BorderSide(color: context.colorScheme.outline),
+        borderRadius: AppSizes.largeBorderRadius,
       ),
       child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: AppSizes.mediumPadding,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'LAN Information',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            _buildContentInfo(
+              context,
+              icon: Icons.language,
+              title: ipAddressTitle,
+              subtitle: widget.ipAddress ?? notConnection,
             ),
-            SizedBox(height: 8),
-            Text('IP Address: 192.168.1.1'),
-            Text('Subnet Mask: 255.255.255.0'),
-            Text('Gateway: 192.168.1.254'),
+            _buildContentInfo(
+              context,
+              icon: Icons.router,
+              title: connectionTitle,
+              subtitle: 'Wi-Fi: ${widget.connection ?? notConnection}',
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Column _buildContentInfo(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String subtitle,
+  }) {
+    return Column(
+      spacing: AppSizes.small,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          spacing: AppSizes.small,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon),
+            Text(
+              title,
+              style: context.textTheme.titleMedium,
+            ),
+          ],
+        ),
+
+        Text(subtitle, style: context.textTheme.bodySmall),
+      ],
     );
   }
 }

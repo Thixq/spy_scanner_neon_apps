@@ -8,7 +8,12 @@ class DevComponentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Dev Components')),
-      body: const Center(child: LanInfoCard()),
+      body: const Center(
+        child: LanInfoCard(
+          ipAddress: '244.178.44.111',
+          connection: 'Neon Apps',
+        ),
+      ),
     );
   }
 }
