@@ -6,6 +6,7 @@ const ipAddressTitle = 'IP Address';
 const connectionTitle = 'Connection';
 const notConnection = 'Not connected';
 
+/// A widget that displays a card with IP address and connection information.
 class LanInfoCard extends StatefulWidget {
   const LanInfoCard({
     this.ipAddress,
