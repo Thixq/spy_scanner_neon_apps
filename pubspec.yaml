@@ -26,8 +26,8 @@ dependencies:
 
   # Utils
   path_provider: ^2.1.5
-  sqlite3: ^2.9.2
-  sqlite3_flutter_libs: ^0.5.40
+  get_it: ^8.2.0
+  logging: ^1.3.0
 
 dev_dependencies:
   flutter_test:
