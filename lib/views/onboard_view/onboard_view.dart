@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -10,6 +11,7 @@ part 'onboarding_page_model.dart';
 part 'widgets/onboarding_page.dart';
 part 'widgets/onboarding_indicator.dart';
 
+@RoutePage()
 class OnboardView extends StatefulWidget {
   const OnboardView({super.key});
 
