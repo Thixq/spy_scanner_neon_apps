@@ -15,7 +15,6 @@ class LanInfoCard extends StatelessWidget {
     super.key,
   });
 
-  // Tüm özellikler final ve doğrudan sınıf içinde erişilebilir
   final String? ipAddress;
   final String? connection;
   final VoidCallback? onPressed;
@@ -40,15 +39,13 @@ class LanInfoCard extends StatelessWidget {
                 context,
                 icon: Icons.language,
                 title: ipAddressTitle,
-                subtitle:
-                    ipAddress ?? notConnection, // Doğrudan özellik erişimi
+                subtitle: ipAddress ?? notConnection,
               ),
               _buildContentInfo(
                 context,
                 icon: Icons.router,
                 title: connectionTitle,
-                subtitle:
-                    'Wi-Fi: ${connection ?? notConnection}', // Doğrudan özellik erişimi
+                subtitle: 'Wi-Fi: ${connection ?? notConnection}',
               ),
             ],
           ),

@@ -76,7 +76,8 @@ class ScanCard extends StatelessWidget {
 
   Widget _buildContentIcon(BuildContext context, IconData iconData) {
     return CircleAvatar(
-      radius: AppSizes.large,
+      minRadius: AppSizes.small,
+      maxRadius: AppSizes.large,
       child: Icon(
         iconData,
       ),
