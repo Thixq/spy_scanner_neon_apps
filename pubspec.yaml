@@ -21,6 +21,9 @@ dependencies:
   flutter_nsd: ^1.6.0
   nsd: ^4.0.3
 
+  # UI
+  smooth_page_indicator: ^1.2.1
+
   # Bluetooth
   flutter_reactive_ble: ^5.4.0
 

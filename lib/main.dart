@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Spy Scanner',
-      theme: SpyTheme.light(seedColor: const Color(0xFF697565)),
-      darkTheme: SpyTheme.dark(seedColor: const Color(0xFF697565)),
+      theme: SpyTheme.light(seedColor: const Color(0xFFDD0303)),
+      darkTheme: SpyTheme.dark(seedColor: const Color(0xFFDD0303)),
       home: const DevComponentView(),
     );
   }
