@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
+import 'package:spy_scanner/feature/constants/image_assets.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard({
@@ -32,19 +33,32 @@ class InfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
+                flex: 3,
                 child: _buildTitleAndSubtitle(
                   context,
                   title: title,
                   subTitle: subTitle,
                 ),
               ),
-              Image.asset(
-                'assets/images/img_security_camera.png',
-                width: 125,
+              Flexible(
+                flex: 2,
+                child: _buildImageAsset(assetPath: ImageAssets.securityCam),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildImageAsset({
+    required String assetPath,
+  }) {
+    return Image.asset(
+      assetPath,
+      fit: BoxFit.contain,
+      errorBuilder: (context, error, stackTrace) => const Icon(
+        Icons.error,
       ),
     );
   }
