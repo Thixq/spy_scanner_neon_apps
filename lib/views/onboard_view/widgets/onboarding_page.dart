@@ -1,5 +1,8 @@
 part of '../onboard_view.dart';
 
+/// A widget that displays an onboarding page.
+///
+/// [onboardingPageModel] is the model of the onboarding page.
 class _OnboardingPage extends StatelessWidget {
   const _OnboardingPage({
     required this.onboardingPageModel,
