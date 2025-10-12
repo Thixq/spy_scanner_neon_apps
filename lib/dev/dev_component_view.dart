@@ -21,43 +21,48 @@ class DevComponentView extends StatelessWidget {
                 ipAddress: '89.0.142.86',
                 connection: 'Connected',
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16,
-                children: [
-                  Flexible(
-                    child: ScanCard(
-                      icon: Icons.wifi_find,
-                      contentTitle: 'Pingable Devices',
-                      contentSubTitle:
-                          'Scan for devices that respond to ping requests.',
-                      buttonText: 'Scan Pingable',
-                      onPressed: () {},
+              Flexible(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16,
+                  children: [
+                    Expanded(
+                      child: ScanCard(
+                        icon: Icons.wifi_find,
+                        contentTitle: 'Pingable Devices',
+                        contentSubTitle:
+                            'Scan for devices that respond to ping requests.',
+                        buttonText: 'Scan Pingable',
+                        onPressed: () {},
+                      ),
                     ),
-                  ),
-                  const Flexible(
-                    child: Column(
-                      spacing: 16,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Flexible(
-                          child: ScanCard(
-                            icon: Icons.bluetooth,
-                            contentTitle: 'Bluetooth Devices',
+                    const Expanded(
+                      child: Column(
+                        spacing: 16,
+                        children: [
+                          Expanded(
+                            child: ScanCard(
+                              icon: Icons.bluetooth,
+                              contentTitle: 'Bluetooth Devices',
+                            ),
                           ),
-                        ),
-
-                        Flexible(
-                          child: ScanCard(
-                            isDisabled: true,
-                            icon: CupertinoIcons.camera_viewfinder,
-                            contentTitle: 'Camera Decator',
+                          Expanded(
+                            child: ScanCard(
+                              isDisabled: true,
+                              icon: CupertinoIcons.camera_viewfinder,
+                              contentTitle: 'Camera Decator',
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.redAccent,
+                height: 300,
+                width: 400,
               ),
             ],
           ),

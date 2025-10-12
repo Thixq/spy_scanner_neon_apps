@@ -66,10 +66,7 @@ class _ScanCardState extends State<ScanCard> {
       child: Padding(
         padding: AppSizes.mediumPadding,
         child: Column(
-          spacing: widget.onPressed != null
-              ? AppSizes.extraLarge
-              : AppSizes.small,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
         ),
@@ -77,7 +74,7 @@ class _ScanCardState extends State<ScanCard> {
     );
   }
 
-  CircleAvatar _buildContentIcon(BuildContext context, IconData iconData) {
+  Widget _buildContentIcon(BuildContext context, IconData iconData) {
     return CircleAvatar(
       radius: AppSizes.large,
       child: Icon(
