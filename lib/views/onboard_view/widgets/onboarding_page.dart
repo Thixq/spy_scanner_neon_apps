@@ -2,14 +2,10 @@ part of '../onboard_view.dart';
 
 class _OnboardingPage extends StatelessWidget {
   const _OnboardingPage({
-    required this.title,
-    required this.description,
-    required this.lottiePath,
+    required this.onboardingPageModel,
   });
 
-  final String title;
-  final String description;
-  final String lottiePath;
+  final _OnboardingPageModel onboardingPageModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +14,7 @@ class _OnboardingPage extends StatelessWidget {
       children: [
         LottieBuilder.asset(
           height: AppSizes.extraLarge * 5,
-          lottiePath,
+          onboardingPageModel.lottiePath,
           errorBuilder: (context, error, stackTrace) => const Icon(
             Icons.error,
             size: AppSizes.extraLarge * 3,
@@ -30,14 +26,14 @@ class _OnboardingPage extends StatelessWidget {
             spacing: AppSizes.small,
             children: [
               Text(
-                title,
+                onboardingPageModel.title,
                 style: context.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: context.colorScheme.onSurface,
                 ),
               ),
               Text(
-                description,
+                onboardingPageModel.description,
                 style: context.textTheme.bodyMedium,
               ),
             ],
