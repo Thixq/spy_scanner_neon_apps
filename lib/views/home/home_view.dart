@@ -1,5 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
+import 'package:spy_scanner/core/app_sizes.dart';
+import 'package:spy_scanner/feature/components/icon_text_card.dart';
+import 'package:spy_scanner/feature/components/info_card.dart';
+import 'package:spy_scanner/feature/components/lan_info_card.dart';
+import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
+
+part 'home_mixin.dart';
+part 'widgets/home_app_bar.dart';
+part 'widgets/home_scanners.dart';
+part 'widgets/home_info_card.dart';
+part 'widgets/home_actions.dart';
 
 @RoutePage()
 class HomeView extends StatefulWidget {
@@ -9,9 +21,44 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends State<HomeView> with _HomeMixin {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: _HomeAppBar(
+        onPremiumPressed: () {},
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: AppSizes.mediumPadding,
+          child: Column(
+            spacing: AppSizes.medium,
+            children: [
+              _buildLanInfo(),
+              _Scanners(
+                onWifiScanPressed: () {},
+                onBluetoothScanPressed: () {},
+                onInfraredScanPressed: () {},
+              ),
+              const _HomeInfoCard(),
+              _HomeActions(
+                onSettingsPressed: () {},
+                onFaqPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  LanInfoCard _buildLanInfo({
+    String? ipAddress,
+    String? connection,
+  }) {
+    return LanInfoCard(
+      ipAddress: ipAddress,
+      connection: connection,
+    );
   }
 }

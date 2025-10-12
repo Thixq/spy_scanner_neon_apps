@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
 
+part 'scan_card_model.dart';
+
 /// A widget that displays a card with a title, subtitle, and optional button.
 /// It also supports disabling the card by setting [isDisabled] to true.
 ///
@@ -14,41 +16,37 @@ import 'package:spy_scanner/core/extension/context_theme.dart';
 class ScanCard extends StatelessWidget {
   // StatelessWidget olarak değiştirildi
   const ScanCard({
-    required this.contentTitle,
-    required this.icon,
-    this.contentSubTitle,
+    required this.scanner,
     super.key,
-    this.buttonText,
-    this.onPressed,
     this.isDisabled = false,
-    this.buttonOnPressed,
+    this.onCardPressed,
+    this.onButtonPressed,
+    this.buttonText,
   });
 
-  final String contentTitle;
-  final String? contentSubTitle;
+  final ScanCardModel scanner;
+  final VoidCallback? onCardPressed;
+  final VoidCallback? onButtonPressed;
   final String? buttonText;
-  final VoidCallback? buttonOnPressed;
-  final VoidCallback? onPressed;
-  final IconData icon;
   final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[
-      _buildContentIcon(context, icon), // Özelliğe doğrudan erişim
+      _buildContentIcon(context, scanner.icon), // Özelliğe doğrudan erişim
       _buildTitleAndSubTitle(
         context,
-        title: contentTitle, // Özelliğe doğrudan erişim
-        subTitle: contentSubTitle, // Özelliğe doğrudan erişim
+        title: scanner.contentTitle, // Özelliğe doğrudan erişim
+        subTitle: scanner.contentSubTitle, // Özelliğe doğrudan erişim
       ),
     ];
 
-    if (buttonOnPressed != null) {
+    if (onButtonPressed != null) {
       // Özelliğe doğrudan erişim
       children.add(
         _buildContentButton(
           buttonText: buttonText,
-          onPressed: buttonOnPressed,
+          onPressed: onButtonPressed,
         ),
       );
     }
@@ -61,7 +59,7 @@ class ScanCard extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: AppSizes.largeBorderRadius,
-        onTap: isDisabled ? null : onPressed,
+        onTap: isDisabled ? null : onCardPressed,
         child: Padding(
           padding: AppSizes.mediumPadding,
           child: Column(
