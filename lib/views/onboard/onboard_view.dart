@@ -5,11 +5,12 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
 import 'package:spy_scanner/feature/constants/lottie_assets.dart';
+import 'package:spy_scanner/feature/routing/app_routing.gr.dart';
 
 part 'onboard_mixin.dart';
 part 'onboarding_page_model.dart';
-part 'widgets/onboarding_page.dart';
 part 'widgets/onboarding_indicator.dart';
+part 'widgets/onboarding_page.dart';
 
 @RoutePage()
 class OnboardView extends StatefulWidget {

@@ -42,11 +42,6 @@ mixin _OnboardMixin on State<OnboardView> {
   }
 
   @override
-  /*************  ✨ Windsurf Command ⭐  *************/
-  /// Releases all resources when the manager is no longer needed.
-  /// This method is called when the widget is about to be disposed.
-  /// It is important to call this method to avoid memory leaks.
-  /// *****  8f333d56-ec6b-494a-9df3-012b1b0e0405  ******
   void dispose() {
     _pageController
       ..removeListener(_pageListener)
@@ -56,7 +51,7 @@ mixin _OnboardMixin on State<OnboardView> {
 
   Future<void> _onNext() async {
     if (isLastPage) {
-      // 🔹 Son sayfadaysa yönlendirme yapılabilir
+      await context.router.replace(const HomeRoute());
     } else {
       await _pageController.nextPage(
         duration: const Duration(milliseconds: 500),

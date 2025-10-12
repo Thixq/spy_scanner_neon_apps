@@ -12,5 +12,8 @@ final class AppRouting extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
     AutoRoute(initial: true, page: OnboardRoute.page),
+    AutoRoute(
+      page: HomeRoute.page,
+    ),
   ];
 }
