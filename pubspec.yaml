@@ -13,6 +13,12 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
+    # UI
+  smooth_page_indicator: ^1.2.1
+
+  #Routing
+  auto_route: ^10.1.2
+
   # Network Utils
   network_info_plus: ^7.0.0
   network_tools: ^6.0.5
@@ -21,8 +27,7 @@ dependencies:
   flutter_nsd: ^1.6.0
   nsd: ^4.0.3
 
-  # UI
-  smooth_page_indicator: ^1.2.1
+
 
   # Bluetooth
   flutter_reactive_ble: ^5.4.0
@@ -36,7 +41,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # Analysis  
   very_good_analysis: ^10.0.0
+
+  #Code Gen
+  auto_route_generator: ^10.2.4
+  build_runner: ^2.7.1
 
 flutter:
   uses-material-design: true
