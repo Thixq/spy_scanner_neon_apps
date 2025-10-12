@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
+import 'package:spy_scanner/feature/components/info_card.dart';
 import 'package:spy_scanner/feature/components/lan_info_card.dart';
 
 import 'package:spy_scanner/feature/components/scan_card.dart';
@@ -59,11 +60,7 @@ class DevComponentView extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                color: Colors.redAccent,
-                height: 300,
-                width: 400,
-              ),
+              const Flexible(child: InfoCard()),
             ],
           ),
         ),
