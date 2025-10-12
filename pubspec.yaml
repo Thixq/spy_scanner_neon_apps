@@ -15,6 +15,7 @@ dependencies:
 
     # UI
   smooth_page_indicator: ^1.2.1
+  lottie: ^3.3.2
 
   #Routing
   auto_route: ^10.1.2
@@ -26,8 +27,6 @@ dependencies:
   dart_ping_ios: ^4.0.2
   flutter_nsd: ^1.6.0
   nsd: ^4.0.3
-
-
 
   # Bluetooth
   flutter_reactive_ble: ^5.4.0
@@ -54,3 +53,5 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/lotties/
+    - assets/svg/
