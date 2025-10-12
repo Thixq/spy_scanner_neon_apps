@@ -11,7 +11,8 @@ import 'package:spy_scanner/core/extension/context_theme.dart';
 /// [buttonText] is the text of the button.
 /// [onPressed] is the callback that is called when the button is pressed.
 /// [isDisabled] is a flag that indicates whether the card is disabled or not.
-class ScanCard extends StatefulWidget {
+class ScanCard extends StatelessWidget {
+  // StatelessWidget olarak değiştirildi
   const ScanCard({
     required this.contentTitle,
     required this.icon,
@@ -20,41 +21,36 @@ class ScanCard extends StatefulWidget {
     this.buttonText,
     this.onPressed,
     this.isDisabled = false,
+    this.buttonOnPressed,
   });
 
   final String contentTitle;
   final String? contentSubTitle;
   final String? buttonText;
+  final VoidCallback? buttonOnPressed;
   final VoidCallback? onPressed;
   final IconData icon;
   final bool isDisabled;
 
   @override
-  State<ScanCard> createState() => _ScanCardState();
-}
-
-class _ScanCardState extends State<ScanCard> {
-  @override
-  void didUpdateWidget(covariant ScanCard oldWidget) {
-    if (oldWidget.isDisabled != widget.isDisabled) {
-      setState(() {});
-    }
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   Widget build(BuildContext context) {
     final children = <Widget>[
-      _buildContentIcon(context, widget.icon),
+      _buildContentIcon(context, icon), // Özelliğe doğrudan erişim
       _buildTitleAndSubTitle(
         context,
-        title: widget.contentTitle,
-        subTitle: widget.contentSubTitle,
+        title: contentTitle, // Özelliğe doğrudan erişim
+        subTitle: contentSubTitle, // Özelliğe doğrudan erişim
       ),
     ];
 
-    if (widget.onPressed != null) {
-      children.add(_buildContentButton());
+    if (buttonOnPressed != null) {
+      // Özelliğe doğrudan erişim
+      children.add(
+        _buildContentButton(
+          buttonText: buttonText,
+          onPressed: buttonOnPressed,
+        ),
+      );
     }
 
     return Card(
@@ -63,12 +59,16 @@ class _ScanCardState extends State<ScanCard> {
         side: BorderSide(color: Theme.of(context).colorScheme.outline),
         borderRadius: AppSizes.largeBorderRadius,
       ),
-      child: Padding(
-        padding: AppSizes.mediumPadding,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
+      child: InkWell(
+        borderRadius: AppSizes.largeBorderRadius,
+        onTap: isDisabled ? null : onPressed,
+        child: Padding(
+          padding: AppSizes.mediumPadding,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: children,
+          ),
         ),
       ),
     );
@@ -83,10 +83,14 @@ class _ScanCardState extends State<ScanCard> {
     );
   }
 
-  Widget _buildContentButton() {
+  // Sınıf özelliklerine doğrudan erişiyor (this.isDisabled, this.onPressed, etc.)
+  Widget _buildContentButton({
+    String? buttonText,
+    VoidCallback? onPressed,
+  }) {
     return FilledButton(
-      onPressed: widget.isDisabled ? null : widget.onPressed,
-      child: widget.buttonText != null ? Text(widget.buttonText!) : null,
+      onPressed: isDisabled ? null : onPressed,
+      child: buttonText != null ? Text(buttonText) : null,
     );
   }
 

@@ -34,6 +34,7 @@ class DevComponentView extends StatelessWidget {
                         contentSubTitle:
                             'Scan for devices that respond to ping requests.',
                         buttonText: 'Scan Pingable',
+                        buttonOnPressed: () {},
                         onPressed: () {},
                       ),
                     ),
@@ -60,7 +61,13 @@ class DevComponentView extends StatelessWidget {
                   ],
                 ),
               ),
-              const Flexible(child: InfoCard()),
+              const Flexible(
+                child: InfoCard(
+                  title: 'Security Camera',
+                  subTitle:
+                      'Camera is not responding. Check the camera connection and try again.',
+                ),
+              ),
             ],
           ),
         ),

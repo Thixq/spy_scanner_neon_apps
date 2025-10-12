@@ -7,28 +7,18 @@ const connectionTitle = 'Connection';
 const notConnection = 'Not connected';
 
 /// A widget that displays a card with IP address and connection information.
-class LanInfoCard extends StatefulWidget {
+class LanInfoCard extends StatelessWidget {
   const LanInfoCard({
     this.ipAddress,
     this.connection,
+    this.onPressed,
     super.key,
   });
+
+  // Tüm özellikler final ve doğrudan sınıf içinde erişilebilir
   final String? ipAddress;
   final String? connection;
-
-  @override
-  State<LanInfoCard> createState() => _LanInfoCardState();
-}
-
-class _LanInfoCardState extends State<LanInfoCard> {
-  @override
-  void didUpdateWidget(covariant LanInfoCard oldWidget) {
-    if (oldWidget.ipAddress != widget.ipAddress ||
-        oldWidget.connection != widget.connection) {
-      setState(() {});
-    }
-    super.didUpdateWidget(oldWidget);
-  }
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -38,24 +28,30 @@ class _LanInfoCardState extends State<LanInfoCard> {
         side: BorderSide(color: context.colorScheme.outline),
         borderRadius: AppSizes.largeBorderRadius,
       ),
-      child: Padding(
-        padding: AppSizes.mediumPadding,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildContentInfo(
-              context,
-              icon: Icons.language,
-              title: ipAddressTitle,
-              subtitle: widget.ipAddress ?? notConnection,
-            ),
-            _buildContentInfo(
-              context,
-              icon: Icons.router,
-              title: connectionTitle,
-              subtitle: 'Wi-Fi: ${widget.connection ?? notConnection}',
-            ),
-          ],
+      child: InkWell(
+        borderRadius: AppSizes.largeBorderRadius,
+        onTap: onPressed,
+        child: Padding(
+          padding: AppSizes.mediumPadding,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildContentInfo(
+                context,
+                icon: Icons.language,
+                title: ipAddressTitle,
+                subtitle:
+                    ipAddress ?? notConnection, // Doğrudan özellik erişimi
+              ),
+              _buildContentInfo(
+                context,
+                icon: Icons.router,
+                title: connectionTitle,
+                subtitle:
+                    'Wi-Fi: ${connection ?? notConnection}', // Doğrudan özellik erişimi
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -82,7 +78,6 @@ class _LanInfoCardState extends State<LanInfoCard> {
             ),
           ],
         ),
-
         Text(subtitle, style: context.textTheme.bodySmall),
       ],
     );
