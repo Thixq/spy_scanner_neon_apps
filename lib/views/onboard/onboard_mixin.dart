@@ -15,7 +15,7 @@ mixin _OnboardMixin on State<OnboardView> {
     const _OnboardingPageModel(
       title: 'Bluetooth Scanner',
       description:
-          'You can track all devices emitting BLE signals and their distance from you. If you receive a signal that is very close to you but does not belong to you, you may suspect something. ',
+          'You can track all devices emitting BLE signals and their distance from you. If you receive a signal that is very close to you but does not belong to you, you may suspect something.',
       lottiePath: LottieAssets.bluetoothRadial,
     ),
     const _OnboardingPageModel(

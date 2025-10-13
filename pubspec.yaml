@@ -20,6 +20,9 @@ dependencies:
   #Routing
   auto_route: ^10.1.2
 
+  # Localization
+  easy_localization: ^3.0.8
+
   # Network Utils
   network_info_plus: ^7.0.0
   network_tools: ^6.0.5

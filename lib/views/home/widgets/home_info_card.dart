@@ -8,7 +8,7 @@ class _HomeInfoCard extends StatelessWidget {
     return const InfoCard(
       title: 'Security Camera',
       subTitle:
-          'Camera is not responding. Check the camera connection and try again.',
+          'Always check your room for hidden cameras. Inspect smoke detectors, alarm clocks, mirrors, and power outlets. Protect your privacy — report any suspicious devices to hotel staff immediately. Stay safe and aware.',
     );
   }
 }

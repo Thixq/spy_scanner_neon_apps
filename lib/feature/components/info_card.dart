@@ -70,7 +70,7 @@ class InfoCard extends StatelessWidget {
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: AppSizes.medium,
+      spacing: AppSizes.small,
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(

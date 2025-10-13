@@ -34,7 +34,6 @@ class _OnboardingIndicator extends StatelessWidget {
           effect: WormEffect(
             dotHeight: AppSizes.small,
             dotWidth: AppSizes.small,
-
             activeDotColor: context.colorScheme.primary,
           ),
         ),
