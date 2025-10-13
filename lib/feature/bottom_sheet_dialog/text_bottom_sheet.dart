@@ -10,8 +10,8 @@ final String _text = LocaleKeys.privacy_policy_text.tr();
 class TextBottomSheet extends StatelessWidget {
   const TextBottomSheet({super.key});
 
-  static void show(BuildContext context) {
-    showModalBottomSheet(
+  static Future<void> show(BuildContext context) async {
+    await showModalBottomSheet<void>(
       context: context,
       builder: (context) => const TextBottomSheet(),
       showDragHandle: true,
@@ -32,7 +32,7 @@ class TextBottomSheet extends StatelessWidget {
           ),
           child: RichText(
             text: TextSpan(
-              text: '$_title\n',
+              text: '$_title\n\n',
               style: context.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

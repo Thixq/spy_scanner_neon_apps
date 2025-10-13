@@ -14,6 +14,27 @@
         "title":"Privacy Policy",
         "text":" Spy Scanner respects your privacy and security. The app detects potential hidden cameras using Wi-Fi, Bluetooth, and infrared (IR) sensor scans only. Scans and analysis occur locally on your device by default; no photos, audio recordings, or raw sensor streams are transmitted off-device without your explicit consent. We store anonymous usage records in Firebase keyed only by automatically generated UUIDs — these records contain non-identifying scan metadata (timestamp, scan type, device model, and anonymized results) used for diagnostics and optional cloud sync. We do not collect names, emails, phone numbers, or other personally identifiable information unless you voluntarily provide them (for example, when contacting support). Optional anonymized analytics (opt-in) help improve detection accuracy. Local scan history is encrypted and retained for 30 days unless you choose to save or delete it sooner. You may withdraw consent, disable cloud sync, or request deletion of your Firebase anonymous records via the app settings. We never sell personal data. Policy updates will be posted in-app and take effect upon publication. Contact: kaanddos@gmail.com."
     },
+    "paywall":{
+        "title":"Try Spy Scanner Premium",
+        "offer":{
+            "offer_one":"Unlimited Scans",
+            "offer_two":"WiFİ Addresses History Backup",
+            "offer_three":"Bluetooth Scanning",
+            "offer_four":"Infrared Decetion",
+            "offer_five":"mDNS Scanning"
+        },
+        "price_options":{
+            "option_one":{
+                "title":"7 Days Free Trial",
+                "price":"{price} for month"
+            },
+            "option_two": {
+            "title": "Unlimited Access Lifetime!",
+            "price": "One-Time {price}  "
+            }
+
+        }
+    },
     "views":{
         "onboard":{
             "page_one":{

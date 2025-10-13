@@ -14,7 +14,7 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> _tr = {
+  static const Map<String,dynamic> _tr_TR = {
   "generic": {
     "app_name": "Spy Scanner",
     "cancel": "İptal",
@@ -25,6 +25,26 @@ class CodegenLoader extends AssetLoader{
     "next": "İleri",
     "previous": "Geri",
     "done": "Bitti"
+  },
+  "paywall": {
+    "title": "Spy Scanner Premium'u Deneyin!!",
+    "offer": {
+      "offer_one": "Sınırsız Tarama",
+      "offer_two": "WiFi Adres Geçmişi Yedekleme",
+      "offer_three": "Bluetooth Tarama",
+      "offer_four": "Kızılötesi Tespit",
+      "offer_five": "mDNS Tarama"
+    },
+    "price_options": {
+      "option_one": {
+        "title": "7 Günlük Ücretsiz Deneme",
+        "price": "Aylık {price}"
+      },
+      "option_two": {
+        "title": "Ömür Boyu Sınırsız Erişim!",
+        "price": "Tek Sefer {price}"
+      }
+    }
   },
   "privacy_policy": {
     "title": "Gizlilik Potikası",
@@ -82,7 +102,7 @@ class CodegenLoader extends AssetLoader{
     }
   }
 };
-static const Map<String,dynamic> _en = {
+static const Map<String,dynamic> _en_US = {
   "generic": {
     "app_name": "Spy Scanner",
     "cancel": "Cancel",
@@ -97,6 +117,26 @@ static const Map<String,dynamic> _en = {
   "privacy_policy": {
     "title": "Privacy Policy",
     "text": " Spy Scanner respects your privacy and security. The app detects potential hidden cameras using Wi-Fi, Bluetooth, and infrared (IR) sensor scans only. Scans and analysis occur locally on your device by default; no photos, audio recordings, or raw sensor streams are transmitted off-device without your explicit consent. We store anonymous usage records in Firebase keyed only by automatically generated UUIDs — these records contain non-identifying scan metadata (timestamp, scan type, device model, and anonymized results) used for diagnostics and optional cloud sync. We do not collect names, emails, phone numbers, or other personally identifiable information unless you voluntarily provide them (for example, when contacting support). Optional anonymized analytics (opt-in) help improve detection accuracy. Local scan history is encrypted and retained for 30 days unless you choose to save or delete it sooner. You may withdraw consent, disable cloud sync, or request deletion of your Firebase anonymous records via the app settings. We never sell personal data. Policy updates will be posted in-app and take effect upon publication. Contact: kaanddos@gmail.com."
+  },
+  "paywall": {
+    "title": "Try Spy Scanner Premium",
+    "offer": {
+      "offer_one": "Unlimited Scans",
+      "offer_two": "WiFİ Addresses History Backup",
+      "offer_three": "Bluetooth Scanning",
+      "offer_four": "Infrared Decetion",
+      "offer_five": "mDNS Scanning"
+    },
+    "price_options": {
+      "option_one": {
+        "title": "7 Days Free Trial",
+        "price": "{price} for month"
+      },
+      "option_two": {
+        "title": "Unlimited Access Lifetime!",
+        "price": "One-Time {price}  "
+      }
+    }
   },
   "views": {
     "onboard": {
@@ -150,5 +190,5 @@ static const Map<String,dynamic> _en = {
     }
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"tr": _tr, "en": _en};
+static const Map<String, Map<String,dynamic>> mapLocales = {"tr_TR": _tr_TR, "en_US": _en_US};
 }
