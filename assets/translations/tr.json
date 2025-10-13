@@ -10,6 +10,10 @@
         "previous": "Geri",
         "done": "Bitti"
     },
+      "privacy_policy":{
+        "title":"Gizlilik Potikası",
+        "text":" Spy Scanner gizliliğinize ve güvenliğinize önem verir. Uygulama, yalnızca Wi-Fi, Bluetooth ve kızılötesi (IR) sensör taramaları kullanarak olası gizli kameraları tespit eder. Tüm taramalar ve analizler varsayılan olarak cihazınızda yerel olarak gerçekleştirilir; hiçbir fotoğraf, ses kaydı veya ham sensör verisi sizin açık izniniz olmadan cihaz dışına aktarılmaz. Firebase üzerinde yalnızca otomatik olarak oluşturulan anonim UUID’ler aracılığıyla anonim kullanım kayıtları tutulur — bu kayıtlar, tanımlayıcı bilgi içermeyen tarama verilerini (zaman damgası, tarama türü, cihaz modeli ve anonimleştirilmiş sonuçlar) içerir ve sadece tanılama ile isteğe bağlı bulut senkronizasyonu için kullanılır. İsim, e-posta, telefon numarası gibi kişisel bilgiler, yalnızca sizin isteğinizle (örneğin destek talebi gönderirken) toplanır. İsteğe bağlı anonim analiz verileri (katılım onaylı) algılama doğruluğunu artırmak için kullanılır. Yerel tarama geçmişi şifrelenir ve siz farklı bir tercih yapmadıkça 30 gün süreyle saklanır. Dilediğiniz zaman onayınızı geri çekebilir, bulut senkronizasyonunu devre dışı bırakabilir veya Firebase üzerindeki anonim kayıtlarınızın silinmesini talep edebilirsiniz. Kişisel veriler hiçbir şekilde satılmaz. Politika güncellemeleri uygulama içinde yayınlanır ve yayınlandığı anda yürürlüğe girer.İletişim: kaanddos@gmail.com"
+    },
     "views": {
         "onboard": {
             "page_one": {

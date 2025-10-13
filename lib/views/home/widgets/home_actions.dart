@@ -5,12 +5,12 @@ final String _tabsTwo = LocaleKeys.views_home_tabs_tab_two.tr();
 
 class _HomeActions extends StatelessWidget {
   const _HomeActions({
-    required this.onSettingsPressed,
-    required this.onFaqPressed,
+    required this.tabOneonPressed,
+    required this.tabTwoonPressed,
   });
 
-  final VoidCallback onSettingsPressed;
-  final VoidCallback onFaqPressed;
+  final VoidCallback tabOneonPressed;
+  final VoidCallback tabTwoonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +21,14 @@ class _HomeActions extends StatelessWidget {
           child: IconTextCard(
             icon: Icons.settings,
             title: _tabsOne,
-            onPressed: onSettingsPressed,
+            onPressed: tabOneonPressed,
           ),
         ),
         Flexible(
           child: IconTextCard(
             icon: Icons.privacy_tip,
             title: _tabsTwo,
-            onPressed: onFaqPressed,
+            onPressed: tabTwoonPressed,
           ),
         ),
       ],

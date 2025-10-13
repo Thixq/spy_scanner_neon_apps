@@ -13,6 +13,9 @@ abstract class  LocaleKeys {
   static const generic_previous = 'generic.previous';
   static const generic_done = 'generic.done';
   static const generic = 'generic';
+  static const privacy_policy_title = 'privacy_policy.title';
+  static const privacy_policy_text = 'privacy_policy.text';
+  static const privacy_policy = 'privacy_policy';
   static const views_onboard_page_one_title = 'views.onboard.page_one.title';
   static const views_onboard_page_one_description = 'views.onboard.page_one.description';
   static const views_onboard_page_one = 'views.onboard.page_one';

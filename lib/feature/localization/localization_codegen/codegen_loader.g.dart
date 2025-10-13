@@ -26,6 +26,10 @@ class CodegenLoader extends AssetLoader{
     "previous": "Geri",
     "done": "Bitti"
   },
+  "privacy_policy": {
+    "title": "Gizlilik Potikası",
+    "text": " Spy Scanner gizliliğinize ve güvenliğinize önem verir. Uygulama, yalnızca Wi-Fi, Bluetooth ve kızılötesi (IR) sensör taramaları kullanarak olası gizli kameraları tespit eder. Tüm taramalar ve analizler varsayılan olarak cihazınızda yerel olarak gerçekleştirilir; hiçbir fotoğraf, ses kaydı veya ham sensör verisi sizin açık izniniz olmadan cihaz dışına aktarılmaz. Firebase üzerinde yalnızca otomatik olarak oluşturulan anonim UUID’ler aracılığıyla anonim kullanım kayıtları tutulur — bu kayıtlar, tanımlayıcı bilgi içermeyen tarama verilerini (zaman damgası, tarama türü, cihaz modeli ve anonimleştirilmiş sonuçlar) içerir ve sadece tanılama ile isteğe bağlı bulut senkronizasyonu için kullanılır. İsim, e-posta, telefon numarası gibi kişisel bilgiler, yalnızca sizin isteğinizle (örneğin destek talebi gönderirken) toplanır. İsteğe bağlı anonim analiz verileri (katılım onaylı) algılama doğruluğunu artırmak için kullanılır. Yerel tarama geçmişi şifrelenir ve siz farklı bir tercih yapmadıkça 30 gün süreyle saklanır. Dilediğiniz zaman onayınızı geri çekebilir, bulut senkronizasyonunu devre dışı bırakabilir veya Firebase üzerindeki anonim kayıtlarınızın silinmesini talep edebilirsiniz. Kişisel veriler hiçbir şekilde satılmaz. Politika güncellemeleri uygulama içinde yayınlanır ve yayınlandığı anda yürürlüğe girer.İletişim: kaanddos@gmail.com"
+  },
   "views": {
     "onboard": {
       "page_one": {
@@ -89,6 +93,10 @@ static const Map<String,dynamic> _en = {
     "next": "Next",
     "previous": "Previous",
     "done": "Done"
+  },
+  "privacy_policy": {
+    "title": "Privacy Policy",
+    "text": " Spy Scanner respects your privacy and security. The app detects potential hidden cameras using Wi-Fi, Bluetooth, and infrared (IR) sensor scans only. Scans and analysis occur locally on your device by default; no photos, audio recordings, or raw sensor streams are transmitted off-device without your explicit consent. We store anonymous usage records in Firebase keyed only by automatically generated UUIDs — these records contain non-identifying scan metadata (timestamp, scan type, device model, and anonymized results) used for diagnostics and optional cloud sync. We do not collect names, emails, phone numbers, or other personally identifiable information unless you voluntarily provide them (for example, when contacting support). Optional anonymized analytics (opt-in) help improve detection accuracy. Local scan history is encrypted and retained for 30 days unless you choose to save or delete it sooner. You may withdraw consent, disable cloud sync, or request deletion of your Firebase anonymous records via the app settings. We never sell personal data. Policy updates will be posted in-app and take effect upon publication. Contact: kaanddos@gmail.com."
   },
   "views": {
     "onboard": {
