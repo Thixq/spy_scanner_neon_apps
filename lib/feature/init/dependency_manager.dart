@@ -1,3 +1,4 @@
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spy_scanner/feature/managers/ble_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
@@ -17,7 +18,7 @@ final class DependencyManager {
 
   void _configureManager() {
     _getIt
-      ..registerSingleton<BleManager>(BleManager())
+      ..registerSingleton<BleManager>(BleManager(ble: FlutterReactiveBle()))
       ..registerSingleton<HostScanManager>(HostScanManager())
       ..registerSingleton<ServiceDiscoveryManager>(ServiceDiscoveryManager());
   }
