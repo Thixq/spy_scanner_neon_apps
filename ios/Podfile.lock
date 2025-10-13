@@ -2,8 +2,6 @@ PODS:
   - Flutter (1.0.0)
   - flutter_icmp_ping (0.0.1):
     - Flutter
-  - flutter_nsd (0.0.1):
-    - Flutter
   - network_info_plus (0.0.1):
     - Flutter
   - nsd_ios (0.0.1):
@@ -27,7 +25,6 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_icmp_ping (from `.symlinks/plugins/flutter_icmp_ping/ios`)
-  - flutter_nsd (from `.symlinks/plugins/flutter_nsd/ios`)
   - network_info_plus (from `.symlinks/plugins/network_info_plus/ios`)
   - nsd_ios (from `.symlinks/plugins/nsd_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -45,8 +42,6 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_icmp_ping:
     :path: ".symlinks/plugins/flutter_icmp_ping/ios"
-  flutter_nsd:
-    :path: ".symlinks/plugins/flutter_nsd/ios"
   network_info_plus:
     :path: ".symlinks/plugins/network_info_plus/ios"
   nsd_ios:
@@ -63,7 +58,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_icmp_ping: 47c1df3440c18ddd39fc457e607bb3b42d4a339f
-  flutter_nsd: e3c600b12e58b93ce1457bdf3ea5d5b900126d42
   network_info_plus: cf61925ab5205dce05a4f0895989afdb6aade5fc
   nsd_ios: 596ad79109ddd3e52d665f650f36428049e3653e
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564

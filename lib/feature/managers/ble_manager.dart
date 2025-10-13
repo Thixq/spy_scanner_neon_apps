@@ -9,7 +9,7 @@ import 'package:spy_scanner/core/logging/error_handler.dart';
 /// This class encapsulates the functionality of the `flutter_reactive_ble` package,
 /// providing a cleaner interface for starting/stopping scans and listening to status changes.
 final class BleManager {
-  BleManager() {
+  BleManager({required FlutterReactiveBle ble}) : _ble = ble {
     _isScanning = false;
     _isScanningController.add(_isScanning);
 
@@ -28,7 +28,7 @@ final class BleManager {
   final _logger = CustomLogger('BleManager');
   final _errorHandler = ErrorHandler('BleManager');
 
-  final _ble = FlutterReactiveBle();
+  final FlutterReactiveBle _ble;
 
   final _scannedDevicesController =
       StreamController<List<DiscoveredDevice>>.broadcast();
@@ -56,6 +56,7 @@ final class BleManager {
       _logger.warning(
         'Cannot start scan: Bluetooth is not ready (Status: $_currentStatus).',
       );
+      await stopScan();
       return;
     }
 

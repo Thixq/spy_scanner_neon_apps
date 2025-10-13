@@ -20,7 +20,9 @@ class _BleScannerScreenState extends State<BleScannerScreen> {
   void initState() {
     super.initState();
     // Widget oluşturulduğunda manager'ı başlat.
-    _bleManager = BleManager();
+    _bleManager = BleManager(
+      ble: FlutterReactiveBle(),
+    );
   }
 
   @override

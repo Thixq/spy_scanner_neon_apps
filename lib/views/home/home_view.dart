@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
+import 'package:spy_scanner/feature/bottom_sheet_dialog/paywall_bottom_sheet/paywall_bottom_sheet.dart';
+import 'package:spy_scanner/feature/bottom_sheet_dialog/text_bottom_sheet.dart';
 import 'package:spy_scanner/feature/components/icon_text_card.dart';
 import 'package:spy_scanner/feature/components/info_card.dart';
 import 'package:spy_scanner/feature/components/lan_info_card.dart';
@@ -28,7 +30,9 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _HomeAppBar(
-        onPremiumPressed: () {},
+        onPremiumPressed: () async {
+          await PaywallBottomSheet.show(context);
+        },
       ),
       body: SafeArea(
         child: Padding(
@@ -45,8 +49,10 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
               ),
               const _HomeInfoCard(),
               _HomeActions(
-                onSettingsPressed: () {},
-                onFaqPressed: () {},
+                tabOneonPressed: () {},
+                tabTwoonPressed: () async {
+                  await TextBottomSheet.show(context);
+                },
               ),
             ],
           ),

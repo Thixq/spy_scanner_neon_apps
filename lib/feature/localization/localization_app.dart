@@ -8,7 +8,6 @@ class LocalizationApp extends EasyLocalization {
     super.key,
   }) : super(
          saveLocale: true,
-         useOnlyLangCode: true,
          supportedLocales: supportedLocalesLanguages,
          path: _translationPath,
          assetLoader: const CodegenLoader(),
@@ -20,8 +19,8 @@ class LocalizationApp extends EasyLocalization {
   Locale? get fallbackLocale => const Locale('tr', 'TR');
 
   static List<Locale> get supportedLocalesLanguages => [
-    const Locale('tr'),
-    const Locale('en'),
+    const Locale('tr', 'TR'),
+    const Locale('en', 'US'),
   ];
 
   static Future<void> updateLanguage({
