@@ -1,5 +1,8 @@
 part of '../home_view.dart';
 
+final String _tabsOne = LocaleKeys.views_home_tabs_tab_one.tr();
+final String _tabsTwo = LocaleKeys.views_home_tabs_tab_two.tr();
+
 class _HomeActions extends StatelessWidget {
   const _HomeActions({
     required this.onSettingsPressed,
@@ -17,14 +20,14 @@ class _HomeActions extends StatelessWidget {
         Flexible(
           child: IconTextCard(
             icon: Icons.settings,
-            title: 'Settings',
+            title: _tabsOne,
             onPressed: onSettingsPressed,
           ),
         ),
         Flexible(
           child: IconTextCard(
-            icon: Icons.question_mark,
-            title: 'FAQ',
+            icon: Icons.privacy_tip,
+            title: _tabsTwo,
             onPressed: onFaqPressed,
           ),
         ),

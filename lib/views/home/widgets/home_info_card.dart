@@ -1,14 +1,17 @@
 part of '../home_view.dart';
 
+final String _infoCardTitle = LocaleKeys.views_home_info_card_title.tr();
+final String _infoCardDescription = LocaleKeys.views_home_info_card_description
+    .tr();
+
 class _HomeInfoCard extends StatelessWidget {
   const _HomeInfoCard();
 
   @override
   Widget build(BuildContext context) {
-    return const InfoCard(
-      title: 'Security Camera',
-      subTitle:
-          'Always check your room for hidden cameras. Inspect smoke detectors, alarm clocks, mirrors, and power outlets. Protect your privacy — report any suspicious devices to hotel staff immediately. Stay safe and aware.',
+    return InfoCard(
+      title: _infoCardTitle,
+      description: _infoCardDescription,
     );
   }
 }

@@ -1,5 +1,9 @@
 part of '../onboard_view.dart';
 
+final String _previousText = LocaleKeys.generic_previous.tr();
+final String _nextText = LocaleKeys.generic_next.tr();
+final String _doneText = LocaleKeys.generic_done.tr();
+
 /// A widget that displays a smooth page indicator with next and previous buttons.
 ///
 /// [pageController] is the controller of the page view.
@@ -26,7 +30,7 @@ class _OnboardingIndicator extends StatelessWidget {
       children: [
         TextButton(
           onPressed: onPrevious,
-          child: const Text('Previous'),
+          child: Text(_previousText),
         ),
         SmoothPageIndicator(
           controller: pageController,
@@ -39,7 +43,7 @@ class _OnboardingIndicator extends StatelessWidget {
         ),
         TextButton(
           onPressed: onNext,
-          child: Text(isLastPage ? 'Done' : 'Next'),
+          child: Text(isLastPage ? _doneText : _nextText),
         ),
       ],
     );

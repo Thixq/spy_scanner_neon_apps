@@ -1,10 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
+import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
 
-const ipAddressTitle = 'IP Address';
-const connectionTitle = 'Connection';
-const notConnection = 'Not connected';
+final String _ipAddressTitle = LocaleKeys.components_lan_info_card_ip_address
+    .tr();
+final String _connectionTitle = LocaleKeys.components_lan_info_card_connection
+    .tr();
+final String _notConnection = LocaleKeys.components_lan_info_card_not_connection
+    .tr();
+final String _wifi = LocaleKeys.components_lan_info_card_wifi.tr();
 
 /// A widget that displays a card with IP address and connection information.
 class LanInfoCard extends StatelessWidget {
@@ -38,14 +44,14 @@ class LanInfoCard extends StatelessWidget {
               _buildContentInfo(
                 context,
                 icon: Icons.language,
-                title: ipAddressTitle,
-                subtitle: ipAddress ?? notConnection,
+                title: _ipAddressTitle,
+                subtitle: ipAddress ?? _notConnection,
               ),
               _buildContentInfo(
                 context,
                 icon: Icons.router,
-                title: connectionTitle,
-                subtitle: 'Wi-Fi: ${connection ?? notConnection}',
+                title: _connectionTitle,
+                subtitle: '$_wifi${connection ?? _notConnection}',
               ),
             ],
           ),

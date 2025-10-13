@@ -1,31 +1,17 @@
 part of '../home_view.dart';
 
 class _Scanners extends StatelessWidget {
-  _Scanners({
+  const _Scanners({
     required this.onWifiScanPressed,
     required this.onBluetoothScanPressed,
     required this.onInfraredScanPressed,
+    required this.scanners,
   });
 
   final VoidCallback onWifiScanPressed;
   final VoidCallback onBluetoothScanPressed;
   final VoidCallback onInfraredScanPressed;
-
-  final String scanButtonText = 'LAN Scan';
-
-  final _scanners = [
-    ScanCardModel(
-      contentTitle: 'LAN Scanner',
-      contentSubTitle:
-          'Scan all devices on the LAN and check which services are open.',
-      icon: Icons.wifi_find,
-    ),
-    ScanCardModel(contentTitle: 'Bluetooth Scanner', icon: Icons.bluetooth),
-    ScanCardModel(
-      contentTitle: 'Infrared Detector',
-      icon: CupertinoIcons.camera_viewfinder,
-    ),
-  ];
+  final List<ScanCardModel> scanners;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +22,8 @@ class _Scanners extends StatelessWidget {
         children: [
           Flexible(
             child: ScanCard(
-              scanner: _scanners[0],
+              scanner: scanners[0],
               onButtonPressed: onWifiScanPressed,
-              buttonText: scanButtonText,
             ),
           ),
           Flexible(
@@ -48,7 +33,7 @@ class _Scanners extends StatelessWidget {
               children: [
                 Flexible(
                   child: ScanCard(
-                    scanner: _scanners[1],
+                    scanner: scanners[1],
                     isDisabled: true,
                     onCardPressed: onBluetoothScanPressed,
                   ),
@@ -58,7 +43,7 @@ class _Scanners extends StatelessWidget {
                     message: 'Premium',
                     location: BannerLocation.topEnd,
                     child: ScanCard(
-                      scanner: _scanners[2],
+                      scanner: scanners[2],
                       onCardPressed: onInfraredScanPressed,
                     ),
                   ),

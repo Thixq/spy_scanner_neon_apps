@@ -27,21 +27,24 @@
         },
         "home":{
             "tabs":{
-                "tab_one":"Devices",
-                "tab_two":"Settings"
+                "tab_one":"Settings",
+                "tab_two":"Privacy Policy"
             },
             "scanners":{
                 "scanner_one":{
                     "title":"LAN Scanner",
-                    "description":"Scan all devices on the LAN and check which services are open."
+                    "description":"Scan all devices on the LAN and check which services are open.",
+                    "button_text":"LAN Scan"
                 },
                 "scanner_two":{
                     "title":"Bluetooth Scanner",
-                    "description":null
+                    "description":null,
+                    "button_text":null
                 },
                 "scanner_three":{
                     "title":"Infrared Scanner",
-                    "description":null
+                    "description":null,
+                    "button_text":null
                 }
             },
             "info_card":{
@@ -53,7 +56,9 @@
     "components":{
         "lan_info_card":{
             "ip_address":"IP Address",
-            "connection":"Connection"
+            "connection":"Connection",
+            "not_connection":"Not connected",
+            "wifi":"Wi-Fi: "
         }
     }
 }

@@ -43,21 +43,24 @@ class CodegenLoader extends AssetLoader{
     },
     "home": {
       "tabs": {
-        "tab_one": "Cihazlar",
-        "tab_two": "Ayarlar"
+        "tab_one": "Ayarlar",
+        "tab_two": "Gizlilik Potikası"
       },
       "scanners": {
         "scanner_one": {
           "title": "LAN Tarayıcı",
-          "description": "LAN üzerindeki tüm cihazları tara ve hangi servislerin açık olduğunu kontrol et."
+          "description": "LAN üzerindeki tüm cihazları tara ve hangi servislerin açık olduğunu kontrol et.",
+          "button_text": "LAN Tarayıcı"
         },
         "scanner_two": {
           "title": "Bluetooth Tarayıcı",
-          "description": null
+          "description": null,
+          "button_text": null
         },
         "scanner_three": {
           "title": "Kızılötesi Tarayıcı",
-          "description": null
+          "description": null,
+          "button_text": null
         }
       },
       "info_card": {
@@ -69,7 +72,9 @@ class CodegenLoader extends AssetLoader{
   "components": {
     "lan_info_card": {
       "ip_address": "IP Adresi",
-      "connection": "Bağlantı"
+      "connection": "Bağlantı",
+      "not_connection": "Bağlantı Yok",
+      "wifi": "Wi-Fi: "
     }
   }
 };
@@ -102,21 +107,24 @@ static const Map<String,dynamic> _en = {
     },
     "home": {
       "tabs": {
-        "tab_one": "Devices",
-        "tab_two": "Settings"
+        "tab_one": "Settings",
+        "tab_two": "Privacy Policy"
       },
       "scanners": {
         "scanner_one": {
           "title": "LAN Scanner",
-          "description": "Scan all devices on the LAN and check which services are open."
+          "description": "Scan all devices on the LAN and check which services are open.",
+          "button_text": "LAN Scan"
         },
         "scanner_two": {
           "title": "Bluetooth Scanner",
-          "description": null
+          "description": null,
+          "button_text": null
         },
         "scanner_three": {
           "title": "Infrared Scanner",
-          "description": null
+          "description": null,
+          "button_text": null
         }
       },
       "info_card": {
@@ -128,7 +136,9 @@ static const Map<String,dynamic> _en = {
   "components": {
     "lan_info_card": {
       "ip_address": "IP Address",
-      "connection": "Connection"
+      "connection": "Connection",
+      "not_connection": "Not connected",
+      "wifi": "Wi-Fi: "
     }
   }
 };

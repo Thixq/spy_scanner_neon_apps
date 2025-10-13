@@ -68,7 +68,7 @@ class _DevOnboardViewState extends State<DevOnboardView> {
               onNext: () async {
                 if (isLastPage) {
                   // 🔹 Son sayfadaysa yönlendirme yapılabilir
-                  print('Onboarding tamamlandı!');
+                  //print('Onboarding tamamlandı!');
                   // örn: Navigator.pushReplacementNamed(context, '/home');
                 } else {
                   // 🔹 Diğer sayfaya geç

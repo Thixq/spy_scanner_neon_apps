@@ -8,12 +8,12 @@ class InfoCard extends StatelessWidget {
     required this.title,
     super.key,
     this.onPressed,
-    this.subTitle,
+    this.description,
   });
 
   final void Function()? onPressed;
   final String title;
-  final String? subTitle;
+  final String? description;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class InfoCard extends StatelessWidget {
                 child: _buildTitleAndSubtitle(
                   context,
                   title: title,
-                  subTitle: subTitle,
+                  subTitle: description,
                 ),
               ),
               Flexible(

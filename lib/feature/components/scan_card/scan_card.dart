@@ -7,11 +7,9 @@ part 'scan_card_model.dart';
 /// A widget that displays a card with a title, subtitle, and optional button.
 /// It also supports disabling the card by setting [isDisabled] to true.
 ///
-/// [icon] is the icon of the card.
-/// [contentTitle] is the title of the card.
-/// [contentSubTitle] is the subtitle of the card.
-/// [buttonText] is the text of the button.
-/// [onPressed] is the callback that is called when the button is pressed.
+/// [scanner] is the model of the card.
+/// [onCardPressed] is the callback function that is called when the card is pressed.
+/// [onButtonPressed] is the callback function that is called when the button is pressed.
 /// [isDisabled] is a flag that indicates whether the card is disabled or not.
 class ScanCard extends StatelessWidget {
   // StatelessWidget olarak değiştirildi
@@ -21,13 +19,12 @@ class ScanCard extends StatelessWidget {
     this.isDisabled = false,
     this.onCardPressed,
     this.onButtonPressed,
-    this.buttonText,
   });
 
   final ScanCardModel scanner;
   final VoidCallback? onCardPressed;
   final VoidCallback? onButtonPressed;
-  final String? buttonText;
+
   final bool isDisabled;
 
   @override
@@ -45,7 +42,7 @@ class ScanCard extends StatelessWidget {
       // Özelliğe doğrudan erişim
       children.add(
         _buildContentButton(
-          buttonText: buttonText,
+          buttonText: scanner.buttonText,
           onPressed: onButtonPressed,
         ),
       );

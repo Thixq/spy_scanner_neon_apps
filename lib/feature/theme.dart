@@ -5,6 +5,9 @@ import 'package:spy_scanner/core/app_sizes.dart';
 final class SpyTheme {
   const SpyTheme._();
 
+  /// The seed color for the app.
+  static const _seedColor = Color(0xFFDD0303);
+
   /// The filled button theme for the app.
   static FilledButtonThemeData get filledButtonTheme => FilledButtonThemeData(
     style: FilledButton.styleFrom(
@@ -18,21 +21,19 @@ final class SpyTheme {
   );
 
   /// The dark theme for the app.
-  static ThemeData dark({required Color seedColor}) =>
-      ThemeData.dark().copyWith(
-        colorScheme: ColorScheme.fromSeed(
-          brightness: Brightness.dark,
-          seedColor: seedColor,
-        ),
-        filledButtonTheme: filledButtonTheme,
-        inputDecorationTheme: inputDecorationTheme,
-      );
+  static ThemeData dark() => ThemeData.dark().copyWith(
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: _seedColor,
+    ),
+    filledButtonTheme: filledButtonTheme,
+    inputDecorationTheme: inputDecorationTheme,
+  );
 
   /// The light theme for the app.
-  static ThemeData light({required Color seedColor}) =>
-      ThemeData.light().copyWith(
-        colorScheme: ColorScheme.fromSeed(seedColor: seedColor),
-        filledButtonTheme: filledButtonTheme,
-        inputDecorationTheme: inputDecorationTheme,
-      );
+  static ThemeData light() => ThemeData.light().copyWith(
+    colorScheme: ColorScheme.fromSeed(seedColor: _seedColor),
+    filledButtonTheme: filledButtonTheme,
+    inputDecorationTheme: inputDecorationTheme,
+  );
 }

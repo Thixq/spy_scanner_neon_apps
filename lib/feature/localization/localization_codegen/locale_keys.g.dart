@@ -28,12 +28,15 @@ abstract class  LocaleKeys {
   static const views_home_tabs = 'views.home.tabs';
   static const views_home_scanners_scanner_one_title = 'views.home.scanners.scanner_one.title';
   static const views_home_scanners_scanner_one_description = 'views.home.scanners.scanner_one.description';
+  static const views_home_scanners_scanner_one_button_text = 'views.home.scanners.scanner_one.button_text';
   static const views_home_scanners_scanner_one = 'views.home.scanners.scanner_one';
   static const views_home_scanners_scanner_two_title = 'views.home.scanners.scanner_two.title';
   static const views_home_scanners_scanner_two_description = 'views.home.scanners.scanner_two.description';
+  static const views_home_scanners_scanner_two_button_text = 'views.home.scanners.scanner_two.button_text';
   static const views_home_scanners_scanner_two = 'views.home.scanners.scanner_two';
   static const views_home_scanners_scanner_three_title = 'views.home.scanners.scanner_three.title';
   static const views_home_scanners_scanner_three_description = 'views.home.scanners.scanner_three.description';
+  static const views_home_scanners_scanner_three_button_text = 'views.home.scanners.scanner_three.button_text';
   static const views_home_scanners_scanner_three = 'views.home.scanners.scanner_three';
   static const views_home_scanners = 'views.home.scanners';
   static const views_home_info_card_title = 'views.home.info_card.title';
@@ -43,6 +46,8 @@ abstract class  LocaleKeys {
   static const views = 'views';
   static const components_lan_info_card_ip_address = 'components.lan_info_card.ip_address';
   static const components_lan_info_card_connection = 'components.lan_info_card.connection';
+  static const components_lan_info_card_not_connection = 'components.lan_info_card.not_connection';
+  static const components_lan_info_card_wifi = 'components.lan_info_card.wifi';
   static const components_lan_info_card = 'components.lan_info_card';
   static const components = 'components';
 

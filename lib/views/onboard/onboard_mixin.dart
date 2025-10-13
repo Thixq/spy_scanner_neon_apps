@@ -6,22 +6,19 @@ mixin _OnboardMixin on State<OnboardView> {
   int currentPage = 0;
 
   final _pages = <_OnboardingPageModel>[
-    const _OnboardingPageModel(
-      title: 'LAN Scanner',
-      description:
-          'It can detect the devices connected to your network. If there are more devices connected than you expect, you may suspect something.',
+    _OnboardingPageModel(
+      title: LocaleKeys.views_onboard_page_one_title.tr(),
+      description: LocaleKeys.views_onboard_page_one_description.tr(),
       lottiePath: LottieAssets.wifiEye,
     ),
-    const _OnboardingPageModel(
-      title: 'Bluetooth Scanner',
-      description:
-          'You can track all devices emitting BLE signals and their distance from you. If you receive a signal that is very close to you but does not belong to you, you may suspect something.',
+    _OnboardingPageModel(
+      title: LocaleKeys.views_onboard_page_two_title.tr(),
+      description: LocaleKeys.views_onboard_page_two_description.tr(),
       lottiePath: LottieAssets.bluetoothRadial,
     ),
-    const _OnboardingPageModel(
-      title: 'Infrared Scanner',
-      description:
-          'You can detect infrared sensors and their derivatives hidden in sockets and shower heads using different camera filters.',
+    _OnboardingPageModel(
+      title: LocaleKeys.views_onboard_page_three_title.tr(),
+      description: LocaleKeys.views_onboard_page_three_description.tr(),
       lottiePath: LottieAssets.brotherEye,
     ),
   ];

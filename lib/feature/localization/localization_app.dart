@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart' show BuildContext, Locale;
 import 'package:spy_scanner/feature/localization/localization_codegen/codegen_loader.g.dart';
 
-class Localization extends EasyLocalization {
-  Localization({
+class LocalizationApp extends EasyLocalization {
+  LocalizationApp({
     required super.child,
     super.key,
   }) : super(

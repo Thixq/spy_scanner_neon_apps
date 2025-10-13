@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_constructors_over_static_methods, document_ignores
+
 import 'package:auto_route/auto_route.dart';
 
 import 'package:spy_scanner/feature/routing/app_routing.gr.dart';

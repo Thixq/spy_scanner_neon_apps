@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
@@ -6,6 +7,7 @@ import 'package:spy_scanner/feature/components/icon_text_card.dart';
 import 'package:spy_scanner/feature/components/info_card.dart';
 import 'package:spy_scanner/feature/components/lan_info_card.dart';
 import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
+import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
 
 part 'home_mixin.dart';
 part 'widgets/home_app_bar.dart';
@@ -36,6 +38,7 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
             children: [
               _buildLanInfo(),
               _Scanners(
+                scanners: _scanners,
                 onWifiScanPressed: () {},
                 onBluetoothScanPressed: () {},
                 onInfraredScanPressed: () {},

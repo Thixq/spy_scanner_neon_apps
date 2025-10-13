@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
 import 'package:spy_scanner/feature/constants/lottie_assets.dart';
+import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
 import 'package:spy_scanner/feature/routing/app_routing.gr.dart';
 
 part 'onboard_mixin.dart';
