@@ -16,6 +16,7 @@ dependencies:
     # UI
   smooth_page_indicator: ^1.2.1
   lottie: ^3.3.2
+  
 
   #Routing
   auto_route: ^10.1.2
@@ -25,6 +26,9 @@ dependencies:
 
   # Cache
   shared_preferences: ^2.5.3
+
+  # Payment
+  pay: ^3.2.1
 
   # Network Utils
   network_info_plus: ^7.0.0
