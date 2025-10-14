@@ -45,7 +45,7 @@ class PaywallBottomSheet extends StatelessWidget {
       child: ColoredBox(
         color: context.colorScheme.surface,
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(AppSizes.medium),
           child: Column(
             spacing: AppSizes.extraLarge * 2,
             children: [

@@ -17,6 +17,9 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   lottie: ^3.3.2
   
+  # State Management
+  bloc: ^9.0.1
+  flutter_bloc: ^9.1.1
 
   #Routing
   auto_route: ^10.1.2
