@@ -69,3 +69,4 @@ flutter:
     - assets/images/
     - assets/lotties/
     - assets/svg/
+    - assets/payment_config/

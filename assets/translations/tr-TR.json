@@ -22,10 +22,12 @@
         "price_options": {
             "option_one": {
             "title": "7 Günlük Ücretsiz Deneme",
+            "payment_method": "Aylık Abone",
             "price": "Aylık {price}"
             },
             "option_two": {
             "title": "Ömür Boyu Sınırsız Erişim!",
+            "payment_method": "Tek Seferlik Ödeme",
             "price": "Tek Sefer {price}"
             }
         }

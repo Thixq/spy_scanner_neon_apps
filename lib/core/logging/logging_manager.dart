@@ -20,7 +20,7 @@ class LoggingManager {
     Logger.root.onRecord.listen((record) {
       // Format the log message with level, time, logger name, message, and stack trace (if available).
       _logMessage =
-          '${record.level.name} -- ${record.time} -- ${record.loggerName}: ${record.message} \n ${record.stackTrace ?? ''}';
+          '${record.level.name} -- ${record.time} -- ${record.loggerName}: ${record.message} \n ${record.error} \n ${record.stackTrace}';
       // Print the formatted log message to the console.
       debugPrint(_logMessage);
     });

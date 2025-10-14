@@ -31,7 +31,15 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
     return Scaffold(
       appBar: _HomeAppBar(
         onPremiumPressed: () async {
-          await PaywallBottomSheet.show(context);
+          await PaywallBottomSheet.show(
+            context,
+            onLifetimePressed: (payResult) {
+              context.router.pop();
+            },
+            onMonthlyPressed: (payResult) {
+              context.router.pop();
+            },
+          );
         },
       ),
       body: SafeArea(

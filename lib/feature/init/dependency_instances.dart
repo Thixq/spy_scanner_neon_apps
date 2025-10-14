@@ -7,9 +7,9 @@ import 'package:spy_scanner/feature/services/payment_service.dart';
 final class DependencyInstances {
   const DependencyInstances._();
 
-  DependencyServices get service => const DependencyServices._();
+  static DependencyServices get service => const DependencyServices._();
 
-  DependencyManagers get manager => const DependencyManagers._();
+  static DependencyManagers get manager => const DependencyManagers._();
 }
 
 final class DependencyServices {

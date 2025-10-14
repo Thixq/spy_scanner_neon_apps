@@ -38,10 +38,12 @@ class CodegenLoader extends AssetLoader{
     "price_options": {
       "option_one": {
         "title": "7 Günlük Ücretsiz Deneme",
+        "payment_method": "Aylık Abone",
         "price": "Aylık {price}"
       },
       "option_two": {
         "title": "Ömür Boyu Sınırsız Erişim!",
+        "payment_method": "Tek Seferlik Ödeme",
         "price": "Tek Sefer {price}"
       }
     }
@@ -130,10 +132,12 @@ static const Map<String,dynamic> _en_US = {
     "price_options": {
       "option_one": {
         "title": "7 Days Free Trial",
+        "payment_method": "Monthly Subscription",
         "price": "{price} for month"
       },
       "option_two": {
         "title": "Unlimited Access Lifetime!",
+        "payment_method": "One-Time Payment",
         "price": "One-Time {price}  "
       }
     }

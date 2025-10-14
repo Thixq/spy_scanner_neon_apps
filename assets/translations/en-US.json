@@ -26,10 +26,12 @@
         "price_options":{
             "option_one":{
                 "title":"7 Days Free Trial",
+                "payment_method":"Monthly Subscription",
                 "price":"{price} for month"
             },
             "option_two": {
             "title": "Unlimited Access Lifetime!",
+            "payment_method": "One-Time Payment",
             "price": "One-Time {price}  "
             }
 

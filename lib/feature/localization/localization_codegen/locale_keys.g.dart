@@ -21,9 +21,11 @@ abstract class  LocaleKeys {
   static const paywall_offer_offer_five = 'paywall.offer.offer_five';
   static const paywall_offer = 'paywall.offer';
   static const paywall_price_options_option_one_title = 'paywall.price_options.option_one.title';
+  static const paywall_price_options_option_one_payment_method = 'paywall.price_options.option_one.payment_method';
   static const paywall_price_options_option_one_price = 'paywall.price_options.option_one.price';
   static const paywall_price_options_option_one = 'paywall.price_options.option_one';
   static const paywall_price_options_option_two_title = 'paywall.price_options.option_two.title';
+  static const paywall_price_options_option_two_payment_method = 'paywall.price_options.option_two.payment_method';
   static const paywall_price_options_option_two_price = 'paywall.price_options.option_two.price';
   static const paywall_price_options_option_two = 'paywall.price_options.option_two';
   static const paywall_price_options = 'paywall.price_options';
