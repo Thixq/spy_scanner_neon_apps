@@ -93,6 +93,16 @@ class CodegenLoader extends AssetLoader{
         "title": "İpuçları",
         "description": "Her zaman odanızda gizli kameralar olup olmadığını kontrol edin. Duman dedektörlerini, çalar saatleri, aynaları ve prizleri inceleyin. Gizliliğinizi koruyun — şüpheli bir cihaz bulursanız otel personeline hemen bildirin. Güvende ve farkında kalın."
       }
+    },
+    "lan_scan": {
+      "title": "LAN Tarayıcı",
+      "scan_idle_text": "Taramayı Başlat",
+      "scan_cancel_text": "Taramayı Durdur",
+      "host_info_card": {
+        "ip_address": "IP Adresi: ",
+        "device_name": "Cihaz Adı: ",
+        "mac_address": "Mac Adresi: "
+      }
     }
   },
   "components": {
@@ -182,6 +192,16 @@ static const Map<String,dynamic> _en_US = {
       "info_card": {
         "title": "Tips",
         "description": "Always check your room for hidden cameras. Inspect smoke detectors, alarm clocks, mirrors, and power outlets. Protect your privacy — report any suspicious devices to hotel staff immediately. Stay safe and aware."
+      }
+    },
+    "lan_scan": {
+      "title": "LAN Scanner",
+      "scan_idle_text": "Scan Started",
+      "scan_cancel_text": "Scan Cancelled",
+      "host_info_card": {
+        "ip_address": "IP Address: ",
+        "device_name": "Device Name: ",
+        "mac_address": "Mac Address: "
       }
     }
   },

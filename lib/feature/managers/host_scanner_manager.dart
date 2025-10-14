@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:network_tools/network_tools.dart';
 import 'package:spy_scanner/core/logging/custom_logger.dart'; // Varsayılan yol
 import 'package:spy_scanner/core/logging/error_handler.dart';
-import 'package:spy_scanner/feature/models/host_view.dart'; // Varsayılan yol
+import 'package:spy_scanner/feature/models/host_model.dart'; // Varsayılan yol
 
 /// Simple DTO that can be given directly to the UI.
 /// All fields are resolved to String.
@@ -16,11 +16,11 @@ final class HostScanManager {
   final ErrorHandler _errorHandler = ErrorHandler('HostScanManager');
   final CustomLogger _logger = CustomLogger('HostScanManager');
 
-  final List<HostView> _hosts = [];
-  final StreamController<List<HostView>> _hostsController =
-      StreamController<List<HostView>>.broadcast();
+  final List<HostModel> _hosts = [];
+  final StreamController<List<HostModel>> _hostsController =
+      StreamController<List<HostModel>>.broadcast();
 
-  Stream<List<HostView>> get hostsStream => _hostsController.stream;
+  Stream<List<HostModel>> get hostsStream => _hostsController.stream;
 
   StreamSubscription<ActiveHost>? _sub;
   bool _isScanning = false;
@@ -70,27 +70,59 @@ final class HostScanManager {
 
   /// Handles each discovered ActiveHost from the stream.
   Future<void> _onHostFound(ActiveHost host) async {
-    final hostView = await _errorHandler.executeSafely<HostView>(
+    // 1. Hızlı HostModel'i oluşturun ve hemen yayınlayın (en azından IP adresiyle)
+    final initialHostModel = HostModel(
+      id: host.hostId,
+      address: host.address,
+    );
+
+    // 1.1. Host'u listeye ekleyin ve hemen yayınlayın.
+    _hosts.add(initialHostModel);
+    _hostsController.add(
+      List.unmodifiable(_hosts),
+    ); // ✨ UI hemen güncellenecek (IP ile)
+
+    // 2. Bilgi çözümleme işlemini asenkron olarak başlatın, ancak await etmeyin.
+    // Bu, Stream'in bloklanmasını engeller.
+    _resolveAndBroadcastHostInfo(host, initialHostModel);
+  }
+
+  /// Resolve Host info and update the list (runs without blocking the main stream).
+  Future<void> _resolveAndBroadcastHostInfo(
+    ActiveHost host,
+    HostModel currentModel,
+  ) async {
+    // try/catch (veya _errorHandler) kullanın
+    final newModel = await _errorHandler.executeSafely<HostModel>(
       () async {
         await host.resolveInfo();
         final deviceName = await host.deviceName;
         final mac = await host.getMacAddress() ?? 'N/A';
         final vendor = await host.vendor;
 
-        return HostView(
-          address: host.address,
+        // Modelin yeni (güncellenmiş) kopyasını oluşturun
+        return currentModel.copyWith(
           deviceName: deviceName,
           mac: mac,
           vendor: vendor?.vendorName ?? 'Unknown Vendor',
         );
       },
-
       errorMessage: 'Failed to resolve info for host: ${host.address}',
     );
 
-    if (hostView != null) {
-      _hosts.add(hostView);
-      _hostsController.add(List.unmodifiable(_hosts));
+    if (newModel != null) {
+      // 3. Eski modelin indeksini bulun
+      final index = _hosts.indexWhere((h) => h.id == newModel.id);
+
+      if (index != -1) {
+        // 4. Listeyi güncelleyin
+        _hosts[index] = newModel;
+
+        // 5. Güncellenmiş listeyi yayınlayın
+        _hostsController.add(
+          List.unmodifiable(_hosts),
+        ); // ✨ UI tekrar güncellenecek (bilgilerle)
+      }
     }
   }
 

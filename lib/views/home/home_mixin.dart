@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures, document_ignores
+
 part of 'home_view.dart';
 
 mixin _HomeMixin on State<HomeView> {
@@ -18,4 +20,12 @@ mixin _HomeMixin on State<HomeView> {
       icon: CupertinoIcons.camera_viewfinder,
     ),
   ];
+
+  void _goLanScanView() {
+    context.router.push(const LanScanRoute());
+  }
+
+  void _goNsdScanView() {
+    context.router.push(const ServiceDiscoveryRoute());
+  }
 }

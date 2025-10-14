@@ -78,6 +78,16 @@
                 "title": "İpuçları",
                 "description": "Her zaman odanızda gizli kameralar olup olmadığını kontrol edin. Duman dedektörlerini, çalar saatleri, aynaları ve prizleri inceleyin. Gizliliğinizi koruyun — şüpheli bir cihaz bulursanız otel personeline hemen bildirin. Güvende ve farkında kalın."
             }
+        },
+        "lan_scan":{
+            "title":"LAN Tarayıcı",
+            "scan_idle_text":"Taramayı Başlat",
+            "scan_cancel_text":"Taramayı Durdur",
+            "host_info_card":{
+                "ip_address":"IP Adresi: ",
+                "device_name":"Cihaz Adı: ",
+                "mac_address":"Mac Adresi: "
+            }
         }
     },
     "components": {

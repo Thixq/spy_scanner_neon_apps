@@ -63,6 +63,14 @@ abstract class  LocaleKeys {
   static const views_home_info_card_description = 'views.home.info_card.description';
   static const views_home_info_card = 'views.home.info_card';
   static const views_home = 'views.home';
+  static const views_lan_scan_title = 'views.lan_scan.title';
+  static const views_lan_scan_scan_idle_text = 'views.lan_scan.scan_idle_text';
+  static const views_lan_scan_scan_cancel_text = 'views.lan_scan.scan_cancel_text';
+  static const views_lan_scan_host_info_card_ip_address = 'views.lan_scan.host_info_card.ip_address';
+  static const views_lan_scan_host_info_card_device_name = 'views.lan_scan.host_info_card.device_name';
+  static const views_lan_scan_host_info_card_mac_address = 'views.lan_scan.host_info_card.mac_address';
+  static const views_lan_scan_host_info_card = 'views.lan_scan.host_info_card';
+  static const views_lan_scan = 'views.lan_scan';
   static const views = 'views';
   static const components_lan_info_card_ip_address = 'components.lan_info_card.ip_address';
   static const components_lan_info_card_connection = 'components.lan_info_card.connection';

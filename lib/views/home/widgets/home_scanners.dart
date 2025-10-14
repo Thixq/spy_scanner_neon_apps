@@ -34,7 +34,6 @@ class _Scanners extends StatelessWidget {
                 Flexible(
                   child: ScanCard(
                     scanner: scanners[1],
-                    isDisabled: true,
                     onCardPressed: onBluetoothScanPressed,
                   ),
                 ),

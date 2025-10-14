@@ -8,8 +8,10 @@ analyzer:
       prefer_if_elements_to_conditional_expressions: ignore
    exclude: 
       - "**/*.g.dart"
+      - "**/*gr.dart"
       - "**/*.mocks.dart"
-      - "pubspec.yaml"
+      - "**/*.yaml"
+      - "*.yaml"
 
 include: "package:very_good_analysis/analysis_options.yaml"
 

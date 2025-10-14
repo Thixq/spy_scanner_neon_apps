@@ -78,6 +78,16 @@
                 "title":"Tips",
                 "description":"Always check your room for hidden cameras. Inspect smoke detectors, alarm clocks, mirrors, and power outlets. Protect your privacy — report any suspicious devices to hotel staff immediately. Stay safe and aware."
             }
+        },
+        "lan_scan":{
+            "title":"LAN Scanner",
+            "scan_idle_text":"Scan Started",
+            "scan_cancel_text":"Scan Cancelled",
+            "host_info_card":{
+                "ip_address":"IP Address: " ,
+                "device_name":"Device Name: ",
+                "mac_address":"Mac Address: "
+            }
         }
     },
     "components":{
