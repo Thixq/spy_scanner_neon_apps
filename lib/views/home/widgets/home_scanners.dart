@@ -23,6 +23,7 @@ class _Scanners extends StatelessWidget {
           Flexible(
             child: ScanCard(
               scanner: scanners[0],
+
               onButtonPressed: onWifiScanPressed,
             ),
           ),

@@ -28,4 +28,16 @@ mixin _HomeMixin on State<HomeView> {
   void _goNsdScanView() {
     context.router.push(const ServiceDiscoveryRoute());
   }
+
+  Future<void> _paywall() async {
+    await PaywallBottomSheet.show(
+      context,
+      onLifetimePressed: (payResult) {
+        context.router.pop();
+      },
+      onMonthlyPressed: (payResult) {
+        context.router.pop();
+      },
+    );
+  }
 }

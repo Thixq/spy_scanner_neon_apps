@@ -31,17 +31,7 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _HomeAppBar(
-        onPremiumPressed: () async {
-          await PaywallBottomSheet.show(
-            context,
-            onLifetimePressed: (payResult) {
-              context.router.pop();
-            },
-            onMonthlyPressed: (payResult) {
-              context.router.pop();
-            },
-          );
-        },
+        onPremiumPressed: _paywall,
       ),
       body: SafeArea(
         child: Padding(

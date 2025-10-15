@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:spy_scanner/feature/managers/ble_manager.dart'; // BleStatus enum'ı için
 
+void main() {
+  runApp(
+    const MaterialApp(
+      home: BleScannerScreen(),
+    ),
+  );
+}
+
 class BleScannerScreen extends StatefulWidget {
   const BleScannerScreen({super.key});
 

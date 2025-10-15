@@ -8,7 +8,6 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
       title: const Text('Spy Scanner'),
       actions: [
         IconButton(
