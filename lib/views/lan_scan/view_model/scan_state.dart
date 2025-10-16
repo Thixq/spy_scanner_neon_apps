@@ -20,12 +20,3 @@ final class _ScanningScanState extends _ScanState {
   });
   final _ScanType scanType;
 }
-
-final class _ScanErrorScanState extends _ScanState {
-  const _ScanErrorScanState(this.message, {required super.items});
-
-  final String message;
-
-  @override
-  List<Object?> get props => [...super.props, message];
-}
