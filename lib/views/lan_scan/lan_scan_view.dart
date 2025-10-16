@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lottie/lottie.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
+import 'package:spy_scanner/core/extension/context_theme.dart';
 import 'package:spy_scanner/core/extension/num_extension.dart';
 import 'package:spy_scanner/core/logging/error_handler.dart';
 import 'package:spy_scanner/feature/constants/lottie_assets.dart';
@@ -56,7 +57,7 @@ class _LanScanViewState extends State<LanScanView> with _ScanMixin {
                       assetPath: assetPath,
                       isScanning: state is _ScanningScanState,
                     ),
-                    _HostList(results: state.items),
+                    _buildContent(context, state),
                   ],
                 ),
                 Padding(
@@ -78,5 +79,24 @@ class _LanScanViewState extends State<LanScanView> with _ScanMixin {
         ),
       ),
     );
+  }
+
+  Widget _buildContent(BuildContext context, _ScanState state) {
+    if (state.items.isEmpty) {
+      return SliverToBoxAdapter(
+        child: Container(
+          alignment: Alignment.center,
+          height: 30.h(context),
+          child: Text(
+            LocaleKeys.views_lan_scan_scanned_yet_text.tr(),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ),
+      );
+    } else {
+      return _HostList(results: state.items);
+    }
   }
 }

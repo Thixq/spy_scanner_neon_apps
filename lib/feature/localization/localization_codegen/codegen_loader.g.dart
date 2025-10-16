@@ -99,6 +99,7 @@ class CodegenLoader extends AssetLoader{
       "scan_host_text": "Host Tarayıcı",
       "scan_mdns_text": "mDNS Tarayıcı",
       "scan_cancel_text": "Taramayı Durdur",
+      "scanned_yet_text": "Henüz Tarama Sonuçu Yok",
       "host_info_result": {
         "ip_address": "IP Adresi: ",
         "device_name": "Cihaz Adı: ",
@@ -205,6 +206,7 @@ static const Map<String,dynamic> _en_US = {
       "scan_host_text": "Host Scan",
       "scan_mdns_text": "mDNS Scan",
       "scan_cancel_text": "Cancel Scan",
+      "scanned_yet_text": "No Scan Result Yet",
       "host_info_result": {
         "ip_address": "IP Address: ",
         "device_name": "Device Name: ",

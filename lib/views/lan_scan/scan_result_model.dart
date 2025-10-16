@@ -52,7 +52,7 @@ final class _MdnsModelImpl extends _ScanResultModel {
   String? get subtitle =>
       '$_subTitleLoc${mdnsModel.addresses?.map(
         (e) => e,
-      ).toList()}';
+      ).cast<String>().toList().join('\n')}';
 
   @override
   String? get title => '$_titleLoc${mdnsModel.name}';

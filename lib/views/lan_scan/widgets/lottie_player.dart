@@ -23,9 +23,10 @@ class _LottiePlayerState extends State<_LottiePlayer>
     await ErrorHandler('LottiePlayer').executeSafely(
       () async {
         if (isScanning) {
-          await _controller.repeat(reverse: true, min: 0, max: 0.8).orCancel;
+          await _controller.repeat(reverse: true, min: 0, max: .6).orCancel;
         } else {
-          await _controller.forward(from: 1);
+          _controller.stop(canceled: false);
+          await _controller.animateTo(1);
         }
       },
       errorMessage: 'Canceled animation',

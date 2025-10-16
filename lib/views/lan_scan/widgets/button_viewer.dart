@@ -26,7 +26,7 @@ class _ButtonViewer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSizes.large),
       child: Row(
-        spacing: AppSizes.medium,
+        spacing: AppSizes.small,
         children: [
           // LAN Scan Button
           Flexible(

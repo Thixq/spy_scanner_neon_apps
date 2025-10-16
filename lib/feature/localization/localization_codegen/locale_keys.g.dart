@@ -67,6 +67,7 @@ abstract class  LocaleKeys {
   static const views_lan_scan_scan_host_text = 'views.lan_scan.scan_host_text';
   static const views_lan_scan_scan_mdns_text = 'views.lan_scan.scan_mdns_text';
   static const views_lan_scan_scan_cancel_text = 'views.lan_scan.scan_cancel_text';
+  static const views_lan_scan_scanned_yet_text = 'views.lan_scan.scanned_yet_text';
   static const views_lan_scan_host_info_result_ip_address = 'views.lan_scan.host_info_result.ip_address';
   static const views_lan_scan_host_info_result_device_name = 'views.lan_scan.host_info_result.device_name';
   static const views_lan_scan_host_info_result_mac_address = 'views.lan_scan.host_info_result.mac_address';
