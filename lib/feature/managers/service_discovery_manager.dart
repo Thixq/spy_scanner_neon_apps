@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures, document_ignores
+
 import 'dart:async';
 import 'package:nsd/nsd.dart';
 import 'package:spy_scanner/core/logging/custom_logger.dart';

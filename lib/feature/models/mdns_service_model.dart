@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs
 import 'package:spy_scanner/feature/models/base_model.dart';
 
 final class MdnsServiceModel extends BaseModel {

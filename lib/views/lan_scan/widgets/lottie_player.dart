@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures, document_ignores
+
 part of '../lan_scan_view.dart';
 
 // part of '../scan_view.dart';

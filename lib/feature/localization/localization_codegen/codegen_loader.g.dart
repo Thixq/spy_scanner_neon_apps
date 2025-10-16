@@ -90,7 +90,7 @@ class CodegenLoader extends AssetLoader{
         }
       },
       "info_card": {
-        "title": "İpuçları",
+        "title": "İpuçu",
         "description": "Her zaman odanızda gizli kameralar olup olmadığını kontrol edin. Duman dedektörlerini, çalar saatleri, aynaları ve prizleri inceleyin. Gizliliğinizi koruyun — şüpheli bir cihaz bulursanız otel personeline hemen bildirin. Güvende ve farkında kalın."
       }
     },
@@ -197,7 +197,7 @@ static const Map<String,dynamic> _en_US = {
         }
       },
       "info_card": {
-        "title": "Tips",
+        "title": "Tip",
         "description": "Always check your room for hidden cameras. Inspect smoke detectors, alarm clocks, mirrors, and power outlets. Protect your privacy — report any suspicious devices to hotel staff immediately. Stay safe and aware."
       }
     },

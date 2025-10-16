@@ -72,7 +72,7 @@ final class HostScanManager {
     _hostsController.add(
       List.unmodifiable(_hosts),
     );
-    _resolveAndBroadcastHostInfo(host, initialHostModel);
+    unawaited(_resolveAndBroadcastHostInfo(host, initialHostModel));
   }
 
   Future<void> _resolveAndBroadcastHostInfo(
@@ -119,7 +119,7 @@ final class HostScanManager {
   /// Dispose resources to prevent memory leaks.
   void dispose() {
     _sub?.cancel();
-    _hostsController.close();
+    unawaited(_hostsController.close());
     _logger.info('HostScanManager disposed.');
   }
 }

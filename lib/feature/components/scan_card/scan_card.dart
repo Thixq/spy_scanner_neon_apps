@@ -96,7 +96,6 @@ class ScanCard extends StatelessWidget {
     String? subTitle,
   }) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: AppSizes.small,
       children: [
