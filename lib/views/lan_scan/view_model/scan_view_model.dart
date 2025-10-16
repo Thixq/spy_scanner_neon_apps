@@ -1,43 +1,92 @@
-// ignore_for_file: discarded_futures, document_ignores
+part of '../lan_scan_view.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
-import 'package:spy_scanner/views/lan_scan/view_model/scan_event.dart';
-import 'package:spy_scanner/views/lan_scan/view_model/scan_state.dart';
-
-final class LanScanViewModel extends Bloc<ScanlEvent, ScanState> {
-  LanScanViewModel({required HostScanManager hostScanManager})
-    : _hostScanManager = hostScanManager,
-      super(const IdleScanState(items: [])) {
-    on<ScanEventStartScan>(_startScan);
-    on<ScanEventStopScan>(_stopScan);
+final class LanScanViewModel extends Bloc<_ScanlEvent, _ScanState> {
+  LanScanViewModel({
+    required ServiceDiscoveryManager discoveryManager,
+    required HostScanManager hostScanManager,
+  }) : _hostScanManager = hostScanManager,
+       _discoveryManager = discoveryManager,
+       super(const _IdleScanState(items: [])) {
+    on<_ScanEventStartScan>(_startScan);
+    on<_ScanEventStopScan>(_stopScan);
   }
 
   final HostScanManager _hostScanManager;
+  final ServiceDiscoveryManager _discoveryManager;
 
   Future<void> _startScan(
-    ScanEventStartScan event,
-    Emitter<ScanState> emit,
+    _ScanEventStartScan event,
+    Emitter<_ScanState> emit,
   ) async {
-    emit(IdleScanState(items: [...state.items]));
-    await _hostScanManager.startScan(event.subnet);
+    emit(_IdleScanState(items: [...state.items]));
 
+    if (event.scanType == _ScanType.host) {
+      await _scanHost(event, emit);
+    } else if (event.scanType == _ScanType.mdns) {
+      await _scanMdns(event, emit);
+    }
+  }
+
+  Future<void> _scanMdns(
+    _ScanEventStartScan event,
+    Emitter<_ScanState> emit,
+  ) async {
+    final serviceTypes = [
+      '_http._tcp',
+      '_airplay._tcp',
+      '_ftp._tcp',
+      '_ssh._tcp',
+    ];
+    await _discoveryManager.start(serviceTypes: serviceTypes);
+    await emit.onEach(
+      _discoveryManager.discoveredServices,
+      onData: (services) {
+        final items = services
+            .map(
+              _MdnsModelImpl.new,
+            )
+            .toList();
+        emit(_ScanningScanState(items: items, scanType: _ScanType.mdns));
+      },
+    );
+  }
+
+  Future<void> _scanHost(
+    _ScanEventStartScan event,
+    Emitter<_ScanState> emit,
+  ) async {
+    const subnet = '192.168.1';
+    await _hostScanManager.startScan(subnet);
     await emit.onEach(
       _hostScanManager.hostsStream,
-      onData: (hosts) => ScanningScanState(items: List.of(hosts)),
+      onData: (hosts) {
+        final items = hosts
+            .map(
+              _HostModelImpl.new,
+            )
+            .toList();
+        emit(_ScanningScanState(items: items, scanType: _ScanType.host));
+      },
     );
   }
 
   Future<void> _stopScan(
-    ScanEventStopScan event,
-    Emitter<ScanState> emit,
+    _ScanEventStopScan event,
+    Emitter<_ScanState> emit,
   ) async {
-    emit(IdleScanState(items: state.items));
-    await _hostScanManager.stopScan();
+    emit(_IdleScanState(items: state.items));
+
+    if (event.scanType == _ScanType.host) {
+      await _hostScanManager.stopScan();
+    } else if (event.scanType == _ScanType.mdns) {
+      await _discoveryManager.stopAll();
+    }
   }
 
-  void dispose() {
+  @override
+  Future<void> close() async {
     _hostScanManager.dispose();
-    super.close();
+    _discoveryManager.dispose();
+    await super.close();
   }
 }

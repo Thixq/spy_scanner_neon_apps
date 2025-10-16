@@ -96,12 +96,18 @@ class CodegenLoader extends AssetLoader{
     },
     "lan_scan": {
       "title": "LAN Tarayıcı",
-      "scan_idle_text": "Taramayı Başlat",
+      "scan_host_text": "Host Tarayıcı",
+      "scan_mdns_text": "mDNS Tarayıcı",
       "scan_cancel_text": "Taramayı Durdur",
-      "host_info_card": {
+      "host_info_result": {
         "ip_address": "IP Adresi: ",
         "device_name": "Cihaz Adı: ",
         "mac_address": "Mac Adresi: "
+      },
+      "mdns_info_result": {
+        "service_name": "Servis Adı: ",
+        "ip_addresses": "İP Adresleri: ",
+        "service_type": "Servis Tipi: "
       }
     }
   },
@@ -196,12 +202,18 @@ static const Map<String,dynamic> _en_US = {
     },
     "lan_scan": {
       "title": "LAN Scanner",
-      "scan_idle_text": "Scan Started",
-      "scan_cancel_text": "Scan Cancelled",
-      "host_info_card": {
+      "scan_host_text": "Host Scan",
+      "scan_mdns_text": "mDNS Scan",
+      "scan_cancel_text": "Cancel Scan",
+      "host_info_result": {
         "ip_address": "IP Address: ",
         "device_name": "Device Name: ",
         "mac_address": "Mac Address: "
+      },
+      "mdns_info_result": {
+        "service_name": "Service Name: ",
+        "ip_addresses": "IP Addresses: ",
+        "service_type": "Service Type: "
       }
     }
   },

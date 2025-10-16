@@ -1,16 +1,18 @@
 part of '../lan_scan_view.dart';
 
 class _HostList extends StatelessWidget {
-  const _HostList({required this.hostList});
-  final List<HostModel> hostList;
+  const _HostList({
+    required this.results,
+  });
+  final List<_ScanResultModel> results;
 
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(
-      itemCount: hostList.length,
+      itemCount: results.length,
       itemBuilder: (context, index) {
-        final host = hostList[index];
-        return _HostInfoItem(host: host);
+        final result = results[index];
+        return _ScanInfoItem(result: result);
       },
     );
   }

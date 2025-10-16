@@ -81,12 +81,18 @@
         },
         "lan_scan":{
             "title":"LAN Tarayıcı",
-            "scan_idle_text":"Taramayı Başlat",
+            "scan_host_text":"Host Tarayıcı",
+            "scan_mdns_text":"mDNS Tarayıcı",
             "scan_cancel_text":"Taramayı Durdur",
-            "host_info_card":{
+            "host_info_result":{
                 "ip_address":"IP Adresi: ",
                 "device_name":"Cihaz Adı: ",
                 "mac_address":"Mac Adresi: "
+            },
+            "mdns_info_result":{
+                "service_name":"Servis Adı: " ,
+                "ip_addresses":"İP Adresleri: ",
+                "service_type":"Servis Tipi: "
             }
         }
     },

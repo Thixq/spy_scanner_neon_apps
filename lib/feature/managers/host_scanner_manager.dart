@@ -12,21 +12,19 @@ import 'package:spy_scanner/feature/models/host_model.dart'; // Varsayılan yol
 /// Manager: listens to getAllPingableDevices(), resolves the Future fields
 /// inside ActiveHost and publishes a list of HostView objects.
 final class HostScanManager {
-  // Hem operasyon sarmalama hem de genel loglama için gerekli sınıflar.
+  /// Constructor
+  HostScanManager();
+
   final ErrorHandler _errorHandler = ErrorHandler('HostScanManager');
   final CustomLogger _logger = CustomLogger('HostScanManager');
 
   final List<HostModel> _hosts = [];
   final StreamController<List<HostModel>> _hostsController =
       StreamController<List<HostModel>>.broadcast();
-
   Stream<List<HostModel>> get hostsStream => _hostsController.stream;
-
   StreamSubscription<ActiveHost>? _sub;
   bool _isScanning = false;
   bool get isScanning => _isScanning;
-
-  /// Start scan — uses ErrorHandler to manage initialization and processing.
   Future<void> startScan(String subnet) async {
     if (_isScanning) {
       _logger.warning('Scan is already in progress. New scan request ignored.');
@@ -35,17 +33,14 @@ final class HostScanManager {
     _isScanning = true;
     _hosts.clear();
     _hostsController.add(List.unmodifiable(_hosts));
-
     _logger.info('Starting host scan for subnet: $subnet');
-
     await _errorHandler.executeSafely(
       () async {
         _sub = HostScannerService.instance
             .getAllPingableDevices(subnet)
             .listen(
-              _onHostFound, // Ayrı bir metoda taşıyarak okunabilirliği artırdık.
+              _onHostFound,
               onError: (error, StackTrace stackTrace) {
-                // Stream'in kendisinden gelen bir hatayı logluyoruz.
                 _logger.error(
                   'Error on scan stream',
                   error: error,
@@ -68,39 +63,28 @@ final class HostScanManager {
     );
   }
 
-  /// Handles each discovered ActiveHost from the stream.
   Future<void> _onHostFound(ActiveHost host) async {
-    // 1. Hızlı HostModel'i oluşturun ve hemen yayınlayın (en azından IP adresiyle)
     final initialHostModel = HostModel(
       id: host.hostId,
       address: host.address,
     );
-
-    // 1.1. Host'u listeye ekleyin ve hemen yayınlayın.
     _hosts.add(initialHostModel);
     _hostsController.add(
       List.unmodifiable(_hosts),
-    ); // ✨ UI hemen güncellenecek (IP ile)
-
-    // 2. Bilgi çözümleme işlemini asenkron olarak başlatın, ancak await etmeyin.
-    // Bu, Stream'in bloklanmasını engeller.
+    );
     _resolveAndBroadcastHostInfo(host, initialHostModel);
   }
 
-  /// Resolve Host info and update the list (runs without blocking the main stream).
   Future<void> _resolveAndBroadcastHostInfo(
     ActiveHost host,
     HostModel currentModel,
   ) async {
-    // try/catch (veya _errorHandler) kullanın
     final newModel = await _errorHandler.executeSafely<HostModel>(
       () async {
         await host.resolveInfo();
         final deviceName = await host.deviceName;
-        final mac = await host.getMacAddress() ?? 'N/A';
+        final mac = await host.getMacAddress();
         final vendor = await host.vendor;
-
-        // Modelin yeni (güncellenmiş) kopyasını oluşturun
         return currentModel.copyWith(
           deviceName: deviceName,
           mac: mac,
@@ -111,17 +95,13 @@ final class HostScanManager {
     );
 
     if (newModel != null) {
-      // 3. Eski modelin indeksini bulun
       final index = _hosts.indexWhere((h) => h.id == newModel.id);
 
       if (index != -1) {
-        // 4. Listeyi güncelleyin
         _hosts[index] = newModel;
-
-        // 5. Güncellenmiş listeyi yayınlayın
         _hostsController.add(
           List.unmodifiable(_hosts),
-        ); // ✨ UI tekrar güncellenecek (bilgilerle)
+        );
       }
     }
   }
@@ -129,7 +109,6 @@ final class HostScanManager {
   /// Cancel the running scan.
   Future<void> stopScan() async {
     if (!_isScanning) return;
-
     await _sub?.cancel();
     _sub = null;
     _isScanning = false;

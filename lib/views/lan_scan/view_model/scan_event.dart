@@ -1,15 +1,19 @@
-import 'package:equatable/equatable.dart';
+part of '../lan_scan_view.dart';
 
-sealed class ScanlEvent extends Equatable {
-  const ScanlEvent();
+sealed class _ScanlEvent extends Equatable {
+  const _ScanlEvent();
   @override
   List<Object> get props => [];
 }
 
-class ScanEventStartScan extends ScanlEvent {
-  const ScanEventStartScan({required this.subnet});
+class _ScanEventStartScan extends _ScanlEvent {
+  const _ScanEventStartScan({required this.scanType});
 
-  final String subnet;
+  final _ScanType scanType;
 }
 
-class ScanEventStopScan extends ScanlEvent {}
+class _ScanEventStopScan extends _ScanlEvent {
+  const _ScanEventStopScan({required this.scanType});
+
+  final _ScanType scanType;
+}

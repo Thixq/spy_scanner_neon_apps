@@ -51,10 +51,8 @@ class _ServiceDiscoveryViewState extends State<ServiceDiscoveryView> {
     });
 
     // Keşif işlemini başlatır ve listener'ları ekler
-    await _manager.startAll(
+    await _manager.start(
       serviceTypes: _serviceTypesToDiscover,
-      onServiceFound: _onServiceFound,
-      onServiceRemoved: _onServiceRemoved,
     );
 
     if (mounted) {

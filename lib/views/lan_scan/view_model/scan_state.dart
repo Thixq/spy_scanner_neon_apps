@@ -1,25 +1,28 @@
-import 'package:equatable/equatable.dart';
-import 'package:spy_scanner/feature/models/host_model.dart';
+part of '../lan_scan_view.dart';
 
-sealed class ScanState extends Equatable {
-  const ScanState({required this.items});
+sealed class _ScanState extends Equatable {
+  const _ScanState({required this.items});
 
-  final List<HostModel> items;
+  final List<_ScanResultModel> items;
 
   @override
   List<Object?> get props => [items];
 }
 
-final class IdleScanState extends ScanState {
-  const IdleScanState({required super.items});
+final class _IdleScanState extends _ScanState {
+  const _IdleScanState({required super.items});
 }
 
-final class ScanningScanState extends ScanState {
-  const ScanningScanState({required super.items});
+final class _ScanningScanState extends _ScanState {
+  const _ScanningScanState({
+    required super.items,
+    required this.scanType,
+  });
+  final _ScanType scanType;
 }
 
-final class ScanErrorScanState extends ScanState {
-  const ScanErrorScanState(this.message, {required super.items});
+final class _ScanErrorScanState extends _ScanState {
+  const _ScanErrorScanState(this.message, {required super.items});
 
   final String message;
 
