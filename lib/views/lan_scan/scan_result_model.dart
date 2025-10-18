@@ -41,18 +41,13 @@ final class _MdnsModelImpl extends _ScanResultModel {
   final String _titleLoc = LocaleKeys
       .views_lan_scan_mdns_info_result_service_name
       .tr();
-  final String _subTitleLoc = LocaleKeys
-      .views_lan_scan_mdns_info_result_ip_addresses
-      .tr();
   final String _trailingLoc = LocaleKeys
       .views_lan_scan_mdns_info_result_service_type
       .tr();
 
   @override
   String? get subtitle =>
-      '$_subTitleLoc${mdnsModel.addresses?.map(
-        (e) => e,
-      ).cast<String>().toList().join('\n')}';
+      mdnsModel.addresses?.map((e) => e.toString()).join('\n');
 
   @override
   String? get title => '$_titleLoc${mdnsModel.name}';

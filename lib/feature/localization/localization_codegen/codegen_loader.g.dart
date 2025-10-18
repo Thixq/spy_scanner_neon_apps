@@ -98,7 +98,7 @@ class CodegenLoader extends AssetLoader{
       "title": "LAN Tarayıcı",
       "scan_host_text": "Host Tarayıcı",
       "scan_mdns_text": "mDNS Tarayıcı",
-      "scan_cancel_text": "Taramayı Durdur",
+      "scan_cancel_text": "Durdur",
       "scanned_yet_text": "Henüz Tarama Sonuçu Yok",
       "host_info_result": {
         "ip_address": "IP Adresi: ",
@@ -205,7 +205,7 @@ static const Map<String,dynamic> _en_US = {
       "title": "LAN Scanner",
       "scan_host_text": "Host Scan",
       "scan_mdns_text": "mDNS Scan",
-      "scan_cancel_text": "Cancel Scan",
+      "scan_cancel_text": "Cancel",
       "scanned_yet_text": "No Scan Result Yet",
       "host_info_result": {
         "ip_address": "IP Address: ",

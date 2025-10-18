@@ -25,8 +25,8 @@ mixin _HomeMixin on State<HomeView> {
     context.router.push(const LanScanRoute());
   }
 
-  void _goNsdScanView() {
-    context.router.push(const ServiceDiscoveryRoute());
+  void _goBluetoothScanView() {
+    context.router.push(const BluetoothScanRoute());
   }
 
   Future<void> _paywall() async {

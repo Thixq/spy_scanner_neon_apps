@@ -51,6 +51,7 @@ class _LanScanViewState extends State<LanScanView> with _ScanMixin {
             return Stack(
               children: [
                 CustomScrollView(
+                  controller: _scrollController,
                   slivers: [
                     const _ScanAppBar(),
                     _LottiePlayer(
@@ -58,6 +59,8 @@ class _LanScanViewState extends State<LanScanView> with _ScanMixin {
                       isScanning: state is _ScanningScanState,
                     ),
                     _buildContent(context, state),
+                    // dinamik padding ekleme
+                    if (_isAtBottom) _buildBottomPadding(context),
                   ],
                 ),
                 Padding(
@@ -78,6 +81,12 @@ class _LanScanViewState extends State<LanScanView> with _ScanMixin {
           },
         ),
       ),
+    );
+  }
+
+  SliverToBoxAdapter _buildBottomPadding(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: SizedBox(height: 10.h(context)),
     );
   }
 

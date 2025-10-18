@@ -61,7 +61,11 @@ final class ServiceDiscoveryManager {
               id: const UuidV8().generate(),
               type: service.type,
               name: service.name,
-              addresses: service.addresses?.map((e) => e.address).toList(),
+              addresses: service.addresses
+                  ?.map(
+                    (e) => MdnsIpAddress(address: e.address, type: e.type.name),
+                  )
+                  .toList(),
               port: service.port,
             );
             _discoveredServices.add(newService);
@@ -69,7 +73,11 @@ final class ServiceDiscoveryManager {
           } else {
             final existing = _discoveredServices[index];
             final updated = existing.copyWith(
-              addresses: service.addresses?.map((e) => e.address).toList(),
+              addresses: service.addresses
+                  ?.map(
+                    (e) => MdnsIpAddress(address: e.address, type: e.type.name),
+                  )
+                  .toList(),
               port: service.port,
             );
             _discoveredServices[index] = updated;

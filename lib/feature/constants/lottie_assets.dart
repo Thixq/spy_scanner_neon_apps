@@ -4,4 +4,5 @@ final class LottieAssets {
   static const String wifiEye = 'assets/lotties/wifi_eye.json';
   static const String bluetoothRadial = 'assets/lotties/bluetooth_radial.json';
   static const String redSpy = 'assets/lotties/red_spy.json';
+  static const String radar = 'assets/lotties/radar.json';
 }

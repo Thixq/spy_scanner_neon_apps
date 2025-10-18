@@ -83,7 +83,7 @@
             "title":"LAN Scanner",
             "scan_host_text":"Host Scan",
             "scan_mdns_text":"mDNS Scan",
-            "scan_cancel_text":"Cancel Scan",
+            "scan_cancel_text":"Cancel",
             "scanned_yet_text":"No Scan Result Yet",
             "host_info_result":{
                 "ip_address":"IP Address: " ,

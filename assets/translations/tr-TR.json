@@ -83,7 +83,7 @@
             "title":"LAN Tarayıcı",
             "scan_host_text":"Host Tarayıcı",
             "scan_mdns_text":"mDNS Tarayıcı",
-            "scan_cancel_text":"Taramayı Durdur",
+            "scan_cancel_text":"Durdur",
             "scanned_yet_text":"Henüz Tarama Sonuçu Yok",
             "host_info_result":{
                 "ip_address":"IP Adresi: ",

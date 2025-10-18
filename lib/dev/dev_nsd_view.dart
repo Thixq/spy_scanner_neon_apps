@@ -74,33 +74,6 @@ class _ServiceDiscoveryViewState extends State<ServiceDiscoveryView> {
     }
   }
 
-  // --- Geri Çağırım Fonksiyonları (CALLBACKS) ---
-  // Hata çözümü: Asenkron callback'lerin içinde setState çağırmadan önce mounted kontrolü yapın!
-
-  void _onServiceFound(String type, Service service) {
-    if (!mounted) {
-      // Widget ağaçtan kaldırıldı, setState yapma.
-      return;
-    }
-
-    final key = '${service.name}@$type';
-    setState(() {
-      _discoveredServices[key] = service;
-    });
-  }
-
-  void _onServiceRemoved(String type, Service service) {
-    if (!mounted) {
-      // Widget ağaçtan kaldırıldı, setState yapma.
-      return;
-    }
-
-    final key = '${service.name}@$type';
-    setState(() {
-      _discoveredServices.remove(key);
-    });
-  }
-
   // --- Temizlik ---
 
   @override

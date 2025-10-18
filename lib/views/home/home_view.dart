@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
               _Scanners(
                 scanners: _scanners,
                 onWifiScanPressed: _goLanScanView,
-                onBluetoothScanPressed: _goNsdScanView,
+                onBluetoothScanPressed: _goBluetoothScanView,
                 onInfraredScanPressed: () {},
               ),
               const _HomeInfoCard(),

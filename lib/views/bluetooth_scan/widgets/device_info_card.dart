@@ -1,8 +1,8 @@
-part of '../lan_scan_view.dart';
+part of '../bluetooth_scan_view.dart';
 
-class _ScanInfoItem extends StatelessWidget {
-  const _ScanInfoItem({required this.result});
-  final _ScanResultModel result;
+class _DeviceInfoCard extends StatelessWidget {
+  const _DeviceInfoCard({required this.result});
+  final _DeviceResultModel result;
 
   @override
   Widget build(BuildContext context) {

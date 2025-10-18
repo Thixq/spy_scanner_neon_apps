@@ -1,10 +1,10 @@
-part of '../lan_scan_view.dart';
+part of '../bluetooth_scan_view.dart';
 
-class _HostList extends StatelessWidget {
-  const _HostList({
+class _DeviceList extends StatelessWidget {
+  const _DeviceList({
     required this.results,
   });
-  final List<_ScanResultModel> results;
+  final List<_DeviceResultModel> results;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,9 @@ class _HostList extends StatelessWidget {
             horizontal: AppSizes.medium,
             vertical: AppSizes.xSmall,
           ),
-          child: _ScanInfoItem(result: result),
+          child: _DeviceInfoCard(
+            result: result,
+          ),
         );
       },
     );
