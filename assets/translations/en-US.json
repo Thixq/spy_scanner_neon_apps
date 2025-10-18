@@ -92,8 +92,19 @@
             },
             "mdns_info_result":{
                 "service_name":"Service Name: " ,
-                "ip_addresses":"IP Addresses: ",
+                "ip_addresses":null,
                 "service_type":"Service Type: "
+            }
+        },
+        "bluetooth_scan":{
+            "title":"Bluetooth Scanner",
+            "scan_text":"Scan",
+            "scan_cancel_text":"Cancel",
+            "scanned_yet_text":"No Scan Result Yet",
+            "bluetooth_info_result":{
+                "name":"Name: ",
+                "address":"Address: ",
+                "rssi":"RSSI: {rssi} dBm "
             }
         }
     },

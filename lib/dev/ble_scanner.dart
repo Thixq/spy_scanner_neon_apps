@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
-import 'package:spy_scanner/feature/managers/ble_manager.dart'; // BleStatus enum'ı için
+import 'package:spy_scanner/feature/managers/ble_manager.dart';
+import 'package:spy_scanner/feature/models/bluetooth_device_model.dart'; // BleStatus enum'ı için
 
 void main() {
   runApp(
@@ -88,7 +89,7 @@ class _BleScannerScreenState extends State<BleScannerScreen> {
           const Divider(),
           // Bulunan cihazları listeleyen alan
           Expanded(
-            child: StreamBuilder<List<DiscoveredDevice>>(
+            child: StreamBuilder<List<BluetoothDeviceModel>>(
               stream: _bleManager.scannedDevicesStream,
               initialData: const [],
               builder: (context, snapshot) {
@@ -104,7 +105,9 @@ class _BleScannerScreenState extends State<BleScannerScreen> {
                     final device = devices[index];
                     return ListTile(
                       title: Text(
-                        device.name.isNotEmpty ? device.name : 'Unknown Device',
+                        device.name!.isNotEmpty
+                            ? device.name!
+                            : 'Unknown Device',
                       ),
                       subtitle: Text('${device.id}\nRSSI: ${device.rssi} dBm'),
                       leading: const Icon(Icons.bluetooth),

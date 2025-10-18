@@ -77,6 +77,15 @@ abstract class  LocaleKeys {
   static const views_lan_scan_mdns_info_result_service_type = 'views.lan_scan.mdns_info_result.service_type';
   static const views_lan_scan_mdns_info_result = 'views.lan_scan.mdns_info_result';
   static const views_lan_scan = 'views.lan_scan';
+  static const views_bluetooth_scan_title = 'views.bluetooth_scan.title';
+  static const views_bluetooth_scan_scan_text = 'views.bluetooth_scan.scan_text';
+  static const views_bluetooth_scan_scan_cancel_text = 'views.bluetooth_scan.scan_cancel_text';
+  static const views_bluetooth_scan_scanned_yet_text = 'views.bluetooth_scan.scanned_yet_text';
+  static const views_bluetooth_scan_bluetooth_info_result_name = 'views.bluetooth_scan.bluetooth_info_result.name';
+  static const views_bluetooth_scan_bluetooth_info_result_address = 'views.bluetooth_scan.bluetooth_info_result.address';
+  static const views_bluetooth_scan_bluetooth_info_result_rssi = 'views.bluetooth_scan.bluetooth_info_result.rssi';
+  static const views_bluetooth_scan_bluetooth_info_result = 'views.bluetooth_scan.bluetooth_info_result';
+  static const views_bluetooth_scan = 'views.bluetooth_scan';
   static const views = 'views';
   static const components_lan_info_card_ip_address = 'components.lan_info_card.ip_address';
   static const components_lan_info_card_connection = 'components.lan_info_card.connection';

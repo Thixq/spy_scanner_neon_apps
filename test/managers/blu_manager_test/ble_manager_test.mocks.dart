@@ -4,18 +4,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
-import 'dart:typed_data' as _i10;
+import 'dart:typed_data' as _i11;
 
 import 'package:flutter_reactive_ble/src/discovered_devices_registry.dart'
     as _i2;
 import 'package:flutter_reactive_ble/src/reactive_ble.dart' as _i3;
-import 'package:logging/logging.dart' as _i6;
+import 'package:logging/logging.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i9;
+import 'package:mockito/src/dummies.dart' as _i10;
 import 'package:reactive_ble_platform_interface/reactive_ble_platform_interface.dart'
     as _i5;
-import 'package:spy_scanner/core/logging/custom_logger.dart' as _i7;
-import 'package:spy_scanner/core/logging/error_handler.dart' as _i8;
+import 'package:spy_scanner/core/logging/custom_logger.dart' as _i8;
+import 'package:spy_scanner/core/logging/error_handler.dart' as _i9;
+import 'package:spy_scanner/feature/models/bluetooth_device_model.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -56,8 +57,14 @@ class _FakeDiscoveredDevice_3 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeLevel_4 extends _i1.SmartFake implements _i6.Level {
-  _FakeLevel_4(Object parent, Invocation parentInvocation)
+class _FakeBluetoothDeviceModel_4 extends _i1.SmartFake
+    implements _i6.BluetoothDeviceModel {
+  _FakeBluetoothDeviceModel_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeLevel_5 extends _i1.SmartFake implements _i7.Level {
+  _FakeLevel_5(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -352,7 +359,7 @@ class MockFlutterReactiveBle extends _i1.Mock
 /// A class which mocks [CustomLogger].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCustomLogger extends _i1.Mock implements _i7.CustomLogger {
+class MockCustomLogger extends _i1.Mock implements _i8.CustomLogger {
   MockCustomLogger() {
     _i1.throwOnMissingStub(this);
   }
@@ -390,7 +397,7 @@ class MockCustomLogger extends _i1.Mock implements _i7.CustomLogger {
 /// A class which mocks [ErrorHandler].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockErrorHandler extends _i1.Mock implements _i8.ErrorHandler {
+class MockErrorHandler extends _i1.Mock implements _i9.ErrorHandler {
   MockErrorHandler() {
     _i1.throwOnMissingStub(this);
   }
@@ -470,8 +477,8 @@ class MockStreamSubscription<T> extends _i1.Mock
       (super.noSuchMethod(
             Invocation.method(#asFuture, [futureValue]),
             returnValue:
-                _i9.ifNotNull(
-                  _i9.dummyValueOrNull<E>(
+                _i10.ifNotNull(
+                  _i10.dummyValueOrNull<E>(
                     this,
                     Invocation.method(#asFuture, [futureValue]),
                   ),
@@ -498,7 +505,7 @@ class MockDiscoveredDevice extends _i1.Mock implements _i5.DiscoveredDevice {
   String get id =>
       (super.noSuchMethod(
             Invocation.getter(#id),
-            returnValue: _i9.dummyValue<String>(this, Invocation.getter(#id)),
+            returnValue: _i10.dummyValue<String>(this, Invocation.getter(#id)),
           )
           as String);
 
@@ -506,17 +513,20 @@ class MockDiscoveredDevice extends _i1.Mock implements _i5.DiscoveredDevice {
   String get name =>
       (super.noSuchMethod(
             Invocation.getter(#name),
-            returnValue: _i9.dummyValue<String>(this, Invocation.getter(#name)),
+            returnValue: _i10.dummyValue<String>(
+              this,
+              Invocation.getter(#name),
+            ),
           )
           as String);
 
   @override
-  Map<_i5.Uuid, _i10.Uint8List> get serviceData =>
+  Map<_i5.Uuid, _i11.Uint8List> get serviceData =>
       (super.noSuchMethod(
             Invocation.getter(#serviceData),
-            returnValue: <_i5.Uuid, _i10.Uint8List>{},
+            returnValue: <_i5.Uuid, _i11.Uint8List>{},
           )
-          as Map<_i5.Uuid, _i10.Uint8List>);
+          as Map<_i5.Uuid, _i11.Uint8List>);
 
   @override
   List<_i5.Uuid> get serviceUuids =>
@@ -527,12 +537,12 @@ class MockDiscoveredDevice extends _i1.Mock implements _i5.DiscoveredDevice {
           as List<_i5.Uuid>);
 
   @override
-  _i10.Uint8List get manufacturerData =>
+  _i11.Uint8List get manufacturerData =>
       (super.noSuchMethod(
             Invocation.getter(#manufacturerData),
-            returnValue: _i10.Uint8List(0),
+            returnValue: _i11.Uint8List(0),
           )
-          as _i10.Uint8List);
+          as _i11.Uint8List);
 
   @override
   int get rssi =>
@@ -550,9 +560,9 @@ class MockDiscoveredDevice extends _i1.Mock implements _i5.DiscoveredDevice {
   _i5.DiscoveredDevice copyWith({
     String? id,
     String? name,
-    Map<_i5.Uuid, _i10.Uint8List>? serviceData,
+    Map<_i5.Uuid, _i11.Uint8List>? serviceData,
     List<_i5.Uuid>? serviceUuids,
-    _i10.Uint8List? manufacturerData,
+    _i11.Uint8List? manufacturerData,
     int? rssi,
     _i5.Connectable? connectable,
   }) =>
@@ -595,10 +605,44 @@ class MockDiscoveredDevice extends _i1.Mock implements _i5.DiscoveredDevice {
           as _i5.DiscoveredDevice);
 }
 
+/// A class which mocks [BluetoothDeviceModel].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockBluetoothDeviceModel extends _i1.Mock
+    implements _i6.BluetoothDeviceModel {
+  MockBluetoothDeviceModel() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  String get id =>
+      (super.noSuchMethod(
+            Invocation.getter(#id),
+            returnValue: _i10.dummyValue<String>(this, Invocation.getter(#id)),
+          )
+          as String);
+
+  @override
+  List<Object?> get props =>
+      (super.noSuchMethod(Invocation.getter(#props), returnValue: <Object?>[])
+          as List<Object?>);
+
+  @override
+  _i6.BluetoothDeviceModel copyWith({String? name, int? rssi}) =>
+      (super.noSuchMethod(
+            Invocation.method(#copyWith, [], {#name: name, #rssi: rssi}),
+            returnValue: _FakeBluetoothDeviceModel_4(
+              this,
+              Invocation.method(#copyWith, [], {#name: name, #rssi: rssi}),
+            ),
+          )
+          as _i6.BluetoothDeviceModel);
+}
+
 /// A class which mocks [Logger].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLogger extends _i1.Mock implements _i6.Logger {
+class MockLogger extends _i1.Mock implements _i7.Logger {
   MockLogger() {
     _i1.throwOnMissingStub(this);
   }
@@ -607,23 +651,26 @@ class MockLogger extends _i1.Mock implements _i6.Logger {
   String get name =>
       (super.noSuchMethod(
             Invocation.getter(#name),
-            returnValue: _i9.dummyValue<String>(this, Invocation.getter(#name)),
+            returnValue: _i10.dummyValue<String>(
+              this,
+              Invocation.getter(#name),
+            ),
           )
           as String);
 
   @override
-  Map<String, _i6.Logger> get children =>
+  Map<String, _i7.Logger> get children =>
       (super.noSuchMethod(
             Invocation.getter(#children),
-            returnValue: <String, _i6.Logger>{},
+            returnValue: <String, _i7.Logger>{},
           )
-          as Map<String, _i6.Logger>);
+          as Map<String, _i7.Logger>);
 
   @override
   String get fullName =>
       (super.noSuchMethod(
             Invocation.getter(#fullName),
-            returnValue: _i9.dummyValue<String>(
+            returnValue: _i10.dummyValue<String>(
               this,
               Invocation.getter(#fullName),
             ),
@@ -631,31 +678,31 @@ class MockLogger extends _i1.Mock implements _i6.Logger {
           as String);
 
   @override
-  _i6.Level get level =>
+  _i7.Level get level =>
       (super.noSuchMethod(
             Invocation.getter(#level),
-            returnValue: _FakeLevel_4(this, Invocation.getter(#level)),
+            returnValue: _FakeLevel_5(this, Invocation.getter(#level)),
           )
-          as _i6.Level);
+          as _i7.Level);
 
   @override
-  _i4.Stream<_i6.Level?> get onLevelChanged =>
+  _i4.Stream<_i7.Level?> get onLevelChanged =>
       (super.noSuchMethod(
             Invocation.getter(#onLevelChanged),
-            returnValue: _i4.Stream<_i6.Level?>.empty(),
+            returnValue: _i4.Stream<_i7.Level?>.empty(),
           )
-          as _i4.Stream<_i6.Level?>);
+          as _i4.Stream<_i7.Level?>);
 
   @override
-  _i4.Stream<_i6.LogRecord> get onRecord =>
+  _i4.Stream<_i7.LogRecord> get onRecord =>
       (super.noSuchMethod(
             Invocation.getter(#onRecord),
-            returnValue: _i4.Stream<_i6.LogRecord>.empty(),
+            returnValue: _i4.Stream<_i7.LogRecord>.empty(),
           )
-          as _i4.Stream<_i6.LogRecord>);
+          as _i4.Stream<_i7.LogRecord>);
 
   @override
-  set level(_i6.Level? value) => super.noSuchMethod(
+  set level(_i7.Level? value) => super.noSuchMethod(
     Invocation.setter(#level, value),
     returnValueForMissingStub: null,
   );
@@ -667,7 +714,7 @@ class MockLogger extends _i1.Mock implements _i6.Logger {
   );
 
   @override
-  bool isLoggable(_i6.Level? value) =>
+  bool isLoggable(_i7.Level? value) =>
       (super.noSuchMethod(
             Invocation.method(#isLoggable, [value]),
             returnValue: false,
@@ -676,7 +723,7 @@ class MockLogger extends _i1.Mock implements _i6.Logger {
 
   @override
   void log(
-    _i6.Level? logLevel,
+    _i7.Level? logLevel,
     Object? message, [
     Object? error,
     StackTrace? stackTrace,

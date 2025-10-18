@@ -7,6 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:spy_scanner/core/logging/custom_logger.dart';
 import 'package:spy_scanner/core/logging/error_handler.dart';
 import 'package:spy_scanner/feature/managers/ble_manager.dart';
+import 'package:spy_scanner/feature/models/bluetooth_device_model.dart';
 
 import 'ble_manager_test.mocks.dart';
 
@@ -16,6 +17,7 @@ import 'ble_manager_test.mocks.dart';
   ErrorHandler,
   StreamSubscription,
   DiscoveredDevice,
+  BluetoothDeviceModel,
   Logger,
 ])
 void main() {
@@ -193,7 +195,7 @@ void main() {
     test(
       'Should update scannedDevicesStream with new and updated discovered devices',
       () async {
-        final devicesList = <List<DiscoveredDevice>>[];
+        final devicesList = <List<BluetoothDeviceModel>>[];
 
         final scannedDevicesExpectation = expectLater(
           bleManager.scannedDevicesStream,

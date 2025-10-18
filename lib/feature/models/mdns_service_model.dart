@@ -3,8 +3,8 @@ import 'package:spy_scanner/feature/models/base_model.dart';
 final class MdnsServiceModel extends BaseModel {
   const MdnsServiceModel({
     required super.id,
-    this.name = 'N/A',
-    this.type = 'N/A',
+    this.name,
+    this.type,
     this.port,
     this.addresses,
   });

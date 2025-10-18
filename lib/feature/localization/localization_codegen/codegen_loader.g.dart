@@ -107,8 +107,19 @@ class CodegenLoader extends AssetLoader{
       },
       "mdns_info_result": {
         "service_name": "Servis Adı: ",
-        "ip_addresses": "İP Adresleri: ",
+        "ip_addresses": null,
         "service_type": "Servis Tipi: "
+      }
+    },
+    "bluetooth_scan": {
+      "title": "Bluetooth Tarayıcı",
+      "scan_text": "Taramayı Başlat",
+      "scan_cancel_text": "Durdur",
+      "scanned_yet_text": "Henüz Tarama Sonuçu Yok",
+      "bluetooth_info_result": {
+        "name": "Ad: ",
+        "address": "Adres: ",
+        "rssi": "RSSI: {rssi} dBm "
       }
     }
   },
@@ -214,8 +225,19 @@ static const Map<String,dynamic> _en_US = {
       },
       "mdns_info_result": {
         "service_name": "Service Name: ",
-        "ip_addresses": "IP Addresses: ",
+        "ip_addresses": null,
         "service_type": "Service Type: "
+      }
+    },
+    "bluetooth_scan": {
+      "title": "Bluetooth Scanner",
+      "scan_text": "Scan",
+      "scan_cancel_text": "Cancel",
+      "scanned_yet_text": "No Scan Result Yet",
+      "bluetooth_info_result": {
+        "name": "Name: ",
+        "address": "Address: ",
+        "rssi": "RSSI: {rssi} dBm "
       }
     }
   },

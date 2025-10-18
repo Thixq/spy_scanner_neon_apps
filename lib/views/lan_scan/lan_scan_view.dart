@@ -21,9 +21,9 @@ part 'lan_scan_mixin.dart';
 part 'scan_type_enum.dart';
 part 'scan_result_model.dart';
 // view model
-part 'view_model/scan_view_model.dart';
-part 'view_model/scan_event.dart';
-part 'view_model/scan_state.dart';
+part 'view_model/lan_scan_view_model.dart';
+part 'view_model/lan_scan_event.dart';
+part 'view_model/lan_scan_state.dart';
 // widgets
 part 'widgets/scan_app_bar.dart';
 part 'widgets/lottie_player.dart';

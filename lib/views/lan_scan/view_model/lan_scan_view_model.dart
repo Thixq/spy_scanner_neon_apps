@@ -18,8 +18,6 @@ final class LanScanViewModel extends Bloc<_ScanlEvent, _ScanState> {
     _ScanEventStartScan event,
     Emitter<_ScanState> emit,
   ) async {
-    emit(_IdleScanState(items: [...state.items]));
-
     if (event.scanType == _ScanType.host) {
       await _scanHost(event, emit);
     } else if (event.scanType == _ScanType.mdns) {

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:spy_scanner/core/logging/custom_logger.dart';
 import 'package:spy_scanner/core/logging/error_handler.dart';
+import 'package:spy_scanner/feature/models/bluetooth_device_model.dart';
 
 /// A manager class to handle BLE operations such as scanning and monitoring Bluetooth status.
 /// This class encapsulates the functionality of the `flutter_reactive_ble` package,
@@ -31,18 +32,18 @@ final class BleManager {
   final FlutterReactiveBle _ble;
 
   final _scannedDevicesController =
-      StreamController<List<DiscoveredDevice>>.broadcast();
+      StreamController<List<BluetoothDeviceModel>>.broadcast();
   final _isScanningController = StreamController<bool>.broadcast();
 
   StreamSubscription<DiscoveredDevice>? _scanSubscription;
   StreamSubscription<BleStatus>? _statusSubscription;
 
-  final List<DiscoveredDevice> _internalDeviceList = [];
+  final List<BluetoothDeviceModel> _internalDeviceList = [];
   late BleStatus _currentStatus = BleStatus.unknown;
   bool _isScanning = false;
 
   Stream<BleStatus> get statusStream => _ble.statusStream;
-  Stream<List<DiscoveredDevice>> get scannedDevicesStream =>
+  Stream<List<BluetoothDeviceModel>> get scannedDevicesStream =>
       _scannedDevicesController.stream;
   Stream<bool> get isScanningStream => _isScanningController.stream;
 
@@ -80,9 +81,19 @@ final class BleManager {
                   (d) => d.id == device.id,
                 );
                 if (knownDeviceIndex >= 0) {
-                  _internalDeviceList[knownDeviceIndex] = device;
+                  _internalDeviceList[knownDeviceIndex] = BluetoothDeviceModel(
+                    id: device.id,
+                    name: device.name,
+                    rssi: device.rssi,
+                  );
                 } else {
-                  _internalDeviceList.add(device);
+                  _internalDeviceList.add(
+                    BluetoothDeviceModel(
+                      id: device.id,
+                      name: device.name,
+                      rssi: device.rssi,
+                    ),
+                  );
                 }
                 _scannedDevicesController.add(
                   List.unmodifiable(_internalDeviceList),
