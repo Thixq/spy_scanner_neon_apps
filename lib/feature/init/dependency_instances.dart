@@ -1,5 +1,5 @@
 import 'package:spy_scanner/feature/init/dependency_container.dart';
-import 'package:spy_scanner/feature/managers/ble_manager.dart';
+import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
 import 'package:spy_scanner/feature/services/payment_service.dart';
@@ -21,7 +21,7 @@ final class DependencyServices {
 final class DependencyManagers {
   const DependencyManagers._();
 
-  BleManager get ble => DependencyContainer.read<BleManager>();
+  BleScannerManager get ble => DependencyContainer.read<BleScannerManager>();
   HostScanManager get hostScanner =>
       DependencyContainer.read<HostScanManager>();
   ServiceDiscoveryManager get serviceDiscovery =>

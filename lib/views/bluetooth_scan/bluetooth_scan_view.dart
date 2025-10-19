@@ -12,7 +12,7 @@ import 'package:spy_scanner/core/logging/error_handler.dart';
 import 'package:spy_scanner/feature/constants/lottie_assets.dart';
 import 'package:spy_scanner/feature/init/dependency_instances.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
-import 'package:spy_scanner/feature/managers/ble_manager.dart';
+import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 
 part 'bluetooth_scan_mixin.dart';
 part 'device_result_model.dart';

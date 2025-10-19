@@ -2,7 +2,7 @@ import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pay/pay.dart';
 import 'package:spy_scanner/feature/constants/payment_assets.dart';
-import 'package:spy_scanner/feature/managers/ble_manager.dart';
+import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
 import 'package:spy_scanner/feature/services/payment_service.dart';
@@ -44,7 +44,9 @@ final class DependencyContainer {
 
   void _configureManager() {
     _getIt
-      ..registerSingleton<BleManager>(BleManager(ble: FlutterReactiveBle()))
+      ..registerSingleton<BleScannerManager>(
+        BleScannerManager(ble: FlutterReactiveBle()),
+      )
       ..registerSingleton<HostScanManager>(HostScanManager())
       ..registerSingleton<ServiceDiscoveryManager>(ServiceDiscoveryManager());
   }

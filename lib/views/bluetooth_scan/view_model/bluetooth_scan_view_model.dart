@@ -2,7 +2,7 @@ part of '../bluetooth_scan_view.dart';
 
 final class _BluetoothScanViewModel
     extends Bloc<_BluetoothScanEvent, _BluetoothScanState> {
-  _BluetoothScanViewModel({required BleManager bleManager})
+  _BluetoothScanViewModel({required BleScannerManager bleManager})
     : _bleManager = bleManager,
       super(const _IdleBluetoothScanState(items: [])) {
     on<_BluetoothScanEventStartScan>(
@@ -12,7 +12,7 @@ final class _BluetoothScanViewModel
       _stopScan,
     );
   }
-  final BleManager _bleManager;
+  final BleScannerManager _bleManager;
 
   FutureOr<void> _startScan(
     _BluetoothScanEventStartScan event,

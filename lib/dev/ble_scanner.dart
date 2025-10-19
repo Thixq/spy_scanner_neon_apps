@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
-import 'package:spy_scanner/feature/managers/ble_manager.dart';
+import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/models/bluetooth_device_model.dart'; // BleStatus enum'ı için
 
 void main() {
@@ -23,13 +23,13 @@ class BleScannerScreen extends StatefulWidget {
 class _BleScannerScreenState extends State<BleScannerScreen> {
   // BleManager'ın bir örneğini oluşturuyoruz.
   // 'late final' kullanarak initState'de atanacağını belirtiyoruz.
-  late final BleManager _bleManager;
+  late final BleScannerManager _bleManager;
 
   @override
   void initState() {
     super.initState();
     // Widget oluşturulduğunda manager'ı başlat.
-    _bleManager = BleManager(
+    _bleManager = BleScannerManager(
       ble: FlutterReactiveBle(),
     );
   }
@@ -73,14 +73,14 @@ class _BleScannerScreenState extends State<BleScannerScreen> {
       body: Column(
         children: [
           // Bluetooth durumunu gösteren alan
-          StreamBuilder<BleStatus>(
-            stream: _bleManager.statusStream,
+          StreamBuilder<bool>(
+            stream: _bleManager.isScanningStream,
             builder: (context, snapshot) {
               final status = snapshot.data ?? BleStatus.unknown;
               return Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  'Bluetooth Status: ${status.name.toUpperCase()}',
+                  'Bluetooth Status: $status',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               );

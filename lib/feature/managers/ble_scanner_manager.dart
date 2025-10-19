@@ -5,29 +5,20 @@ import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:spy_scanner/core/logging/custom_logger.dart';
 import 'package:spy_scanner/core/logging/error_handler.dart';
 import 'package:spy_scanner/feature/models/bluetooth_device_model.dart';
+// import 'bluetooth_status_monitor.dart'; // Bu sınıfı bu dosyaya import etmeniz gerekir
 
-/// A manager class to handle BLE operations such as scanning and monitoring Bluetooth status.
-/// This class encapsulates the functionality of the `flutter_reactive_ble` package,
-/// providing a cleaner interface for starting/stopping scans and listening to status changes.
-final class BleManager {
-  BleManager({required FlutterReactiveBle ble}) : _ble = ble {
+/// A manager class to handle BLE device scanning operations.
+final class BleScannerManager {
+  BleScannerManager({
+    required FlutterReactiveBle ble,
+  }) : _ble = ble {
     _isScanning = false;
     _isScanningController.add(_isScanning);
-
-    _statusSubscription = _ble.statusStream.listen((status) {
-      _logger.info('Bluetooth status changed: $status');
-      _currentStatus = status;
-
-      if (status != BleStatus.ready) {
-        _logger.warning('Bluetooth is not ready. Stopping scan if active.');
-        stopScan();
-      }
-    });
-    _logger.info('BleManager initialized and listening to BLE status.');
+    _logger.info('BleScannerManager initialized.');
   }
 
-  final _logger = CustomLogger('BleManager');
-  final _errorHandler = ErrorHandler('BleManager');
+  final _logger = CustomLogger('BleScannerManager');
+  final _errorHandler = ErrorHandler('BleScannerManager');
 
   final FlutterReactiveBle _ble;
 
@@ -36,28 +27,33 @@ final class BleManager {
   final _isScanningController = StreamController<bool>.broadcast();
 
   StreamSubscription<DiscoveredDevice>? _scanSubscription;
-  StreamSubscription<BleStatus>? _statusSubscription;
 
   final List<BluetoothDeviceModel> _internalDeviceList = [];
-  late BleStatus _currentStatus = BleStatus.unknown;
   bool _isScanning = false;
 
-  Stream<BleStatus> get statusStream => _ble.statusStream;
+  /// Gets the stream of discovered BLE devices.
   Stream<List<BluetoothDeviceModel>> get scannedDevicesStream =>
       _scannedDevicesController.stream;
+
+  /// Gets the stream indicating whether a scan is currently active.
   Stream<bool> get isScanningStream => _isScanningController.stream;
 
   /// Starts a scan for BLE devices.
-  Future<void> startScan() async {
+  ///
+  /// Note: The caller must ensure that the Bluetooth adapter is ready (BleStatus.ready).
+  Future<void> startScan({
+    BleStatus currentStatus = BleStatus.unknown,
+  }) async {
     if (_isScanning) {
       _logger.info('Scan is already in progress. Ignoring request.');
       return;
     }
-    if (_currentStatus != BleStatus.ready) {
+
+    // Harici durum kontrolü (Sınıf dışından bilgi alarak uyumluluk sağlar)
+    if (currentStatus != BleStatus.ready) {
       _logger.warning(
-        'Cannot start scan: Bluetooth is not ready (Status: $_currentStatus).',
+        'Cannot start scan: Bluetooth is not ready (Status: $currentStatus).',
       );
-      await stopScan();
       return;
     }
 
@@ -77,24 +73,23 @@ final class BleManager {
             )
             .listen(
               (device) {
+                // Cihaz listesini güncelleme
                 final knownDeviceIndex = _internalDeviceList.indexWhere(
                   (d) => d.id == device.id,
                 );
+                final newDevice = BluetoothDeviceModel(
+                  id: device.id,
+                  name: device.name,
+                  rssi: device.rssi,
+                );
+
                 if (knownDeviceIndex >= 0) {
-                  _internalDeviceList[knownDeviceIndex] = BluetoothDeviceModel(
-                    id: device.id,
-                    name: device.name,
-                    rssi: device.rssi,
-                  );
+                  _internalDeviceList[knownDeviceIndex] = newDevice;
                 } else {
-                  _internalDeviceList.add(
-                    BluetoothDeviceModel(
-                      id: device.id,
-                      name: device.name,
-                      rssi: device.rssi,
-                    ),
-                  );
+                  _internalDeviceList.add(newDevice);
                 }
+
+                // Unmodifiable list'i yayınla
                 _scannedDevicesController.add(
                   List.unmodifiable(_internalDeviceList),
                 );
@@ -106,12 +101,14 @@ final class BleManager {
                   error: error,
                   stackTrace: stackTrace,
                 );
+                // Stream hatasında taramayı durdur
                 stopScan();
               },
             );
       },
       errorMessage: 'Failed to initiate BLE scan',
       onError: (error, stackTrace) {
+        // startScan sırasında oluşan hata (örn. izin eksikliği)
         _isScanning = false;
         _isScanningController.add(false);
       },
@@ -134,10 +131,9 @@ final class BleManager {
 
   /// Releases all resources when the manager is no longer needed.
   void dispose() {
-    _statusSubscription?.cancel();
     _scanSubscription?.cancel();
     _scannedDevicesController.close();
     _isScanningController.close();
-    _logger.info('BleManager disposed.');
+    _logger.info('BleScannerManager disposed.');
   }
 }
