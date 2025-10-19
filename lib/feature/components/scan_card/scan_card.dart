@@ -101,7 +101,7 @@ class ScanCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: context.textTheme.titleLarge,
+          style: context.textTheme.titleMedium,
         ),
         if (subTitle != null) ...[
           Text(

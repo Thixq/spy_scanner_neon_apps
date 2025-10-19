@@ -14,8 +14,8 @@ final class _DeviceResultModel extends Equatable {
     String? title,
     String? subtitle,
     String? trailing,
-  }) : subtitle = '$_title$subtitle',
-       title = '$_subtitle$title',
+  }) : subtitle = '$_subtitle$subtitle',
+       title = '$_title$title',
        trailing = '${_trailing(trailing)} ';
   final String? title;
   final String? subtitle;

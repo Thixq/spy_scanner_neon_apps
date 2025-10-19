@@ -36,9 +36,9 @@ dependencies:
   # Network Utils
   network_info_plus: ^7.0.0
   network_tools: ^6.0.5
+  connectivity_plus: ^7.0.0
   dart_ping: ^9.0.1
   dart_ping_ios: ^4.0.2
-  # flutter_nsd: ^1.6.0
   nsd: ^4.0.3
 
   # Bluetooth

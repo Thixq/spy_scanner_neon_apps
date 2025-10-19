@@ -26,7 +26,7 @@ class _LottiePlayerState extends State<_LottiePlayer>
           await _controller.repeat(min: 0, max: 1).orCancel;
         } else {
           _controller.stop(canceled: false);
-          await _controller.animateTo(0);
+          await _controller.animateTo(1);
         }
       },
       errorMessage: 'Canceled animation',
