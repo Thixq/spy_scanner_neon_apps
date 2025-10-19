@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element_parameter, document_ignores
+
 part of '../home_view.dart';
 
 class _Scanners extends StatelessWidget {
@@ -6,12 +8,18 @@ class _Scanners extends StatelessWidget {
     required this.onBluetoothScanPressed,
     required this.onInfraredScanPressed,
     required this.scanners,
+    this.isBluetoothDisabled = true,
+    this.isInfraredDisabled = true,
+    this.isWifiDisabled = true,
   });
 
   final VoidCallback onWifiScanPressed;
   final VoidCallback onBluetoothScanPressed;
   final VoidCallback onInfraredScanPressed;
   final List<ScanCardModel> scanners;
+  final bool isWifiDisabled;
+  final bool isBluetoothDisabled;
+  final bool isInfraredDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,7 @@ class _Scanners extends StatelessWidget {
           Flexible(
             child: ScanCard(
               scanner: scanners[0],
-
+              isDisabled: isWifiDisabled,
               onButtonPressed: onWifiScanPressed,
             ),
           ),
@@ -35,6 +43,7 @@ class _Scanners extends StatelessWidget {
                 Flexible(
                   child: ScanCard(
                     scanner: scanners[1],
+                    isDisabled: isBluetoothDisabled,
                     onCardPressed: onBluetoothScanPressed,
                   ),
                 ),
@@ -44,6 +53,7 @@ class _Scanners extends StatelessWidget {
                     location: BannerLocation.topEnd,
                     child: ScanCard(
                       scanner: scanners[2],
+                      isDisabled: isInfraredDisabled,
                       onCardPressed: onInfraredScanPressed,
                     ),
                   ),

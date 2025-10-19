@@ -21,6 +21,8 @@ mixin _HomeMixin on State<HomeView> {
     ),
   ];
 
+  late final _HomeViewModel _viewModel;
+
   void _goLanScanView() {
     context.router.push(const LanScanRoute());
   }
@@ -39,5 +41,15 @@ mixin _HomeMixin on State<HomeView> {
         context.router.pop();
       },
     );
+  }
+
+  @override
+  void initState() {
+    _viewModel = _HomeViewModel(
+      bluetoothStatusMonitor: DependencyInstances.monitoring.bluetooth,
+      wifiStatusMonitor: DependencyInstances.monitoring.wifi,
+    );
+    _viewModel.init();
+    super.initState();
   }
 }

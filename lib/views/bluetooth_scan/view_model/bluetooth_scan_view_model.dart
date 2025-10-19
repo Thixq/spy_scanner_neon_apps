@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures, document_ignores
+
 part of '../bluetooth_scan_view.dart';
 
 final class _BluetoothScanViewModel
@@ -57,7 +59,6 @@ final class _BluetoothScanViewModel
   @override
   Future<void> close() {
     _bleScanner.dispose();
-    _bleStatusMonitor.dispose();
     _bleStatusSubscription?.cancel();
     return super.close();
   }

@@ -1,4 +1,4 @@
-// ignore_for_file: document_ignores
+// ignore_for_file: document_ignores, discarded_futures
 
 import 'dart:async';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
