@@ -22,13 +22,24 @@ class _LottiePlayerState extends State<_LottiePlayer>
   late final AnimationController _controller;
 
   Future<void> _isScannig(bool isScanning) async {
+    if (!mounted) return;
+
     await ErrorHandler('LottiePlayer').executeSafely(
       () async {
+        if (!mounted) return;
+
         if (isScanning) {
-          await _controller.repeat(reverse: true, min: 0, max: .6).orCancel;
+          if (_controller.isAnimating && !_controller.isCompleted) return;
+
+          await _controller.repeat(min: 0, max: 1).orCancel;
         } else {
-          _controller.stop(canceled: false);
-          await _controller.animateTo(1);
+          if (_controller.isAnimating) {
+            _controller.stop(canceled: false);
+          }
+
+          if (_controller.value < 1.0) {
+            await _controller.animateTo(1).orCancel;
+          }
         }
       },
       errorMessage: 'Canceled animation',
@@ -37,7 +48,9 @@ class _LottiePlayerState extends State<_LottiePlayer>
 
   @override
   void didUpdateWidget(covariant _LottiePlayer oldWidget) {
-    _isScannig(widget.isScanning);
+    if (oldWidget.isScanning != widget.isScanning) {
+      _isScannig(widget.isScanning);
+    }
     super.didUpdateWidget(oldWidget);
   }
 

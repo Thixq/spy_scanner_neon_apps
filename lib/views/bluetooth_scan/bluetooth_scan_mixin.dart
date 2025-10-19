@@ -29,7 +29,8 @@ mixin _BluetoothScanMixin on State<BluetoothScanView> {
   @override
   void initState() {
     _viewModel = _BluetoothScanViewModel(
-      bleManager: DependencyInstances.manager.ble,
+      bleScanner: DependencyInstances.manager.ble,
+      bleStatusMonitor: DependencyInstances.monitoring.bluetooth,
     );
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);

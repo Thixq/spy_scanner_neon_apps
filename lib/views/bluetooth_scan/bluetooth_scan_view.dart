@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:lottie/lottie.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
@@ -13,6 +14,7 @@ import 'package:spy_scanner/feature/constants/lottie_assets.dart';
 import 'package:spy_scanner/feature/init/dependency_instances.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
+import 'package:spy_scanner/feature/monitoring/bluetooth_status_monitor.dart';
 
 part 'bluetooth_scan_mixin.dart';
 part 'device_result_model.dart';

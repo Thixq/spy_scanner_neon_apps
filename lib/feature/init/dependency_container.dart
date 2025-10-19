@@ -1,10 +1,14 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:get_it/get_it.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 import 'package:pay/pay.dart';
 import 'package:spy_scanner/feature/constants/payment_assets.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
+import 'package:spy_scanner/feature/monitoring/bluetooth_status_monitor.dart';
+import 'package:spy_scanner/feature/monitoring/wifi_status_monitor.dart';
 import 'package:spy_scanner/feature/services/payment_service.dart';
 
 final class DependencyContainer {
@@ -12,6 +16,7 @@ final class DependencyContainer {
 
   Future<void> configure() async {
     _configureService();
+    _configureMonitor();
     _configureManager();
     await _getIt.allReady();
   }
@@ -49,6 +54,19 @@ final class DependencyContainer {
       )
       ..registerSingleton<HostScanManager>(HostScanManager())
       ..registerSingleton<ServiceDiscoveryManager>(ServiceDiscoveryManager());
+  }
+
+  void _configureMonitor() {
+    _getIt
+      ..registerSingleton<BluetoothStatusMonitor>(
+        BluetoothStatusMonitor(ble: FlutterReactiveBle()),
+      )
+      ..registerSingleton<WifiStatusMonitor>(
+        WifiStatusMonitor(
+          connectivity: Connectivity(),
+          networkInfo: NetworkInfo(),
+        ),
+      );
   }
 
   static T read<T extends Object>() => _getIt<T>();
