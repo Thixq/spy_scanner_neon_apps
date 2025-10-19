@@ -124,11 +124,11 @@ class CodegenLoader extends AssetLoader{
     }
   },
   "components": {
-    "lan_info_card": {
+    "status_info_card": {
       "ip_address": "IP Adresi",
-      "connection": "Bağlantı",
-      "not_connection": "Bağlantı Yok",
-      "wifi": "Wi-Fi: "
+      "bluetooth": "Bluetooth",
+      "ble_status": "Aktif",
+      "not_connection": "Bağlantı Yok"
     }
   }
 };
@@ -242,11 +242,11 @@ static const Map<String,dynamic> _en_US = {
     }
   },
   "components": {
-    "lan_info_card": {
+    "status_info_card": {
       "ip_address": "IP Address",
-      "connection": "Connection",
-      "not_connection": "Not connected",
-      "wifi": "Wi-Fi: "
+      "bluetooth": "Bluetooth",
+      "ble_status": "Available",
+      "not_connection": "Not connected"
     }
   }
 };

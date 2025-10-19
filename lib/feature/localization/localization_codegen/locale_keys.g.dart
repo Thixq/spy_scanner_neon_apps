@@ -87,11 +87,11 @@ abstract class  LocaleKeys {
   static const views_bluetooth_scan_bluetooth_info_result = 'views.bluetooth_scan.bluetooth_info_result';
   static const views_bluetooth_scan = 'views.bluetooth_scan';
   static const views = 'views';
-  static const components_lan_info_card_ip_address = 'components.lan_info_card.ip_address';
-  static const components_lan_info_card_connection = 'components.lan_info_card.connection';
-  static const components_lan_info_card_not_connection = 'components.lan_info_card.not_connection';
-  static const components_lan_info_card_wifi = 'components.lan_info_card.wifi';
-  static const components_lan_info_card = 'components.lan_info_card';
+  static const components_status_info_card_ip_address = 'components.status_info_card.ip_address';
+  static const components_status_info_card_bluetooth = 'components.status_info_card.bluetooth';
+  static const components_status_info_card_ble_status = 'components.status_info_card.ble_status';
+  static const components_status_info_card_not_connection = 'components.status_info_card.not_connection';
+  static const components_status_info_card = 'components.status_info_card';
   static const components = 'components';
 
 }

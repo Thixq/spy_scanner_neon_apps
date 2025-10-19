@@ -4,25 +4,27 @@ import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
 
-final String _ipAddressTitle = LocaleKeys.components_lan_info_card_ip_address
+final String _ipAddressTitle = LocaleKeys.components_status_info_card_ip_address
     .tr();
-final String _connectionTitle = LocaleKeys.components_lan_info_card_connection
+final String _connectionTitle = LocaleKeys.components_status_info_card_bluetooth
     .tr();
-final String _notConnection = LocaleKeys.components_lan_info_card_not_connection
+final String _bleStatus = LocaleKeys.components_status_info_card_ble_status
     .tr();
-final String _wifi = LocaleKeys.components_lan_info_card_wifi.tr();
+final String _notConnection = LocaleKeys
+    .components_status_info_card_not_connection
+    .tr();
 
 /// A widget that displays a card with IP address and connection information.
-class LanInfoCard extends StatelessWidget {
-  const LanInfoCard({
+class StatusInfoCard extends StatelessWidget {
+  const StatusInfoCard({
     this.ipAddress,
-    this.connection,
+    this.bleStatus = false,
     this.onPressed,
     super.key,
   });
 
   final String? ipAddress;
-  final String? connection;
+  final bool? bleStatus;
   final VoidCallback? onPressed;
 
   @override
@@ -49,9 +51,9 @@ class LanInfoCard extends StatelessWidget {
               ),
               _buildContentInfo(
                 context,
-                icon: Icons.router,
+                icon: Icons.bluetooth_connected,
                 title: _connectionTitle,
-                subtitle: '$_wifi${connection ?? _notConnection}',
+                subtitle: bleStatus! ? _bleStatus : _notConnection,
               ),
             ],
           ),

@@ -12,7 +12,7 @@ import 'package:spy_scanner/feature/bottom_sheet_dialog/paywall_bottom_sheet/pay
 import 'package:spy_scanner/feature/bottom_sheet_dialog/text_bottom_sheet.dart';
 import 'package:spy_scanner/feature/components/icon_text_card.dart';
 import 'package:spy_scanner/feature/components/info_card.dart';
-import 'package:spy_scanner/feature/components/lan_info_card.dart';
+import 'package:spy_scanner/feature/components/status_info_card.dart';
 import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
 import 'package:spy_scanner/feature/init/dependency_instances.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
@@ -86,21 +86,23 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
 
   Widget _buildLanInfo() {
     String? localIp;
-    String? connection;
+    bool? bleStatus;
     return BlocBuilder<_HomeViewModel, _HomeState>(
-      buildWhen: (previous, current) => previous.wifiState != current.wifiState,
       builder: (context, state) {
         if (state.wifiState is _WifiEnabled) {
           final wifiState = state.wifiState! as _WifiEnabled;
           localIp = wifiState.wifiInfo.localIp;
-          connection = wifiState.wifiInfo.wifiName;
         } else {
           localIp = null;
-          connection = null;
         }
-        return LanInfoCard(
+        if (state.bluetoothState is _BluetoothEnabled) {
+          bleStatus = true;
+        } else {
+          bleStatus = false;
+        }
+        return StatusInfoCard(
           ipAddress: localIp,
-          connection: connection,
+          bleStatus: bleStatus,
         );
       },
     );
