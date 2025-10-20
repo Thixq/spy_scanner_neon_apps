@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
-import 'package:spy_scanner/feature/bottom_sheet_dialog/paywall_bottom_sheet/paywall_bottom_sheet.dart';
+import 'package:spy_scanner/feature/bottom_sheet_dialog/bottom_sheets/paywall_bottom_sheet/paywall_bottom_sheet.dart';
 import 'package:spy_scanner/feature/components/icon_text_card.dart';
 import 'package:spy_scanner/feature/components/info_card.dart';
 import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
@@ -44,6 +44,7 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
       child: Scaffold(
         appBar: _HomeAppBar(
           onPremiumPressed: _paywall,
+          onSettingsPressed: _goSettings,
         ),
         body: SafeArea(
           child: Padding(

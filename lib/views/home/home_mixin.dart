@@ -23,6 +23,10 @@ mixin _HomeMixin on State<HomeView> {
 
   late final _HomeViewModel _viewModel;
 
+  void _goSettings() {
+    context.router.push(const SettingsRoute());
+  }
+
   void _goLanScanView() {
     context.router.push(const LanScanRoute());
   }

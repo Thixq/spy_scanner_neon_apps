@@ -18,6 +18,7 @@ final class AppRouting extends RootStackRouter {
     AutoRoute(
       page: HomeRoute.page,
     ),
+    AutoRoute(page: SettingsRoute.page),
     AutoRoute(page: LanScanRoute.page),
     AutoRoute(page: BluetoothScanRoute.page),
   ];

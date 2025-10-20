@@ -1,9 +1,13 @@
 part of '../home_view.dart';
 
 class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _HomeAppBar({required this.onPremiumPressed});
+  const _HomeAppBar({
+    required this.onPremiumPressed,
+    required this.onSettingsPressed,
+  });
 
   final VoidCallback onPremiumPressed;
+  final VoidCallback onSettingsPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.workspace_premium),
         ),
         IconButton(
-          onPressed: onPremiumPressed,
+          onPressed: onSettingsPressed,
           icon: const Icon(Icons.settings),
         ),
       ],
