@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/init/dependency_container.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
@@ -20,6 +21,9 @@ final class DependencyServices {
   const DependencyServices._();
 
   PaymentService get payment => DependencyContainer.read<PaymentService>();
+
+  SharedPreferences get sharedPreferences =>
+      DependencyContainer.read<SharedPreferences>();
 }
 
 final class DependencyMonitoring {

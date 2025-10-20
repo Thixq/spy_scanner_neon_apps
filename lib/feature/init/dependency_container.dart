@@ -3,6 +3,7 @@ import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:get_it/get_it.dart';
 import 'package:network_info_plus/network_info_plus.dart';
 import 'package:pay/pay.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/constants/payment_assets.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
@@ -27,24 +28,28 @@ final class DependencyContainer {
   static final GetIt _getIt = GetIt.instance;
 
   void _configureService() {
-    _getIt.registerSingletonAsync<PaymentService>(
-      () async {
-        final googleConfig = await PaymentConfiguration.fromAsset(
-          PaymentAssets.devGooglePlay,
-        );
+    _getIt
+      ..registerSingletonAsync<PaymentService>(
+        () async {
+          final googleConfig = await PaymentConfiguration.fromAsset(
+            PaymentAssets.devGooglePlay,
+          );
 
-        final appleConfig = await PaymentConfiguration.fromAsset(
-          PaymentAssets.devAppleStore,
-        );
+          final appleConfig = await PaymentConfiguration.fromAsset(
+            PaymentAssets.devAppleStore,
+          );
 
-        return PaymentService(
-          Pay({
-            PayProvider.google_pay: googleConfig,
-            PayProvider.apple_pay: appleConfig,
-          }),
-        );
-      },
-    );
+          return PaymentService(
+            Pay({
+              PayProvider.google_pay: googleConfig,
+              PayProvider.apple_pay: appleConfig,
+            }),
+          );
+        },
+      )
+      ..registerSingletonAsync<SharedPreferences>(
+        () async => SharedPreferences.getInstance(),
+      );
   }
 
   void _configureManager() {

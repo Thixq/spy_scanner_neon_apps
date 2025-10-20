@@ -30,6 +30,13 @@ mixin _OnboardMixin on State<OnboardView> {
     super.initState();
   }
 
+  Future<void> _onCompletedOnboard() async {
+    await DependencyInstances.service.sharedPreferences.setBool(
+      'isFirstLaunch',
+      true,
+    );
+  }
+
   void _pageListener() {
     final page = _pageController.page?.round() ?? 0;
     if (page != currentPage) {
@@ -48,7 +55,8 @@ mixin _OnboardMixin on State<OnboardView> {
 
   Future<void> _onNext() async {
     if (isLastPage) {
-      await context.router.replace(const HomeRoute());
+      await _onCompletedOnboard();
+      if (mounted) await context.router.replace(const HomeRoute());
     } else {
       await _pageController.nextPage(
         duration: const Duration(milliseconds: 500),
