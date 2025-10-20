@@ -9,11 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/feature/bottom_sheet_dialog/paywall_bottom_sheet/paywall_bottom_sheet.dart';
-import 'package:spy_scanner/feature/bottom_sheet_dialog/text_bottom_sheet.dart';
 import 'package:spy_scanner/feature/components/icon_text_card.dart';
 import 'package:spy_scanner/feature/components/info_card.dart';
-import 'package:spy_scanner/feature/components/status_info_card.dart';
 import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
+import 'package:spy_scanner/feature/components/status_info_card.dart';
 import 'package:spy_scanner/feature/init/dependency_instances.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
 import 'package:spy_scanner/feature/models/wifi_info_model.dart';
@@ -22,12 +21,12 @@ import 'package:spy_scanner/feature/monitoring/wifi_status_monitor.dart';
 import 'package:spy_scanner/feature/routing/app_routing.gr.dart';
 
 part 'home_mixin.dart';
-part 'view_model/home_view_model.dart';
 part 'view_model/home_state.dart';
-part 'widgets/home_app_bar.dart';
-part 'widgets/home_scanners.dart';
-part 'widgets/home_info_card.dart';
+part 'view_model/home_view_model.dart';
 part 'widgets/home_actions.dart';
+part 'widgets/home_app_bar.dart';
+part 'widgets/home_info_card.dart';
+part 'widgets/home_scanners.dart';
 
 @RoutePage()
 class HomeView extends StatefulWidget {
@@ -55,12 +54,6 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
                 _buildLanInfo(),
                 _buildScanners(),
                 const _HomeInfoCard(),
-                _HomeActions(
-                  tabOneonPressed: () {},
-                  tabTwoonPressed: () async {
-                    await TextBottomSheet.show(context);
-                  },
-                ),
               ],
             ),
           ),

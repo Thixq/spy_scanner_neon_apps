@@ -13,7 +13,8 @@ final class AppRouting extends RootStackRouter {
   RouteType get defaultRouteType => const RouteType.adaptive();
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(initial: true, page: OnboardRoute.page),
+    AutoRoute(initial: true, page: SplashRoute.page),
+    AutoRoute(page: OnboardRoute.page),
     AutoRoute(
       page: HomeRoute.page,
     ),

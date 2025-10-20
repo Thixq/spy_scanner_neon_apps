@@ -14,6 +14,10 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: onPremiumPressed,
           icon: const Icon(Icons.workspace_premium),
         ),
+        IconButton(
+          onPressed: onPremiumPressed,
+          icon: const Icon(Icons.settings),
+        ),
       ],
     );
   }
