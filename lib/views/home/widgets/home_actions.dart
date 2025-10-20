@@ -19,14 +19,14 @@ class _HomeActions extends StatelessWidget {
       children: [
         Flexible(
           child: IconTextCard(
-            icon: Icons.settings,
+            icon: Icons.info,
             title: _tabsOne,
             onPressed: tabOneonPressed,
           ),
         ),
         Flexible(
           child: IconTextCard(
-            icon: Icons.privacy_tip,
+            icon: Icons.rate_review,
             title: _tabsTwo,
             onPressed: tabTwoonPressed,
           ),

@@ -24,7 +24,8 @@ class CodegenLoader extends AssetLoader{
     "loading": "Yükleniyor",
     "next": "İleri",
     "previous": "Geri",
-    "done": "Bitti"
+    "done": "Bitti",
+    "comming_soon": "Yakında"
   },
   "paywall": {
     "title": "Spy Scanner Premium'u Deneyin!!",
@@ -69,8 +70,8 @@ class CodegenLoader extends AssetLoader{
     },
     "home": {
       "tabs": {
-        "tab_one": "Ayarlar",
-        "tab_two": "Gizlilik Potikası"
+        "tab_one": "SSS",
+        "tab_two": "Geri Bildirim"
       },
       "scanners": {
         "scanner_one": {
@@ -142,7 +143,8 @@ static const Map<String,dynamic> _en_US = {
     "loading": "Loading",
     "next": "Next",
     "previous": "Previous",
-    "done": "Done"
+    "done": "Done",
+    "comming_soon": "Comming Soon"
   },
   "privacy_policy": {
     "title": "Privacy Policy",
@@ -187,8 +189,8 @@ static const Map<String,dynamic> _en_US = {
     },
     "home": {
       "tabs": {
-        "tab_one": "Settings",
-        "tab_two": "Privacy Policy"
+        "tab_one": "FQA",
+        "tab_two": "Feedback"
       },
       "scanners": {
         "scanner_one": {

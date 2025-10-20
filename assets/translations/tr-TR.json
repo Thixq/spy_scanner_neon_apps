@@ -8,7 +8,8 @@
         "loading": "Yükleniyor",
         "next": "İleri",
         "previous": "Geri",
-        "done": "Bitti"
+        "done": "Bitti",
+        "comming_soon":"Yakında"
     },
     "paywall": {
         "title": "Spy Scanner Premium'u Deneyin!!",
@@ -53,8 +54,8 @@
         },
         "home": {
             "tabs": {
-                "tab_one": "Ayarlar",
-                "tab_two": "Gizlilik Potikası"
+                "tab_one": "SSS",
+                "tab_two": "Geri Bildirim"
             },
             "scanners": {
                 "scanner_one": {

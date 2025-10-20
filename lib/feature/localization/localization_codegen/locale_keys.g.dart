@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const generic_next = 'generic.next';
   static const generic_previous = 'generic.previous';
   static const generic_done = 'generic.done';
+  static const generic_comming_soon = 'generic.comming_soon';
   static const generic = 'generic';
   static const paywall_title = 'paywall.title';
   static const paywall_offer_offer_one = 'paywall.offer.offer_one';

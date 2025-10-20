@@ -81,6 +81,8 @@ class InfoCard extends StatelessWidget {
           Text(
             subTitle,
             style: context.textTheme.bodySmall,
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ],

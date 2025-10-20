@@ -54,6 +54,10 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
                 _buildLanInfo(),
                 _buildScanners(),
                 const _HomeInfoCard(),
+                _HomeActions(
+                  tabOneonPressed: () {},
+                  tabTwoonPressed: () {},
+                ),
               ],
             ),
           ),

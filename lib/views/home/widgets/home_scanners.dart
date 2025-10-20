@@ -2,6 +2,8 @@
 
 part of '../home_view.dart';
 
+final String _commoingSoon = LocaleKeys.generic_comming_soon.tr();
+
 class _Scanners extends StatelessWidget {
   const _Scanners({
     required this.onWifiScanPressed,
@@ -24,6 +26,7 @@ class _Scanners extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
+      flex: 5,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: AppSizes.medium,
@@ -48,13 +51,15 @@ class _Scanners extends StatelessWidget {
                   ),
                 ),
                 Flexible(
-                  child: Banner(
-                    message: 'Premium',
-                    location: BannerLocation.topEnd,
-                    child: ScanCard(
-                      scanner: scanners[2],
-                      isDisabled: isInfraredDisabled,
-                      onCardPressed: onInfraredScanPressed,
+                  child: ClipRRect(
+                    child: Banner(
+                      message: _commoingSoon,
+                      location: BannerLocation.topEnd,
+                      child: ScanCard(
+                        scanner: scanners[2],
+                        isDisabled: isInfraredDisabled,
+                        onCardPressed: onInfraredScanPressed,
+                      ),
                     ),
                   ),
                 ),
