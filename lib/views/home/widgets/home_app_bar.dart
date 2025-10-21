@@ -1,5 +1,7 @@
 part of '../home_view.dart';
 
+final String _appName = LocaleKeys.generic_app_name.tr();
+
 class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const _HomeAppBar({
     required this.onPremiumPressed,
@@ -12,7 +14,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Spy Scanner'),
+      title: Text(_appName),
       actions: [
         IconButton(
           onPressed: onPremiumPressed,
