@@ -14,6 +14,7 @@ mixin _ScanMixin on State<LanScanView> {
     _viewModel = LanScanViewModel(
       discoveryManager: DependencyInstances.manager.serviceDiscovery,
       hostScanManager: DependencyInstances.manager.hostScanner,
+      hostSaveManager: DependencyInstances.manager.hostSaveManager,
     );
     super.initState();
   }
@@ -23,6 +24,10 @@ mixin _ScanMixin on State<LanScanView> {
     _scrollController.dispose();
     unawaited(_viewModel.close());
     super.dispose();
+  }
+
+  void _saveHost() {
+    _viewModel.add(_ScanSave());
   }
 
   void _onScroll() {

@@ -17,3 +17,5 @@ class _ScanEventStopScan extends _ScanlEvent {
 
   final _ScanType scanType;
 }
+
+class _ScanSave extends _ScanlEvent {}

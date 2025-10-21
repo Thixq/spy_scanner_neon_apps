@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/init/dependency_container.dart';
 import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
+import 'package:spy_scanner/feature/managers/firebase_host_save_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
+import 'package:spy_scanner/feature/managers/profile_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
 import 'package:spy_scanner/feature/monitoring/bluetooth_status_monitor.dart';
 import 'package:spy_scanner/feature/monitoring/wifi_status_monitor.dart';
@@ -25,6 +29,10 @@ final class DependencyServices {
 
   SharedPreferences get sharedPreferences =>
       DependencyContainer.read<SharedPreferences>();
+
+  FirebaseAuth get auth => DependencyContainer.read<FirebaseAuth>();
+  FirebaseFirestore get firestore =>
+      DependencyContainer.read<FirebaseFirestore>();
 }
 
 final class DependencyMonitoring {
@@ -44,4 +52,8 @@ final class DependencyManagers {
   ServiceDiscoveryManager get serviceDiscovery =>
       DependencyContainer.read<ServiceDiscoveryManager>();
   AccountManager get account => DependencyContainer.read<AccountManager>();
+  ProfileManager get profile => DependencyContainer.read<ProfileManager>();
+
+  FirebaseHostSaveManager get hostSaveManager =>
+      DependencyContainer.read<FirebaseHostSaveManager>();
 }

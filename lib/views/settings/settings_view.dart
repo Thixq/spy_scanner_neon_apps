@@ -4,6 +4,10 @@ import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/feature/components/menu_card/menu_card_model.dart';
 import 'package:spy_scanner/feature/components/menu_card/menu_card_viewer.dart';
 import 'package:spy_scanner/feature/components/profile_card.dart';
+import 'package:spy_scanner/feature/init/dependency_instances.dart';
+import 'package:spy_scanner/feature/managers/profile_manager.dart';
+
+part 'settings_mixin.dart';
 
 @RoutePage()
 class SettingsView extends StatefulWidget {
@@ -13,7 +17,7 @@ class SettingsView extends StatefulWidget {
   State<SettingsView> createState() => _SettingsViewState();
 }
 
-class _SettingsViewState extends State<SettingsView> {
+class _SettingsViewState extends State<SettingsView> with _SettingsMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +29,8 @@ class _SettingsViewState extends State<SettingsView> {
         child: Column(
           spacing: AppSizes.extraLarge,
           children: [
-            const ProfileCard(
-              uuid: 'blabla blabla',
+            ProfileCard(
+              uuid: _profileManager.currentUser?.uid ?? '',
             ),
             Flexible(
               child: MenuCardViewer(
@@ -50,11 +54,7 @@ class _SettingsViewState extends State<SettingsView> {
                     title: 'Profile',
                     routes: [
                       MenuRoute(
-                        title: 'Şifre değiştir',
-                        onPressed: () {},
-                      ),
-                      MenuRoute(
-                        title: 'Çıkış yap',
+                        title: 'Profili Sil',
                         onPressed: () {},
                       ),
                     ],

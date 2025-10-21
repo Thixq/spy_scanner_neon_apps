@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:get_it/get_it.dart';
 import 'package:network_info_plus/network_info_plus.dart';
@@ -7,7 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/constants/payment_assets.dart';
 import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
+import 'package:spy_scanner/feature/managers/firebase_host_save_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
+import 'package:spy_scanner/feature/managers/profile_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
 import 'package:spy_scanner/feature/monitoring/bluetooth_status_monitor.dart';
 import 'package:spy_scanner/feature/monitoring/wifi_status_monitor.dart';
@@ -50,7 +54,9 @@ final class DependencyContainer {
       )
       ..registerSingletonAsync<SharedPreferences>(
         () async => SharedPreferences.getInstance(),
-      );
+      )
+      ..registerSingleton<FirebaseAuth>(FirebaseAuth.instance)
+      ..registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
   }
 
   void _configureManager() {
@@ -64,6 +70,15 @@ final class DependencyContainer {
         () async =>
             AccountManager(preferences: _getIt.get<SharedPreferences>()),
         dependsOn: [SharedPreferences],
+      )
+      ..registerSingleton<ProfileManager>(
+        ProfileManager(
+          auth: _getIt.get<FirebaseAuth>(),
+          firestore: _getIt.get<FirebaseFirestore>(),
+        ),
+      )
+      ..registerSingleton<FirebaseHostSaveManager>(
+        FirebaseHostSaveManager(firestore: _getIt.get<FirebaseFirestore>()),
       );
   }
 
