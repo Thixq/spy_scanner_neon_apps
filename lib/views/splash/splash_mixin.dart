@@ -14,7 +14,7 @@ mixin _SplashMixin on State<SplashView> {
 
   @override
   void initState() {
-    _isfirstLaunch();
+    unawaited(_isfirstLaunch());
     super.initState();
   }
 }
