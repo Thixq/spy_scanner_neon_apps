@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
-import 'package:spy_scanner/core/extension/context_theme.dart';
 import 'package:spy_scanner/feature/components/menu_card/menu_card_model.dart';
 import 'package:spy_scanner/feature/components/menu_card/menu_card_viewer.dart';
 import 'package:spy_scanner/feature/components/profile_card.dart';
@@ -27,7 +25,9 @@ class _SettingsViewState extends State<SettingsView> {
         child: Column(
           spacing: AppSizes.extraLarge,
           children: [
-            const ProfileCard(),
+            const ProfileCard(
+              uuid: 'blabla blabla',
+            ),
             Flexible(
               child: MenuCardViewer(
                 separatorBuilder: (context, index) =>

@@ -47,6 +47,10 @@ mixin _HomeMixin on State<HomeView> {
     );
   }
 
+  void _onFeedBack() {
+    FeedbackDialog.show(context);
+  }
+
   @override
   void initState() {
     _viewModel = _HomeViewModel(

@@ -4,7 +4,8 @@ import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
 
 class ProfileCard extends StatelessWidget {
-  const ProfileCard({super.key});
+  const ProfileCard({required this.uuid, super.key});
+  final String uuid;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class ProfileCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '542d877d-d919',
+                      uuid,
                       style: context.textTheme.bodyLarge?.copyWith(
                         color: context.colorScheme.onSurfaceVariant,
                       ),

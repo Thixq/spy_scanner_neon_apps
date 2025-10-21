@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/feature/bottom_sheet_dialog/bottom_sheets/paywall_bottom_sheet/paywall_bottom_sheet.dart';
+import 'package:spy_scanner/feature/bottom_sheet_dialog/dialog/feedback_dialog.dart';
 import 'package:spy_scanner/feature/components/icon_text_card.dart';
 import 'package:spy_scanner/feature/components/info_card.dart';
 import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
@@ -57,7 +58,7 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
                 const _HomeInfoCard(),
                 _HomeActions(
                   tabOneonPressed: () {},
-                  tabTwoonPressed: () {},
+                  tabTwoonPressed: _onFeedBack,
                 ),
               ],
             ),
