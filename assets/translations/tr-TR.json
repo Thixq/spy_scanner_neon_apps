@@ -116,5 +116,13 @@
             "ble_status": "Aktif",
             "not_connection":"Bağlantı Yok"
         }
+    },
+    "dialogs":{
+        "feedback_dialog":{
+            "title":"Geri Bildirim",
+            "description":"Geri bildirimizini bekliyoruz.",
+            "cancel_text":"Iptal",
+            "send_text":"Geri Bildirim Yap"
+        }
     }
 }

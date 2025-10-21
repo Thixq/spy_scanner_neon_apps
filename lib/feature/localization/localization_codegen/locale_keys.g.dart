@@ -94,5 +94,11 @@ abstract class  LocaleKeys {
   static const components_status_info_card_not_connection = 'components.status_info_card.not_connection';
   static const components_status_info_card = 'components.status_info_card';
   static const components = 'components';
+  static const dialogs_feedback_dialog_title = 'dialogs.feedback_dialog.title';
+  static const dialogs_feedback_dialog_description = 'dialogs.feedback_dialog.description';
+  static const dialogs_feedback_dialog_cancel_text = 'dialogs.feedback_dialog.cancel_text';
+  static const dialogs_feedback_dialog_send_text = 'dialogs.feedback_dialog.send_text';
+  static const dialogs_feedback_dialog = 'dialogs.feedback_dialog';
+  static const dialogs = 'dialogs';
 
 }

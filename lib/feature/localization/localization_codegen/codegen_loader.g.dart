@@ -131,6 +131,14 @@ class CodegenLoader extends AssetLoader{
       "ble_status": "Aktif",
       "not_connection": "Bağlantı Yok"
     }
+  },
+  "dialogs": {
+    "feedback_dialog": {
+      "title": "Geri Bildirim",
+      "description": "Geri bildirimizini bekliyoruz.",
+      "cancel_text": "Iptal",
+      "send_text": "Geri Bildirim Yap"
+    }
   }
 };
 static const Map<String,dynamic> _en_US = {
@@ -249,6 +257,14 @@ static const Map<String,dynamic> _en_US = {
       "bluetooth": "Bluetooth",
       "ble_status": "Available",
       "not_connection": "Not connected"
+    }
+  },
+  "dialogs": {
+    "feedback_dialog": {
+      "title": "Feedback",
+      "description": "We are waiting for your feedback.",
+      "cancel_text": "Cancel",
+      "send_text": "Send Feedback"
     }
   }
 };

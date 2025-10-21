@@ -116,5 +116,14 @@
             "ble_status": "Available",
             "not_connection":"Not connected"
         }
+    },
+    "dialogs":{
+        "feedback_dialog":{
+            "title":"Feedback",
+            "description":"We are waiting for your feedback.",
+            "cancel_text":"Cancel",
+            "send_text":"Send Feedback"
+        }
     }
+    
 }
