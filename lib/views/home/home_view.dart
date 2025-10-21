@@ -16,6 +16,7 @@ import 'package:spy_scanner/feature/components/scan_card/scan_card.dart';
 import 'package:spy_scanner/feature/components/status_info_card.dart';
 import 'package:spy_scanner/feature/init/dependency_instances.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
+import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/models/wifi_info_model.dart';
 import 'package:spy_scanner/feature/monitoring/bluetooth_status_monitor.dart';
 import 'package:spy_scanner/feature/monitoring/wifi_status_monitor.dart';
@@ -72,6 +73,8 @@ class _HomeViewState extends State<HomeView> with _HomeMixin {
     return BlocBuilder<_HomeViewModel, _HomeState>(
       builder: (context, state) {
         return _Scanners(
+          isPremium: state.isPremiumActive,
+          onPremiumActionPressed: _paywall,
           scanners: _scanners,
           onWifiScanPressed: _goLanScanView,
           onBluetoothScanPressed: _goBluetoothScanView,

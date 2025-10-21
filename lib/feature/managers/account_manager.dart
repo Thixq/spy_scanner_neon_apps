@@ -6,19 +6,24 @@ const String _isPremiumKey = 'isPremium';
 final class AccountManager {
   AccountManager({required SharedPreferences preferences})
     : _preferences = preferences {
-    _isPremiumController.add(preferences.getBool(_isPremiumKey) ?? false);
+    _currentValue = preferences.getBool(_isPremiumKey) ?? false;
   }
 
+  late bool _currentValue;
   final StreamController<bool> _isPremiumController =
       StreamController<bool>.broadcast();
 
-  Stream<bool> get isPremiumStream => _isPremiumController.stream;
+  Stream<bool> get isPremiumStream async* {
+    yield _currentValue;
+    yield* _isPremiumController.stream;
+  }
+
   bool get isPremiumSnapshot => _preferences.getBool(_isPremiumKey) ?? false;
   final SharedPreferences _preferences;
 
   Future<void> addPremium() async {
-    await _preferences.setBool(_isPremiumKey, true);
-    _isPremiumController.add(true);
+    final result = await _preferences.setBool(_isPremiumKey, true);
+    if (result) _isPremiumController.add(true);
   }
 
   Future<void> removePremium() async {

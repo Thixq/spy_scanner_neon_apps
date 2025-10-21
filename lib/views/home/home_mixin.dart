@@ -38,10 +38,12 @@ mixin _HomeMixin on State<HomeView> {
   Future<void> _paywall() async {
     await PaywallBottomSheet.show(
       context,
-      onLifetimePressed: (payResult) {
+      onMonthlyPressed: (payResult) async {
+        await _viewModel.addPremium();
         context.router.pop();
       },
-      onMonthlyPressed: (payResult) {
+      onLifetimePressed: (payResult) async {
+        await _viewModel.addPremium();
         context.router.pop();
       },
     );
@@ -56,6 +58,7 @@ mixin _HomeMixin on State<HomeView> {
     _viewModel = _HomeViewModel(
       bluetoothStatusMonitor: DependencyInstances.monitoring.bluetooth,
       wifiStatusMonitor: DependencyInstances.monitoring.wifi,
+      accountManager: DependencyInstances.manager.account,
     );
     _viewModel.init();
     super.initState();

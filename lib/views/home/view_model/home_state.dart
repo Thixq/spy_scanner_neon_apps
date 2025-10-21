@@ -1,19 +1,26 @@
 part of '../home_view.dart';
 
 final class _HomeState extends Equatable {
-  const _HomeState({required this.wifiState, required this.bluetoothState});
+  const _HomeState({
+    required this.wifiState,
+    required this.bluetoothState,
+    this.isPremiumActive = false,
+  });
   final _WifiState? wifiState;
   final _BluetoothState? bluetoothState;
+  final bool isPremiumActive;
   @override
-  List<Object?> get props => [wifiState, bluetoothState];
+  List<Object?> get props => [wifiState, bluetoothState, isPremiumActive];
 
   _HomeState copyWith({
     _WifiState? wifiState,
     _BluetoothState? bluetoothState,
+    bool? isPremiumActive,
   }) {
     return _HomeState(
       wifiState: wifiState ?? this.wifiState,
       bluetoothState: bluetoothState ?? this.bluetoothState,
+      isPremiumActive: isPremiumActive ?? this.isPremiumActive,
     );
   }
 }

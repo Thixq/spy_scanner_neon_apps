@@ -3,6 +3,7 @@
 part of '../home_view.dart';
 
 final String _commoingSoon = LocaleKeys.generic_comming_soon.tr();
+final String _premium = LocaleKeys.generic_premium_text.tr();
 
 class _Scanners extends StatelessWidget {
   const _Scanners({
@@ -10,6 +11,8 @@ class _Scanners extends StatelessWidget {
     required this.onBluetoothScanPressed,
     required this.onInfraredScanPressed,
     required this.scanners,
+    required this.onPremiumActionPressed,
+    this.isPremium = false,
     this.isBluetoothDisabled = true,
     this.isInfraredDisabled = true,
     this.isWifiDisabled = true,
@@ -18,6 +21,8 @@ class _Scanners extends StatelessWidget {
   final VoidCallback onWifiScanPressed;
   final VoidCallback onBluetoothScanPressed;
   final VoidCallback onInfraredScanPressed;
+  final VoidCallback onPremiumActionPressed;
+  final bool isPremium;
   final List<ScanCardModel> scanners;
   final bool isWifiDisabled;
   final bool isBluetoothDisabled;
@@ -44,10 +49,23 @@ class _Scanners extends StatelessWidget {
               spacing: AppSizes.medium,
               children: [
                 Flexible(
-                  child: ScanCard(
-                    scanner: scanners[1],
-                    isDisabled: isBluetoothDisabled,
-                    onCardPressed: onBluetoothScanPressed,
+                  child: ClipRRect(
+                    child: isPremium
+                        ? ScanCard(
+                            scanner: scanners[1],
+                            isDisabled: isBluetoothDisabled,
+                            onCardPressed:
+                                onBluetoothScanPressed, // Premium kullanıcı doğrudan erişsin
+                          )
+                        : Banner(
+                            message: _premium,
+                            location: BannerLocation.topEnd,
+                            child: ScanCard(
+                              scanner: scanners[1],
+                              onCardPressed:
+                                  onPremiumActionPressed, // Premium olmayan kullanıcı tıklayınca yönlendirilir
+                            ),
+                          ),
                   ),
                 ),
                 Flexible(

@@ -16,6 +16,11 @@ dependencies:
     # UI
   smooth_page_indicator: ^1.2.1
   lottie: ^3.3.2
+
+  # Firebase
+  firebase_core: ^4.2.0
+  firebase_auth: ^6.1.1
+  cloud_firestore: ^6.0.3
   
   # State Management
   bloc: ^9.0.1

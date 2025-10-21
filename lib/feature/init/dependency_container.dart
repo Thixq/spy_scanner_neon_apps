@@ -60,8 +60,10 @@ final class DependencyContainer {
       )
       ..registerSingleton<HostScanManager>(HostScanManager())
       ..registerSingleton<ServiceDiscoveryManager>(ServiceDiscoveryManager())
-      ..registerSingleton<AccountManager>(
-        AccountManager(preferences: _getIt.get<SharedPreferences>()),
+      ..registerSingletonAsync<AccountManager>(
+        () async =>
+            AccountManager(preferences: _getIt.get<SharedPreferences>()),
+        dependsOn: [SharedPreferences],
       );
   }
 

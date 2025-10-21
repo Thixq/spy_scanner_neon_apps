@@ -25,7 +25,8 @@ class CodegenLoader extends AssetLoader{
     "next": "İleri",
     "previous": "Geri",
     "done": "Bitti",
-    "comming_soon": "Yakında"
+    "comming_soon": "Yakında",
+    "premium_text": "Premium"
   },
   "paywall": {
     "title": "Spy Scanner Premium'u Deneyin!!",
@@ -152,7 +153,8 @@ static const Map<String,dynamic> _en_US = {
     "next": "Next",
     "previous": "Previous",
     "done": "Done",
-    "comming_soon": "Comming Soon"
+    "comming_soon": "Comming Soon",
+    "premium_text": "Premium"
   },
   "privacy_policy": {
     "title": "Privacy Policy",
