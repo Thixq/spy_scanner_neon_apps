@@ -117,7 +117,6 @@ final class ServiceDiscoveryManager {
     _logger.info('🛑 All discovery tasks stopped.');
   }
 
-  /// Dispose artık async — çağıran await etmelidir.
   void dispose() {
     stopAll();
     _discoveredServicesController.close();

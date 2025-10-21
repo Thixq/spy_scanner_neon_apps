@@ -24,8 +24,9 @@ class SeparatedColumn extends StatelessWidget {
 
     // Kalan öğeleri ve her birinden önce ayırıcıyı ekle
     for (var i = 1; i < children.length; i++) {
-      items.add(separator);
-      items.add(children[i]);
+      items
+        ..add(separator)
+        ..add(children[i]);
     }
     return items;
   }

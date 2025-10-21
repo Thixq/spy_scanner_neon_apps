@@ -21,6 +21,7 @@ mixin _ScanMixin on State<LanScanView> {
   @override
   void dispose() {
     _scrollController.dispose();
+    unawaited(_viewModel.close());
     super.dispose();
   }
 

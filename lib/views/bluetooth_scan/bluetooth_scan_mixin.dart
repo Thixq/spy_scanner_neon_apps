@@ -40,6 +40,7 @@ mixin _BluetoothScanMixin on State<BluetoothScanView> {
   @override
   void dispose() {
     _scrollController.dispose();
+    unawaited(_viewModel.close());
     super.dispose();
   }
 }

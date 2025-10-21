@@ -31,12 +31,11 @@ class _LottiePlayerState extends State<_LottiePlayer>
         if (isScanning) {
           if (_controller.isAnimating && !_controller.isCompleted) return;
 
-          await _controller.repeat(min: 0, max: 1).orCancel;
+          await _controller.repeat(reverse: true, min: 0, max: .6).orCancel;
         } else {
           if (_controller.isAnimating) {
             _controller.stop(canceled: false);
           }
-
           if (_controller.value < 1.0) {
             await _controller.animateTo(1).orCancel;
           }
