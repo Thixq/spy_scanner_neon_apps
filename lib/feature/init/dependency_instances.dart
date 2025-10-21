@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/init/dependency_container.dart';
+import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
@@ -42,4 +43,5 @@ final class DependencyManagers {
       DependencyContainer.read<HostScanManager>();
   ServiceDiscoveryManager get serviceDiscovery =>
       DependencyContainer.read<ServiceDiscoveryManager>();
+  AccountManager get account => DependencyContainer.read<AccountManager>();
 }

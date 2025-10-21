@@ -5,6 +5,7 @@ import 'package:network_info_plus/network_info_plus.dart';
 import 'package:pay/pay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/constants/payment_assets.dart';
+import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
@@ -58,7 +59,10 @@ final class DependencyContainer {
         BleScannerManager(ble: FlutterReactiveBle()),
       )
       ..registerSingleton<HostScanManager>(HostScanManager())
-      ..registerSingleton<ServiceDiscoveryManager>(ServiceDiscoveryManager());
+      ..registerSingleton<ServiceDiscoveryManager>(ServiceDiscoveryManager())
+      ..registerSingleton<AccountManager>(
+        AccountManager(preferences: _getIt.get<SharedPreferences>()),
+      );
   }
 
   void _configureMonitor() {
