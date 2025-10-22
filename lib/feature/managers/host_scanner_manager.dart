@@ -2,13 +2,13 @@
 
 import 'dart:async';
 import 'package:network_tools/network_tools.dart';
-import 'package:spy_scanner/core/logging/custom_logger.dart'; // Varsayılan yol
+import 'package:spy_scanner/core/logging/custom_logger.dart';
 import 'package:spy_scanner/core/logging/error_handler.dart';
-import 'package:spy_scanner/feature/models/host_model.dart'; // Varsayılan yol
+import 'package:spy_scanner/feature/models/host_model.dart';
 
 /// Simple DTO that can be given directly to the UI.
 /// All fields are resolved to String.
-
+///
 /// Manager: listens to getAllPingableDevices(), resolves the Future fields
 /// inside ActiveHost and publishes a list of HostView objects.
 final class HostScanManager {

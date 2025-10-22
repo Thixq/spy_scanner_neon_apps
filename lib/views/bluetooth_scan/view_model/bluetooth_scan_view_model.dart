@@ -58,7 +58,6 @@ final class _BluetoothScanViewModel
 
   @override
   Future<void> close() {
-    _bleScanner.dispose();
     _bleStatusSubscription?.cancel();
     return super.close();
   }

@@ -2,7 +2,7 @@ name: spy_scanner
 description: "Neon Apps - Spy Scanner - Final Project"
 publish_to: 'none' 
 
-version: 1.0.0+4
+version: 1.0.0+45
 
 environment:
   sdk: ^3.9.0
@@ -28,6 +28,9 @@ dependencies:
 
   #Routing
   auto_route: ^10.1.2
+
+  # Json Serialization
+  json_annotation: ^4.9.0
 
   # Localization
   easy_localization: ^3.0.8
@@ -69,6 +72,7 @@ dev_dependencies:
 
   #Code Gen
   auto_route_generator: ^10.2.4
+  json_serializable: ^6.11.1
   build_runner: ^2.7.1
 
 flutter:

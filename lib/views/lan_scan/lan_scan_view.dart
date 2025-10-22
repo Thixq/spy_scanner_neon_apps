@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:lottie/lottie.dart';
-import 'package:network_tools/network_tools.dart';
 import 'package:spy_scanner/core/app_sizes.dart';
 import 'package:spy_scanner/core/extension/context_theme.dart';
 import 'package:spy_scanner/core/extension/num_extension.dart';
@@ -15,7 +14,6 @@ import 'package:spy_scanner/core/logging/error_handler.dart';
 import 'package:spy_scanner/feature/constants/lottie_assets.dart';
 import 'package:spy_scanner/feature/init/dependency_instances.dart';
 import 'package:spy_scanner/feature/localization/localization_codegen/locale_keys.g.dart';
-import 'package:spy_scanner/feature/managers/firebase_host_save_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
 import 'package:spy_scanner/feature/models/host_model.dart';
@@ -50,7 +48,7 @@ class _LanScanViewState extends State<LanScanView> with _ScanMixin {
     return BlocProvider.value(
       value: _viewModel,
       child: Scaffold(
-        body: BlocBuilder<LanScanViewModel, _ScanState>(
+        body: BlocBuilder<_LanScanViewModel, _ScanState>(
           builder: (context, state) {
             return Stack(
               children: [

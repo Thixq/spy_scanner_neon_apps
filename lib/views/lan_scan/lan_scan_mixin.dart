@@ -3,7 +3,7 @@ part of 'lan_scan_view.dart';
 // TickerProvider kısıtlamasını tamamen kaldırıyoruz.
 mixin _ScanMixin on State<LanScanView> {
   final String assetPath = LottieAssets.redSpy;
-  late final LanScanViewModel _viewModel;
+  late final _LanScanViewModel _viewModel;
   late final ScrollController _scrollController;
   bool _isAtBottom = false;
 
@@ -11,10 +11,9 @@ mixin _ScanMixin on State<LanScanView> {
   void initState() {
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);
-    _viewModel = LanScanViewModel(
+    _viewModel = _LanScanViewModel(
       discoveryManager: DependencyInstances.manager.serviceDiscovery,
       hostScanManager: DependencyInstances.manager.hostScanner,
-      hostSaveManager: DependencyInstances.manager.hostSaveManager,
     );
     super.initState();
   }
@@ -26,6 +25,7 @@ mixin _ScanMixin on State<LanScanView> {
     super.dispose();
   }
 
+  /// Save the currently scanned hosts to the database.
   void _saveHost() {
     _viewModel.add(_ScanSave());
   }

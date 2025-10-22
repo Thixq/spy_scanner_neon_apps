@@ -5,7 +5,7 @@ import 'package:nsd/nsd.dart';
 import 'package:spy_scanner/core/logging/custom_logger.dart';
 import 'package:spy_scanner/core/logging/error_handler.dart';
 import 'package:spy_scanner/feature/models/mdns_service_model.dart';
-import 'package:uuid/v8.dart';
+import 'package:uuid/v7.dart';
 
 typedef ServiceCallback = void Function(String type, Service service);
 
@@ -58,12 +58,16 @@ final class ServiceDiscoveryManager {
 
           if (index == -1) {
             final newService = MdnsServiceModel(
-              id: const UuidV8().generate(),
+              id: const UuidV7().generate(),
               type: service.type,
               name: service.name,
               addresses: service.addresses
                   ?.map(
-                    (e) => MdnsIpAddress(address: e.address, type: e.type.name),
+                    (e) => MdnsIpAddress(
+                      id: const UuidV7().generate(),
+                      address: e.address,
+                      type: e.type.name,
+                    ),
                   )
                   .toList(),
               port: service.port,
@@ -75,7 +79,11 @@ final class ServiceDiscoveryManager {
             final updated = existing.copyWith(
               addresses: service.addresses
                   ?.map(
-                    (e) => MdnsIpAddress(address: e.address, type: e.type.name),
+                    (e) => MdnsIpAddress(
+                      id: const UuidV7().generate(),
+                      address: e.address,
+                      type: e.type.name,
+                    ),
                   )
                   .toList(),
               port: service.port,

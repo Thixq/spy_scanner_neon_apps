@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/init/dependency_container.dart';
 import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
-import 'package:spy_scanner/feature/managers/firebase_host_save_manager.dart';
+import 'package:spy_scanner/feature/managers/firebase_history_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/profile_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
@@ -54,6 +54,6 @@ final class DependencyManagers {
   AccountManager get account => DependencyContainer.read<AccountManager>();
   ProfileManager get profile => DependencyContainer.read<ProfileManager>();
 
-  FirebaseHostSaveManager get hostSaveManager =>
-      DependencyContainer.read<FirebaseHostSaveManager>();
+  FirestoreHistoryManager get hostSaveManager =>
+      DependencyContainer.read<FirestoreHistoryManager>();
 }

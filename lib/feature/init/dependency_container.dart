@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spy_scanner/feature/constants/payment_assets.dart';
 import 'package:spy_scanner/feature/managers/account_manager.dart';
 import 'package:spy_scanner/feature/managers/ble_scanner_manager.dart';
-import 'package:spy_scanner/feature/managers/firebase_host_save_manager.dart';
+import 'package:spy_scanner/feature/managers/firebase_history_manager.dart';
 import 'package:spy_scanner/feature/managers/host_scanner_manager.dart';
 import 'package:spy_scanner/feature/managers/profile_manager.dart';
 import 'package:spy_scanner/feature/managers/service_discovery_manager.dart';
@@ -77,8 +77,8 @@ final class DependencyContainer {
           firestore: _getIt.get<FirebaseFirestore>(),
         ),
       )
-      ..registerSingleton<FirebaseHostSaveManager>(
-        FirebaseHostSaveManager(firestore: _getIt.get<FirebaseFirestore>()),
+      ..registerSingleton<FirestoreHistoryManager>(
+        FirestoreHistoryManager(firestore: _getIt.get<FirebaseFirestore>()),
       );
   }
 
